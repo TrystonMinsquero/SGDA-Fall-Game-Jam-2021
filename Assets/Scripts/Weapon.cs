@@ -20,7 +20,6 @@ public class Weapon
 
     public void Shoot(PlayerController pc)
     {
-        Debug.Log(Time.time + " > " + nextFireTime);
         if (Time.time < nextFireTime)
             return;
         nextFireTime = Time.time + fireRate;
@@ -35,6 +34,11 @@ public class Weapon
         );
         projectiles.Add(pro);
         
+    }
+
+    public void Reset()
+    {
+        nextFireTime = 0;
     }
 
 }

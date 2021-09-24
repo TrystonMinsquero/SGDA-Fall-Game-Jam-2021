@@ -3,12 +3,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public SpriteRenderer sr;
     public Weapon weapon;
     public bool dashing;
 
     private void Start()
     {
         weapon = null;
+        sr = GetComponent<SpriteRenderer>();
     }
 
     public void Shoot(PlayerController pc)
@@ -24,7 +26,9 @@ public class Player : MonoBehaviour
         NPC npc = npc_c.npc;
         Debug.Log("Take Over" + npc.name);
         //Change anims & sprite
+        sr.sprite = npc.image;
         weapon = npc.weapon;
+        weapon.Reset();
         Destroy(npc_c.gameObject);
 
     }

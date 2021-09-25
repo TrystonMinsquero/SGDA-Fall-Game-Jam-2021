@@ -5,21 +5,31 @@ public class Player : MonoBehaviour
 {
     public float deathTime_MAX;
     public float dashDamage;
+    public float movementSpeed;
+    public float dashDelay;
+    public float dashForce;
     public HealthBar healthBar;
 
     private SpriteRenderer sr;
     private Animator anim;
-    private Weapon weapon;
+    [HideInInspector]
+    public Weapon weapon;
 
+    [HideInInspector]
+    public Vector2 lookDirection;
     private Vector3 healthBarPos;
-    private float timeRemaing;
+    [HideInInspector]
+    public float timeRemaing;
     private float deathTime;
+    [HideInInspector]
+    public float nextDashTime;
 
     private void Start()
     {
         weapon = null;
         sr = GetComponent<SpriteRenderer>();
         deathTime = Time.time + deathTime_MAX;
+        nextDashTime = 0;
         healthBarPos = healthBar.transform.position - transform.position;
     }
 
@@ -33,12 +43,37 @@ public class Player : MonoBehaviour
         healthBar.transform.position = transform.position + healthBarPos;
     }
 
-    public void Shoot(PlayerController pc)
+    public void Shoot()
     {
         if(weapon != null)
         {
-            weapon.Shoot(pc);
+            weapon.Shoot(this);
         }
+    }
+
+    public void Dash()
+    {
+        if (Time.time < nextDashTime)
+            return;
+        Debug.Log("Dash");
+        nextDashTime = Time.time + dashDelay;
+        transform.Translate(lookDirection * dashForce, Space.World);
+        Collider2D[] collidersHit = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x / 2);
+        foreach (Collider2D collider in collidersHit)
+        {
+            if (collider.CompareTag("Player"))
+            {
+                TakeOver(collider.GetComponent<Player>());
+                break;
+            }
+            else if (collider.CompareTag("NPC"))
+            {
+                TakeOver(collider.GetComponent<NPC_Controller>());
+                break;
+            }
+        }
+        //rb.AddForce(lookDirection * dashForce);
+
     }
 
 
@@ -51,6 +86,7 @@ public class Player : MonoBehaviour
         weapon = npc.weapon;
         if(weapon != null)
             weapon.Reset();
+        deathTime = Time.time + deathTime_MAX;
         Destroy(npc_c.gameObject);
 
     }
@@ -68,6 +104,7 @@ public class Player : MonoBehaviour
             weapon.Reset();
         sr.sprite = player.sr.sprite;
         anim = player.anim;
+        deathTime = Time.time + deathTime_MAX;
         player.Die();
 
     }
@@ -83,6 +120,7 @@ public class Player : MonoBehaviour
     private void Die()
     {
         Debug.Log("Die");
+        Destroy(this.gameObject);
     }
 
     public List<Projectile> GetProjectiles()

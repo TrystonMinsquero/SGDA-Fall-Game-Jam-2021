@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2377044252534902315}
   - component: {fileID: -8557708996381632062}
   - component: {fileID: 9049815195283421297}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -53,7 +53,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathTime_MAX: 20
   dashDamage: 8
-  sr: {fileID: 2377044252534902315}
+  movementSpeed: 8
+  dashDelay: 3
+  dashForce: 2
+  healthBar: {fileID: 4175796600016887350}
   weapon:
     projectile: {fileID: 0}
     fireRate: 0
@@ -61,7 +64,9 @@ MonoBehaviour:
     range: 0
     damage: 0
     projectiles: []
-  healthBar: {fileID: 4175796600016887350}
+  lookDirection: {x: 0, y: 0}
+  timeRemaing: 0
+  nextDashTime: 0
 --- !u!114 &2377044252534902309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,12 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be7c9a7a66e80745bff1c32a57dfa6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 7
-  dashDelay: 1
-  dashForce: 2
   rb: {fileID: 0}
   player: {fileID: 0}
-  lookDirection: {x: 0, y: 0}
 --- !u!114 &2377044252534902308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4929659459344063040}
   - component: {fileID: 6262240455973571644}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: nose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6055638216936398465}
   - component: {fileID: 7009851991797492387}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,6 +426,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2377044252534902314}
     m_Modifications:
+    - target: {fileID: 864044865223590169, guid: 8ad0dad2ba7b7954fb82659d865e1d2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1946764282985509904, guid: 8ad0dad2ba7b7954fb82659d865e1d2e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -437,9 +442,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health Bar Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3032800716150909103, guid: 8ad0dad2ba7b7954fb82659d865e1d2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3188763606760435738, guid: 8ad0dad2ba7b7954fb82659d865e1d2e, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316105289200251746, guid: 8ad0dad2ba7b7954fb82659d865e1d2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707579921478196834, guid: 8ad0dad2ba7b7954fb82659d865e1d2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8168527702744279456, guid: 8ad0dad2ba7b7954fb82659d865e1d2e, type: 3}
       propertyPath: m_Pivot.x

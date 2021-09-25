@@ -18,18 +18,18 @@ public class Weapon
     private float nextFireTime;
 
 
-    public void Shoot(PlayerController pc)
+    public void Shoot(Player player)
     {
         if (Time.time < nextFireTime)
             return;
         nextFireTime = Time.time + fireRate;
         Projectile pro = GameObject.Instantiate(projectile).GetComponent<Projectile>();
         pro.Set(
-            pc.player,
-            pc.transform.position,
+            player,
+            player.transform.position,
             projectileSpeed,
             range,
-            pc.lookDirection.normalized,
+            player.lookDirection.normalized,
             damage
         );
         projectiles.Add(pro);

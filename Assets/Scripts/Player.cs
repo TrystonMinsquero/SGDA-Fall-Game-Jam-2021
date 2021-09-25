@@ -56,7 +56,8 @@ public class Player : MonoBehaviour
         if (Time.time < nextDashTime)
             return;
         Debug.Log("Dash");
-        nextDashTime = Time.time + dashDelay;
+        //nextDashTime = Time.time + dashDelay;
+        nextDashTime = Time.time + 0.1f;
         transform.Translate(lookDirection * dashForce, Space.World);
         Collider2D[] collidersHit = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x / 2);
         foreach (Collider2D collider in collidersHit)

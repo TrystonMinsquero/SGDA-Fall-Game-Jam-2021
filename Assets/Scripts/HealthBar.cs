@@ -9,6 +9,8 @@ public class HealthBar : MonoBehaviour
     public Gradient gradient;
     public Image fill;
 
+    private Quaternion initRotation;
+
 
     public void SetHealth(float health)
     {
@@ -17,4 +19,15 @@ public class HealthBar : MonoBehaviour
         fill.color = gradient.Evaluate(slider.value);
         
     }
+
+    private void Start()
+    {
+        initRotation = transform.rotation;
+    }
+
+    private void LateUpdate()
+    {
+        transform.rotation = initRotation;
+    }
+
 }

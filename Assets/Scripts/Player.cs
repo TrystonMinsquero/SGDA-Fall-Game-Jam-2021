@@ -1,13 +1,17 @@
-
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public float deathTime_MAX;
     public float dashDamage;
-    public SpriteRenderer sr;
-    public Weapon weapon;
     public HealthBar healthBar;
+
+    private SpriteRenderer sr;
+    private Animator anim;
+    private Weapon weapon;
+
+    private Vector3 healthBarPos;
     private float timeRemaing;
     private float deathTime;
 
@@ -16,6 +20,7 @@ public class Player : MonoBehaviour
         weapon = null;
         sr = GetComponent<SpriteRenderer>();
         deathTime = Time.time + deathTime_MAX;
+        healthBarPos = healthBar.transform.position - transform.position;
     }
 
     private void Update()
@@ -25,6 +30,7 @@ public class Player : MonoBehaviour
         timeRemaing = deathTime - Time.time;
 
         healthBar.SetHealth(timeRemaing / deathTime_MAX);
+        healthBar.transform.position = transform.position + healthBarPos;
     }
 
     public void Shoot(PlayerController pc)
@@ -39,21 +45,31 @@ public class Player : MonoBehaviour
     public void TakeOver(NPC_Controller npc_c)
     {
         NPC npc = npc_c.npc;
-        Debug.Log("Take Over" + npc.name);
-        //Change anims & sprite
+        Debug.Log("Take Over " + npc.name);
         sr.sprite = npc.image;
+        anim = npc.anim;
         weapon = npc.weapon;
-        weapon.Reset();
+        if(weapon != null)
+            weapon.Reset();
         Destroy(npc_c.gameObject);
 
     }
 
     public void TakeOver(Player player)
     {
-        Debug.Log("Take Over" + player.name);
-        //Damage other player
-        //if damage was enough to kill, take over
+        Debug.Log("Take Over " + player.name);
+        if (Time.time < player.deathTime - dashDamage)
+        {
+            player.TakeDamage(dashDamage);
+            return;
+        }
         weapon = player.weapon;
+        if (weapon != null)
+            weapon.Reset();
+        sr.sprite = player.sr.sprite;
+        anim = player.anim;
+        player.Die();
+
     }
 
     public void TakeDamage(float damage)
@@ -67,6 +83,11 @@ public class Player : MonoBehaviour
     private void Die()
     {
         Debug.Log("Die");
+    }
+
+    public List<Projectile> GetProjectiles()
+    {
+        return weapon.projectiles;
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

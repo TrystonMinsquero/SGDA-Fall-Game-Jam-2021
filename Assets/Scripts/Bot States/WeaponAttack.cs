@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WeaponAttack : IState
 {
-    public WeaponAttack(Player player, Transform target, Weapon weapon)
+    public WeaponAttack(Player player, Transform target)
     {
 
     }

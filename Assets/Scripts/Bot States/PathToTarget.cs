@@ -3,24 +3,26 @@ using Pathfinding;
 
 public class PathToTarget : IState
 {
+    private readonly BotController bot;
 
-    public PathToTarget(Player player, AIDestinationSetter pathfinder, Transform target, Weapon weapon = null)
+    public PathToTarget(BotController bot)
     {
-        
+        this.bot = bot;
     }
 
     public void OnEnter()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Going to: ");
+        bot.Seek(true);
     }
 
     public void OnExit()
     {
-        throw new System.NotImplementedException();
+        bot.Seek(false);
     }
 
     public void Tick()
     {
-        throw new System.NotImplementedException();
+        
     }
 }

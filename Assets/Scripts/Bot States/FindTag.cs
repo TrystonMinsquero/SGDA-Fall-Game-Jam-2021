@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FindTag : IState
 {
-    private BotController bot;
+    private readonly BotController bot;
     private string tag;
     private LayerMask layerMask;
     private Vector3 smallestDistance = Vector3.one * int.MaxValue;
@@ -20,7 +20,7 @@ public class FindTag : IState
     public void OnEnter()
     {
         Debug.Log("Finding " + tag);
-        bot.target = Search();
+        bot.SetTarget(Search());
         if (bot.target == null)
             Debug.Log("Not found on first search");
 
@@ -28,11 +28,12 @@ public class FindTag : IState
 
     private Transform Search(int radiusMultiplier = 1)
     {
-        Collider2D[] collidersHit = Physics2D.OverlapCircleAll(bot.transform.position, searchRadius * radiusMultiplier, layerMask);
+        Collider2D[] collidersHit = Physics2D.OverlapCircleAll(bot.transform.position, searchRadius * radiusMultiplier);
+        //Debug.Log(collidersHit.Length);
         Transform tempTarget = null;
         foreach (Collider2D collider in collidersHit)
         {
-            if (collider.tag == tag && collider != bot && DistanceSmaller(collider.transform.position, smallestDistance))
+            if (collider.tag == tag && collider.gameObject != bot.gameObject && DistanceSmaller(collider.transform.position, smallestDistance))
             {
                 tempTarget = collider.transform;
                 smallestDistance = collider.transform.position;
@@ -56,8 +57,9 @@ public class FindTag : IState
 
     public void Tick()
     {
-        bot.target = Search(2);
+        bot.SetTarget(Search(2));
     }
-    
+
+
 
 }

@@ -7,6 +7,7 @@ using UnityEngine;
 public class Weapon
 {
     public GameObject projectile;
+    public WeaponType weaponType;
     public float fireRate;
     public float projectileSpeed;
     public float range;
@@ -26,6 +27,7 @@ public class Weapon
         Projectile pro = GameObject.Instantiate(projectile).GetComponent<Projectile>();
         pro.Set(
             player,
+            weaponType,
             player.transform.position,
             projectileSpeed,
             range,
@@ -41,4 +43,10 @@ public class Weapon
         nextFireTime = 0;
     }
 
+}
+
+public enum WeaponType
+{
+    STRAIGHT,
+    DUAL
 }

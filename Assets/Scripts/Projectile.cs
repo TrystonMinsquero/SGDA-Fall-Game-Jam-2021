@@ -5,6 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     Player player;
+    WeaponType weaponType;
     Vector3 startPos;
     float speed;
     float range;
@@ -13,18 +14,24 @@ public class Projectile : MonoBehaviour
 
     Rigidbody2D rb;
 
-    public void Set(Player player, Vector3 startPos, float speed, float range, Vector2 direction, int damage = 0)
+    public void Set(Player player, WeaponType weaponType, Vector3 startPos, float speed, float range, Vector2 direction, int damage = 0)
     {
         this.player = player;
+        this.weaponType = weaponType;
         this.startPos = startPos;
         this.speed = speed;
         this.range = range;
         this.direction = direction;
         this.damage = damage;
 
-        transform.position = startPos;
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = direction * speed;
+        transform.position = startPos;
+        switch (weaponType)
+        {
+            case WeaponType.STRAIGHT:
+                rb.velocity = direction * speed;
+                break;
+        }
     }
 
     private void Update()

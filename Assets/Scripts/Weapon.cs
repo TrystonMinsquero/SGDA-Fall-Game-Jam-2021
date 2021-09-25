@@ -29,7 +29,7 @@ public class Weapon
             pc.transform.position,
             projectileSpeed,
             range,
-            pc.lookDirection,
+            pc.lookDirection.normalized,
             damage
         );
         projectiles.Add(pro);

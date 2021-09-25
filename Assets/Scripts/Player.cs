@@ -3,14 +3,28 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public float deathTime_MAX;
+    public float dashDamage;
     public SpriteRenderer sr;
     public Weapon weapon;
-    public bool dashing;
+    public HealthBar healthBar;
+    private float timeRemaing;
+    private float deathTime;
 
     private void Start()
     {
         weapon = null;
         sr = GetComponent<SpriteRenderer>();
+        deathTime = Time.time + deathTime_MAX;
+    }
+
+    private void Update()
+    {
+        if(Time.time > deathTime)
+            Die();
+        timeRemaing = deathTime - Time.time;
+
+        healthBar.SetHealth(timeRemaing / deathTime_MAX);
     }
 
     public void Shoot(PlayerController pc)
@@ -20,6 +34,7 @@ public class Player : MonoBehaviour
             weapon.Shoot(pc);
         }
     }
+
 
     public void TakeOver(NPC_Controller npc_c)
     {
@@ -41,10 +56,12 @@ public class Player : MonoBehaviour
         weapon = player.weapon;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (damage <= 0)
             Die();
+        else
+            deathTime -= damage;
     }
 
     private void Die()
@@ -54,13 +71,6 @@ public class Player : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (dashing)
-        {
-            if(collision.collider.CompareTag("NPC"))
-                TakeOver(collision.gameObject.GetComponent<NPC_Controller>());
-            if (collision.collider.CompareTag("Player"))
-                TakeOver(collision.gameObject.GetComponent<Player>());
-        }
             
     }
 }

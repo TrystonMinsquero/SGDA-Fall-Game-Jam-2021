@@ -6,12 +6,15 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed;
     public float dashDelay;
     public float dashForce;
+    Camera cam;
+
     [HideInInspector]
     public Rigidbody2D rb;
     [HideInInspector]
     public Player player;
     [HideInInspector]
     public Vector2 lookDirection;
+
 
     private float nextDashTime;
     Controls controls;
@@ -26,6 +29,7 @@ public class PlayerController : MonoBehaviour
         nextDashTime = 0;
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
+        cam = GetComponentInChildren<Camera>();
 
     }
 
@@ -33,7 +37,6 @@ public class PlayerController : MonoBehaviour
     {
         //Move
         transform.Translate(new Vector3(movementInput.x, movementInput.y) * movementSpeed * Time.deltaTime, Space.World);
-
         //Look
         if(lookInput.sqrMagnitude > .1f)
         {
@@ -57,17 +60,32 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0;
+
+        cam.transform.rotation = Quaternion.Euler(Vector3.zero);
+
     }
 
     private void Dash()
     {
-        player.dashing = true;
         if (Time.time < nextDashTime)
             return;
         Debug.Log("Dash");
         nextDashTime = Time.time + dashDelay;
         transform.Translate(lookDirection * dashForce, Space.World);
-        player.dashing = false;
+        Collider2D[] collidersHit = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x / 2);
+        foreach(Collider2D collider in collidersHit)
+        {
+            if (collider.CompareTag("Player"))
+            {
+                player.TakeOver(collider.GetComponent<Player>());
+                break;
+            }
+            else if (collider.CompareTag("NPC"))
+            {
+                player.TakeOver(collider.GetComponent<NPC_Controller>());
+                break;
+            }
+        }
         //rb.AddForce(lookDirection * dashForce);
         
     }

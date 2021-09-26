@@ -6,8 +6,6 @@ public class PlayerController : MonoBehaviour
     Camera cam;
 
     [HideInInspector]
-    public Rigidbody2D rb;
-    [HideInInspector]
     public Player player;
     [HideInInspector]
     Controls controls;
@@ -19,23 +17,26 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         controls = new Controls();
-        rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
         cam = GetComponentInChildren<Camera>();
 
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //Move
-        transform.Translate(new Vector3(movementInput.x, movementInput.y) * player.movementSpeed * Time.deltaTime, Space.World);
+        player.Move(movementInput);
+    }
+
+    private void Update()
+    {
         //Look
-        if(lookInput.sqrMagnitude > .1f)
+        if (lookInput.sqrMagnitude > .1f)
         {
-            transform.rotation = Quaternion.Euler(0,0,Mathf.Rad2Deg * Mathf.Atan2(lookInput.y, lookInput.x));
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(lookInput.y, lookInput.x));
             player.lookDirection = lookInput;
         }
-        else if(movementInput.sqrMagnitude > 0)
+        else if (movementInput.sqrMagnitude > 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(movementInput.y, movementInput.x));
             player.lookDirection = movementInput;
@@ -50,8 +51,6 @@ public class PlayerController : MonoBehaviour
         if (shootInput)
             player.Shoot();
 
-        rb.velocity = Vector2.zero;
-        rb.angularVelocity = 0;
 
         cam.transform.rotation = Quaternion.Euler(Vector3.zero);
 

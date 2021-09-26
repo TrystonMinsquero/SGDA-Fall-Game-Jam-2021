@@ -1,17 +1,20 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public float deathTime_MAX;
     public float dashDamage;
-    public float movementSpeed;
+    public float movementSpeedInit;
     public float dashDelay;
     public float dashForce;
+    public float dashChargeTime;
     public HealthBar healthBar;
 
     private SpriteRenderer sr;
     private Animator anim;
+    private Rigidbody2D rb;
     [HideInInspector]
     public Weapon weapon;
 
@@ -20,6 +23,8 @@ public class Player : MonoBehaviour
     private Vector3 healthBarPos;
     [HideInInspector]
     public float timeRemaing;
+    [HideInInspector]
+    public float movementSpeed;
     private float deathTime;
     [HideInInspector]
     public float nextDashTime;
@@ -28,9 +33,11 @@ public class Player : MonoBehaviour
     {
         weapon = null;
         sr = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
         deathTime = Time.time + deathTime_MAX;
         nextDashTime = 0;
         healthBarPos = healthBar.transform.position - transform.position;
+        movementSpeed = movementSpeedInit;
     }
 
     private void Update()
@@ -41,6 +48,15 @@ public class Player : MonoBehaviour
 
         healthBar.SetHealth(timeRemaing / deathTime_MAX);
         healthBar.transform.position = transform.position + healthBarPos;
+
+        rb.angularVelocity = 0;
+    }
+
+    public void Move(Vector2 input)
+    {
+        Debug.Log(new Vector2(input.x, input.y) * movementSpeed);
+        rb.velocity = new Vector2(input.x, input.y) * movementSpeed;
+        rb.drag = input.sqrMagnitude > 0 ? 0 : 1;
     }
 
     public void Shoot()
@@ -56,9 +72,9 @@ public class Player : MonoBehaviour
         if (Time.time < nextDashTime)
             return;
         Debug.Log("Dash");
-        //nextDashTime = Time.time + dashDelay;
-        nextDashTime = Time.time + 0.1f;
-        transform.Translate(lookDirection * dashForce, Space.World);
+        nextDashTime = Time.time + dashDelay;
+        movementSpeed = 0;
+        int steps = 20;
         Collider2D[] collidersHit = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x / 2);
         foreach (Collider2D collider in collidersHit)
         {
@@ -77,6 +93,13 @@ public class Player : MonoBehaviour
 
     }
 
+    private IEnumerator Dash(float chargeTime)
+    {
+        for (float time = chargeTime; time > 0; time -= Time.deltaTime)
+            yield return null;
+        rb.AddForce(lookDirection * dashForce);
+
+    }   
 
     public void TakeOver(NPC_Controller npc_c)
     {

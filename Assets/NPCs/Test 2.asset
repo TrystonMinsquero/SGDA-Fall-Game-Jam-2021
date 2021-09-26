@@ -12,12 +12,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0c7428a3b94314f8ea8ee55da9cdd0, type: 3}
   m_Name: Test 2
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
+  image: {fileID: 7482667652216324306, guid: 741d65270c3e05b4ea49dd6e08a1f37b, type: 3}
   anim: {fileID: 0}
   weapon:
-    projectile: {fileID: 0}
-    fireRate: 0
-    projectileSpeed: 0
-    range: 0
-    damage: 0
-    projectiles: []
+    projectile: {fileID: 9037812320112203550, guid: f2a0cfe4b842bf84f80aafb6470cca96, type: 3}
+    weaponType: 2
+    fireDelay: 5
+    projectileSpeed: 4
+    range: 6
+    damage: 6
+    projectiles:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}

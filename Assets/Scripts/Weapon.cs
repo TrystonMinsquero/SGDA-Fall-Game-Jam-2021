@@ -8,7 +8,7 @@ public class Weapon
 {
     public GameObject projectile;
     public WeaponType weaponType;
-    public float fireRate;
+    public float fireDelay;
     public float projectileSpeed;
     public float range;
     public int damage;
@@ -23,27 +23,48 @@ public class Weapon
     {
         if (Time.time < nextFireTime)
             return;
-        nextFireTime = Time.time + fireRate;
+        nextFireTime = Time.time + fireDelay;
         Projectile pro = GameObject.Instantiate(projectile).GetComponent<Projectile>();
+
 
         switch (weaponType)
         {
             case WeaponType.STRAIGHT:
                 pro.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
+                projectiles.Add(pro);
                 break;
 
+
             case WeaponType.DUAL:
-                Vector2 shotgun = new Vector2(player.lookDirection.normalized.x + 1f, player.lookDirection.normalized.y + 1f);
-                Vector2 shotgun2 = new Vector2(player.lookDirection.normalized.x + 1f, player.lookDirection.normalized.y - 1f);
+
+                float angle = Mathf.Atan2(player.lookDirection.y, player.lookDirection.x);
+                    // angle from player to x-axis
+
+                Vector2 shotgun = new Vector2(player.lookDirection.x - (0.05f) * Mathf.Sin(angle), 
+                    player.lookDirection.y + (0.05f) * Mathf.Cos(angle));
+                Vector2 shotgun2 = new Vector2(player.lookDirection.x + (0.05f) * Mathf.Sin(angle), 
+                    player.lookDirection.y - (0.05f) * Mathf.Cos(angle));
+                // vectors for direction of each shotgun bullet/projectile
 
                 Projectile pro2 = GameObject.Instantiate(projectile).GetComponent<Projectile>();
+                    // second bullet created
 
                 pro.Set(player, player.transform.position, projectileSpeed, range, shotgun, damage);
                 pro2.Set(player, player.transform.position, projectileSpeed, range, shotgun2, damage);
-                //pro.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
+                
 
                 projectiles.Add(pro);
                 projectiles.Add(pro2);
+
+                break;
+
+            case WeaponType.RPG:
+                pro.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
+                projectiles.Add(pro);
+
+                break;
+
+            case WeaponType.GRENADE:
 
                 break;
         }

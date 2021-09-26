@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -57,14 +58,16 @@ public class Projectile : MonoBehaviour
             return;
         if (collision.gameObject.CompareTag("Player"))
         {
-            if(collision.GetComponent<Player>() != player)
+            if (collision.GetComponent<Player>() != player)
                 collision.GetComponent<Player>().TakeDamage(damage);
         }
-        else
+        else if (collision.gameObject.CompareTag("NPC"))
         {
             Destroy(collision.gameObject);
             Delete();
         }
+        else
+            Delete();
     }
 
     public void Delete()

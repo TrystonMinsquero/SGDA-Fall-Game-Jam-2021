@@ -2,23 +2,28 @@ using UnityEngine;
 
 public class WeaponAttack : IState
 {
-    public WeaponAttack(Player player, Transform target)
-    {
+    private readonly BotController bot;
+    private readonly Player player;
 
+    public WeaponAttack(BotController bot, Player player)
+    {
+        this.bot = bot;
+        this.player = player;
     }
 
     public void OnEnter()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Shooting: " + bot.target);
     }
 
     public void OnExit()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Stop shooting");
     }
 
     public void Tick()
     {
-        throw new System.NotImplementedException();
+        player.lookDirection = (bot.target.position - player.transform.position).normalized;
+        player.Shoot();
     }
 }

@@ -2,20 +2,18 @@ using UnityEngine;
 
 public class DashAttack : IState
 {
+    private readonly BotController bot;
     private readonly Player player;
-    private readonly Transform target;
 
-    public DashAttack(Player player, Transform target)
+    public DashAttack(BotController bot, Player player)
     {
+        this.bot = bot;
         this.player = player;
-        this.target = target;
     }
 
     public void OnEnter()
     {
-        Debug.Log("Dashing");
-        player.lookDirection = (target.position - player.transform.position).normalized;
-        player.Dash();
+        Debug.Log("Dashing to: " + bot.target);
 
     }
 
@@ -26,5 +24,8 @@ public class DashAttack : IState
 
     public void Tick()
     {
+        if(bot.target != null)
+            player.lookDirection = (bot.target.position - player.transform.position).normalized;
+        player.Dash();
     }
 }

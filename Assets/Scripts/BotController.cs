@@ -8,7 +8,7 @@ public class BotController : MonoBehaviour
     Player player;
     AIPath aiPath;
     AIDestinationSetter pathfinder;
-    CurrentState currentState;
+    public CurrentState currentState;
 
     public Transform target;
     public Rigidbody2D rb;
@@ -19,8 +19,10 @@ public class BotController : MonoBehaviour
         player = GetComponent<Player>();
         aiPath = GetComponent<AIPath>();
         pathfinder = GetComponent<AIDestinationSetter>();
-        pathfinder.enabled = false;
         rb = GetComponent<Rigidbody2D>();
+
+        aiPath.maxSpeed = player.movementSpeedInit;
+        pathfinder.enabled = false;
         target = null;
 
         SetUpStateMachine();
@@ -32,22 +34,22 @@ public class BotController : MonoBehaviour
 
         var findNPC = new FindTag(this, "NPC");
         var pathToNPC = new PathToTarget(this);
-        var dashAttackNPC = new DashAttack(player, target);
+        var dashAttackNPC = new DashAttack(this, player);
         var findPlayer = new FindTag(this, "Player");
         var findPlayerClose = new FindTag(this, "Player");
         var pathToPlayer = new PathToTarget(this);
-        var dashAttackPlayer = new DashAttack(player, target);
-        var weaponAttackPlayer = new WeaponAttack(player, target);
+        var dashAttackPlayer = new DashAttack(this, player);
+        var weaponAttackPlayer = new WeaponAttack(this, player);
 
         stateMachine.AddAnyTransition(findNPC, timeLowOrNoWeapAndNoNPC());
         stateMachine.AddTransition(findNPC, pathToNPC, NPCFound());
         stateMachine.AddTransition(pathToNPC, dashAttackNPC, targetInDashRange());
-        stateMachine.AddTransition(dashAttackNPC, pathToNPC, dashNotReady());
+        stateMachine.AddTransition(dashAttackNPC, pathToNPC, targetNotInDashRange());
         stateMachine.AddTransition(dashAttackNPC, findPlayer, timeNotLowOrHasWeapon());
         stateMachine.AddTransition(findPlayer, pathToPlayer, playerFound());
         stateMachine.AddTransition(pathToPlayer, dashAttackPlayer, targetInDashRange());
         stateMachine.AddTransition(pathToPlayer, weaponAttackPlayer, targetInWeaponRange());
-        stateMachine.AddTransition(dashAttackPlayer, pathToPlayer, dashNotReady());
+        stateMachine.AddTransition(dashAttackPlayer, pathToPlayer, targetNotInDashRange());
         stateMachine.AddAnyTransition(findPlayerClose, playerInDashRange());
         stateMachine.AddTransition(findPlayerClose, dashAttackPlayer, playerFound());
 
@@ -55,7 +57,7 @@ public class BotController : MonoBehaviour
         Func<bool> timeNotLowOrHasWeapon() => () => !TimeLow() || HasWeapon();
         Func<bool> NPCFound() => () => HaveNPCTarget();
         Func<bool> targetInDashRange() => () => TargetInRange(player.dashForce);
-        Func<bool> dashNotReady() => () => Time.time > player.nextDashTime;
+        Func<bool> targetNotInDashRange() => () => !TargetInRange(player.dashForce);
         Func<bool> playerFound() => () => HavePlayerTarget();
         Func<bool> targetInWeaponRange() => () => HasWeapon() && TargetInRange(player.weapon.range);
         Func<bool> playerInDashRange() => () => playerInRange(player.dashForce);
@@ -73,8 +75,11 @@ public class BotController : MonoBehaviour
     {
         Collider2D[] collidersHit = Physics2D.OverlapCircleAll(transform.position, range);
         foreach (Collider2D collider in collidersHit)
-            if (collider.tag == "Player" && collider != this)
+            if (collider.tag == "Player" && collider.transform != target && collider != this) {
+                Debug.Log("Non-target Player too close!");
                 return true;
+            }
+                
         return false;
     }
     public void Seek(bool seek)
@@ -84,12 +89,16 @@ public class BotController : MonoBehaviour
 
     public void SetTarget(Transform target)
     {
-        Debug.Log(target);
+        Debug.Log("Setting Target to " + target);
         this.target = target;
     }
 
     void FixedUpdate()
     {
+        //Check for if target was destroyed
+        if (target == null)
+            target = null;
+
         stateMachine.Tick();
 
         //Look
@@ -102,9 +111,16 @@ public class BotController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(rb.velocity.y, rb.velocity.x));
         }
 
+        if(stateMachine.GetState().GetType() == typeof(FindTag))
+            currentState = CurrentState.FIND_TARGET;
+        else if(stateMachine.GetState().GetType() == typeof(PathToTarget))
+            currentState = CurrentState.PATH_TO_TARGET;
+        else if (stateMachine.GetState().GetType() == typeof(DashAttack))
+            currentState = CurrentState.DASH_ATTACK;
+        else if (stateMachine.GetState().GetType() == typeof(WeaponAttack))
+            currentState = CurrentState.WEAPON_ATTACK;
+
         pathfinder.target = target;
-        if (stateMachine.GetState().GetType() != typeof(FindTag))
-            Debug.Log(target.name);
     }
 
 
@@ -117,5 +133,9 @@ public class BotController : MonoBehaviour
 
     public enum CurrentState
     {
+        FIND_TARGET,
+        PATH_TO_TARGET,
+        DASH_ATTACK,
+        WEAPON_ATTACK
     }
 }

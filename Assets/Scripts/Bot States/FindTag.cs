@@ -57,7 +57,8 @@ public class FindTag : IState
 
     public void Tick()
     {
-        bot.SetTarget(Search(2));
+        if(bot.target == null)
+            bot.SetTarget(Search(2));
     }
 
 

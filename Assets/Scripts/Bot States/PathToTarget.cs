@@ -12,7 +12,7 @@ public class PathToTarget : IState
 
     public void OnEnter()
     {
-        Debug.Log("Going to: ");
+        Debug.Log("Going to: " + bot.target);
         bot.Seek(true);
     }
 

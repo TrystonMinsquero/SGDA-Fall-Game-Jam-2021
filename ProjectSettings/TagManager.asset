@@ -46,3 +46,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Static Colliders
+    uniqueID: 1548011427
+    locked: 0
+  - name: Players NPC
+    uniqueID: 2791782031
+    locked: 0
+  - name: Projectiles
+    uniqueID: 3953082523
+    locked: 0

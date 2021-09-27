@@ -72,7 +72,7 @@ public class Projectile : MonoBehaviour
 
     public void Delete()
     {
-        player.GetProjectiles().Remove(this);
+        player.weapon.GetProjectiles().Remove(this);
         Destroy(this.gameObject);
     }
 

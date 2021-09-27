@@ -5,10 +5,11 @@ using Pathfinding;
 public class NPC_Controller : MonoBehaviour
 {
     public NPC npc;
-    public Weapon weapon;
+    public WeaponHandler weapon;
     public float movementSpeed;
     AIPath pathfinder;
-    [SerializeField]
+    public GameObject patrolPathObj;
+    [HideInInspector]
     public PatrolPath patrolPath;
     [HideInInspector]
     Patrol patrol;
@@ -19,10 +20,11 @@ public class NPC_Controller : MonoBehaviour
     {
         patrol = GetComponent<Patrol>();
         pathfinder = GetComponent<AIPath>();
+        weapon = GetComponentInChildren<WeaponHandler>();
         pathfinder.maxSpeed = movementSpeed;
-        if(patrolPath.patrolpoints.Count > 0)
+        if(patrolPathObj != null)
         {
-            AssignPatrolPoints(patrolPath);
+            AssignPatrolPoints(PatrolPath.GeneratePatrolPath(patrolPathObj));
         }
     }
 

@@ -6,6 +6,7 @@ public class NPCManager : MonoBehaviour
 {
     public List<NPC> NPCs;
     public NPC[] NPCTemplates;
+    public Weapon[] WeaponTemplates;
 
     // Start is called before the first frame update
     void Start()

@@ -7,8 +7,20 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "new Weapon")]
 public class Weapon : ScriptableObject
 {
-    public GameObject projectile;
+    [Header("Visual")]
+    public Color color = Color.white;
+    public Sprite sprite;
+    public Animator anim;
+
+    [Header("Muzzle Flash")]
+    public Sprite flashSprite;
+    public Animator flashAnim;
+    
+    [Header("Projectile Details")]
+    public GameObject projectilePrefab;
     public WeaponType weaponType;
+
+    [Header("Stats")]
     public float fireDelay;
     public float projectileSpeed;
     public float range;
@@ -25,7 +37,7 @@ public class Weapon : ScriptableObject
         if (Time.time < nextFireTime)
             return;
         nextFireTime = Time.time + fireDelay;
-        Projectile pro = GameObject.Instantiate(projectile).GetComponent<Projectile>();
+        Projectile pro = GameObject.Instantiate(projectilePrefab).GetComponent<Projectile>();
 
 
         switch (weaponType)
@@ -47,7 +59,7 @@ public class Weapon : ScriptableObject
                     player.lookDirection.y - (0.05f) * Mathf.Cos(angle));
                 // vectors for direction of each shotgun bullet/projectile
 
-                Projectile pro2 = GameObject.Instantiate(projectile).GetComponent<Projectile>();
+                Projectile pro2 = GameObject.Instantiate(projectilePrefab).GetComponent<Projectile>();
                     // second bullet created
 
                 pro.Set(player, player.transform.position, projectileSpeed, range, shotgun, damage);

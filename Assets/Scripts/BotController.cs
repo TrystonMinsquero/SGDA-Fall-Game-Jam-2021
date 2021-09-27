@@ -59,7 +59,7 @@ public class BotController : MonoBehaviour
         Func<bool> targetInDashRange() => () => TargetInRange(player.dashDistance);
         Func<bool> targetNotInDashRange() => () => !TargetInRange(player.dashDistance);
         Func<bool> playerFound() => () => HavePlayerTarget();
-        Func<bool> targetInWeaponRange() => () => HasWeapon() && TargetInRange(player.weapon.range);
+        Func<bool> targetInWeaponRange() => () => HasWeapon() && TargetInRange(player.weapon.weapon.range);
         Func<bool> playerInDashRange() => () => playerInRange(player.dashDistance);
 
         stateMachine.SetState(findNPC);

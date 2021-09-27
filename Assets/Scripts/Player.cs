@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     [HideInInspector]
-    public Weapon weapon;
+    public WeaponHandler weapon;
 
     [HideInInspector]
     public Vector2 lookDirection;
@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
         weapon = null;
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        weapon = GetComponentInChildren<WeaponHandler>();
         deathTime = Time.time + deathTime_MAX;
         healthBarPos = healthBar.transform.position - transform.position;
         movementSpeed = movementSpeedInit;
@@ -89,7 +90,7 @@ public class Player : MonoBehaviour
 
     public void Shoot()
     {
-        if(weapon != null)
+        if(weapon != null && !charging && !dashing)
         {
             weapon.Shoot(this);
         }
@@ -138,9 +139,7 @@ public class Player : MonoBehaviour
         Debug.Log("Take Over " + npc.name);
         sr.sprite = npc.image;
         anim = npc.anim;
-        weapon = npc_c.weapon;
-        if(weapon != null)
-            weapon.Reset();
+        weapon.SwitchWeapons(npc_c.weapon);
         deathTime = Time.time + deathTime_MAX;
         Destroy(npc_c.gameObject);
 
@@ -154,9 +153,7 @@ public class Player : MonoBehaviour
             player.TakeDamage(dashDamage);
             return;
         }
-        weapon = player.weapon;
-        if (weapon != null)
-            weapon.Reset();
+        weapon.SwitchWeapons(player.weapon);
         sr.sprite = player.sr.sprite;
         anim = player.anim;
         deathTime = Time.time + deathTime_MAX;
@@ -176,11 +173,6 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Die");
         Destroy(this.gameObject);
-    }
-
-    public List<Projectile> GetProjectiles()
-    {
-        return weapon.projectiles;
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

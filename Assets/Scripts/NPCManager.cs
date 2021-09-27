@@ -7,7 +7,7 @@ public class NPCManager : MonoBehaviour
     public static NPCManager instance;
     public GameObject NPCPrefab;
 
-    public List<NPC_Controller> NPC_List;
+    public static List<NPC_Controller> NPC_List;
     public NPC[] NPCTemplates;
     public Weapon[] WeaponTemplates;
 
@@ -48,7 +48,7 @@ public class NPCManager : MonoBehaviour
         if (weapon != null && npc.hasWeapon)
             newNPC.weaponHandler.weapon = weapon;
         else if (newNPC.npc.hasWeapon)
-            newNPC.weaponHandler.weapon = instance.WeaponTemplates[Random.Range(0, instance.NPCTemplates.Length)];
+            newNPC.weaponHandler.weapon = instance.WeaponTemplates[Random.Range(0, instance.WeaponTemplates.Length)];
         else
             newNPC.weaponHandler.weapon = null;
 

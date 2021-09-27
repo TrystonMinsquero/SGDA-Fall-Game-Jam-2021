@@ -2656,7 +2656,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NPCPrefab: {fileID: 4862974284002695767, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-  NPC_List: []
   NPCTemplates:
   - {fileID: 11400000, guid: 3d2e6b21850e57a408b227148e583e4d, type: 2}
   - {fileID: 11400000, guid: ba03cb6b3828afe4dae43a614412a7ca, type: 2}

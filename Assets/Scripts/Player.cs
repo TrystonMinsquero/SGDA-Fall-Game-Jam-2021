@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         weapon = GetComponentInChildren<WeaponHandler>();
+        anim = GetComponent<Animator>();
         deathTime = Time.time + deathTime_MAX;
         healthBarPos = healthBar.transform.position - transform.position;
         movementSpeed = movementSpeedInit;
@@ -57,6 +58,7 @@ public class Player : MonoBehaviour
         }
 
         rb.angularVelocity = 0;
+        SetAnimation();
     }
 
     public void Move(Vector2 input)
@@ -138,7 +140,13 @@ public class Player : MonoBehaviour
         NPC npc = npc_c.npc;
         Debug.Log("Take Over " + npc.name);
         sr.sprite = npc.image;
-        anim = npc.anim;
+        npc.SwitchAnimations(anim);/*
+        aoc["Idle"] = npc.idle;
+        aoc["Walk"] = npc.walk;
+        aoc["Dash"] = npc.dash;
+        aoc["Charge"] = npc.charge;
+        aoc["Left"] = npc.left;
+        aoc["Right"] = npc.right;*/
         weapon.SwitchWeapons(npc_c.weaponHandler);
         deathTime = Time.time + deathTime_MAX;
         Destroy(npc_c.gameObject);
@@ -159,6 +167,28 @@ public class Player : MonoBehaviour
         deathTime = Time.time + deathTime_MAX;
         player.Die();
 
+    }
+
+    public void SetAnimation()
+    {
+        if(!dashing && !charging)
+        {
+            Vector2 movementDirection = rb.velocity.normalized;
+            if (rb.velocity.magnitude < .2f)
+                anim.Play("Idle");
+            else if ((lookDirection - movementDirection).sqrMagnitude < .3f)
+            {
+                anim.Play("Walk");
+            }
+        }
+        else if (charging)
+        {
+            anim.Play("Charge");
+        }
+        else if (dashing)
+        {
+            anim.Play("Dash");
+        }
     }
 
     public Vector2 GetVelocity() { return rb.velocity; }

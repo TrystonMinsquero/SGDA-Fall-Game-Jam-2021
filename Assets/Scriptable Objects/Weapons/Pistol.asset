@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7fc54f6dcc49dc45b71ffffb1971cdc, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  color: {r: 1, g: 1, b: 1, a: 0}
+  color: {r: 1, g: 1, b: 1, a: 1}
   sprite: {fileID: 2946340817102188806, guid: d3eb5de1ab451f048b29e38923c095c2, type: 3}
   anim: {fileID: 0}
   flashSprite: {fileID: -4965089504158060973, guid: 3f08427f9600f06429a7afa897f26b09, type: 3}
@@ -20,7 +20,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 9037812320112203550, guid: f2a0cfe4b842bf84f80aafb6470cca96, type: 3}
   weaponType: 0
   fireDelay: 0.5
-  projectileSpeed: 7
+  projectileSpeed: 15
   range: 8
   damage: 2
   projectiles: []

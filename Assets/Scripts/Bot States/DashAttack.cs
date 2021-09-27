@@ -26,6 +26,6 @@ public class DashAttack : IState
     {
         if(bot.target != null)
             player.lookDirection = (bot.target.position - player.transform.position).normalized;
-        player.Dash();
+        player.StartDash();
     }
 }

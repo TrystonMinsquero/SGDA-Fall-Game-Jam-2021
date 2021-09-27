@@ -31,20 +31,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         //Look
-        if (lookInput.sqrMagnitude > .1f)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(lookInput.y, lookInput.x));
-            player.lookDirection = lookInput;
-        }
-        else if (movementInput.sqrMagnitude > 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(movementInput.y, movementInput.x));
-            player.lookDirection = movementInput;
-        }
+        player.Look(lookInput);
 
         //Dash
         if (dashInput)
-            player.Dash();
+            player.StartDash();
 
 
         //Shoot

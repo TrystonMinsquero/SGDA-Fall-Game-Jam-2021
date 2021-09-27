@@ -4,27 +4,54 @@ using UnityEngine;
 
 public class NPCManager : MonoBehaviour
 {
-    public List<NPC> NPCs;
+    public static NPCManager instance;
+    public GameObject NPCPrefab;
+
+    public List<NPC_Controller> NPC_List;
     public NPC[] NPCTemplates;
     public Weapon[] WeaponTemplates;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(this.gameObject);
+    }
+
     void Start()
     {
-        NPCs = new List<NPC>();
+        NPC_List = new List<NPC_Controller>();
 
         //Added already exisiting NPCs
         NPC_Controller[] alreadyExistingNPCs = GetComponentsInChildren<NPC_Controller>();
         foreach(NPC_Controller npc in alreadyExistingNPCs)
         {
-            NPCs.Add(npc.npc);
+            NPC_List.Add(npc);
         }
     }
 
-
-    // Update is called once per frame
-    void Update()
+    public static NPC_Controller GenerateNPC(PatrolPath patrolPath, NPC npc = null, Weapon weapon = null)
     {
-        
+        NPC_Controller newNPC = Instantiate(instance.NPCPrefab, patrolPath.spawnPoint.position, Quaternion.identity).GetComponent<NPC_Controller>();
+
+        newNPC.AssignComponents();
+        newNPC.AssignPatrolPath(patrolPath);
+
+        //Assign NPC
+        if (npc != null)
+            newNPC.npc = npc;
+        else
+            newNPC.npc = instance.NPCTemplates[Random.Range(0, instance.NPCTemplates.Length)];
+
+        //Assign Weapon
+        if (weapon != null && npc.hasWeapon)
+            newNPC.weaponHandler.weapon = weapon;
+        else if (newNPC.npc.hasWeapon)
+            newNPC.weaponHandler.weapon = instance.WeaponTemplates[Random.Range(0, instance.NPCTemplates.Length)];
+        else
+            newNPC.weaponHandler.weapon = null;
+
+        return newNPC;
     }
 }

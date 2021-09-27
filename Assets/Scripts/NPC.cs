@@ -5,6 +5,7 @@ public class NPC : ScriptableObject
 {
     public Sprite image;
     public Animator anim;
+    public bool hasWeapon;
 
 
 }

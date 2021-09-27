@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -27,19 +24,7 @@ public class Projectile : MonoBehaviour
         transform.position = startPos;
 
         rb.velocity = direction * speed;
-
-        //switch (weaponType)
-        //{
-        //    case WeaponType.STRAIGHT:
-                
-        //        break;
-
-        //    case WeaponType.DUAL:
-        //        rb.velocity = direction * speed;
-        //        break;
-
-
-        //}
+        rb.velocity += player.GetVelocity();
     }
 
     private void Update()

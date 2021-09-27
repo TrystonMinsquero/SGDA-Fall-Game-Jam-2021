@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
         Debug.Log("Take Over " + npc.name);
         sr.sprite = npc.image;
         anim = npc.anim;
-        weapon.SwitchWeapons(npc_c.weapon);
+        weapon.SwitchWeapons(npc_c.weaponHandler);
         deathTime = Time.time + deathTime_MAX;
         Destroy(npc_c.gameObject);
 
@@ -160,6 +160,8 @@ public class Player : MonoBehaviour
         player.Die();
 
     }
+
+    public Vector2 GetVelocity() { return rb.velocity; }
 
     public void TakeDamage(float damage)
     {

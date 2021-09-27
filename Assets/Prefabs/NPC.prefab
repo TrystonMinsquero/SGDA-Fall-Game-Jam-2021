@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npc: {fileID: 11400000, guid: 3d2e6b21850e57a408b227148e583e4d, type: 2}
-  weapon: {fileID: 8124694599088189364}
+  weaponHandler: {fileID: 0}
   movementSpeed: 3
   patrolPathObj: {fileID: 0}
   patrolPath:
@@ -186,11 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  targets:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  targets: []
   delay: 0
 --- !u!50 &4862974284002695761
 Rigidbody2D:
@@ -332,14 +328,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7620657564804111571, guid: fad224aa9035a4945a33fc0257af0e4b, type: 3}
   m_PrefabInstance: {fileID: 5265897272020311818}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8124694599088189364 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4167112904528081086, guid: fad224aa9035a4945a33fc0257af0e4b, type: 3}
-  m_PrefabInstance: {fileID: 5265897272020311818}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 532813c927e873b40b720e05207c93c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

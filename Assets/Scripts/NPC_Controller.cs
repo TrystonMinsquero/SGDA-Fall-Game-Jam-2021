@@ -5,7 +5,7 @@ using Pathfinding;
 public class NPC_Controller : MonoBehaviour
 {
     public NPC npc;
-    public WeaponHandler weapon;
+    public WeaponHandler weaponHandler;
     public float movementSpeed;
     AIPath pathfinder;
     public GameObject patrolPathObj;
@@ -18,19 +18,27 @@ public class NPC_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        patrol = GetComponent<Patrol>();
-        pathfinder = GetComponent<AIPath>();
-        weapon = GetComponentInChildren<WeaponHandler>();
-        pathfinder.maxSpeed = movementSpeed;
+        AssignComponents();
         if(patrolPathObj != null)
         {
-            AssignPatrolPoints(PatrolPath.GeneratePatrolPath(patrolPathObj));
+            AssignPatrolPath(PatrolPath.GeneratePatrolPath(patrolPathObj));
         }
     }
 
-    public void AssignPatrolPoints(PatrolPath patrolPath)
+    public void AssignComponents()
     {
-        patrol.targets = patrolPath.patrolpoints.ToArray();
+        patrol = GetComponent<Patrol>();
+        pathfinder = GetComponent<AIPath>();
+        weaponHandler = GetComponentInChildren<WeaponHandler>();
+        pathfinder.maxSpeed = movementSpeed;
+    }
+
+    public void AssignPatrolPath(PatrolPath patrolPath)
+    {
+        this.patrolPath = patrolPath;
+        patrol.targets = new Transform[patrolPath.patrolpoints.Length];
+        for (int i = 0; i < patrolPath.patrolpoints.Length; i++)
+            patrol.targets[i] = patrolPath.patrolpoints[i];
     }
 
     private void Update()

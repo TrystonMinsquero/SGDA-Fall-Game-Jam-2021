@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public Player[] players;
+    public static LevelManager instance;
+
+    public static Player[] players;
     public GameObject[] patrolPathsObj;
     public NPCManager npcManager;
     PatrolPath[] patrolPaths;
@@ -17,6 +19,8 @@ public class LevelManager : MonoBehaviour
         {
             patrolPaths[i] = PatrolPath.GeneratePatrolPath(patrolPathsObj[i]);
         }
+
+        NPCManager.GenerateNPC(patrolPaths[0]);
     }
 
 

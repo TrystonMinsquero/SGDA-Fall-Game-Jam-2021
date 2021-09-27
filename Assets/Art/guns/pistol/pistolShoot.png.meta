@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: afbfc611d8ffd61449d947626b6e5a6a
+guid: 3f08427f9600f06429a7afa897f26b09
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7933960972670911814
-    second: oneLeft_0
+      213: -4965089504158060973
+    second: pistolShoot_0
   - first:
-      213: -4963705022926844400
-    second: oneLeft_1
+      213: -1321849558632020076
+    second: pistolShoot_1
+  - first:
+      213: 7381314700763023741
+    second: pistolShoot_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,7 +124,49 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: oneLeft_0
+      name: pistolShoot_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35e63a2f665781bb0800000000000000
+      internalID: -4965089504158060973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pistolShoot_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4974b3374d8d7ade0800000000000000
+      internalID: -1321849558632020076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pistolShoot_2
       rect:
         serializedVersion: 2
         x: 0
@@ -135,29 +180,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aba33220888e4e190800000000000000
-      internalID: -7933960972670911814
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: oneLeft_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 01e8f9a94906d1bb0800000000000000
-      internalID: -4963705022926844400
+      spriteID: d79495acc92bf6660800000000000000
+      internalID: 7381314700763023741
       vertices: []
       indices: 
       edges: []

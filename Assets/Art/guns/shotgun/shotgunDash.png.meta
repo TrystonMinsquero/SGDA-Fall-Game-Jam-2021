@@ -1,19 +1,34 @@
 fileFormatVersion: 2
-guid: d5df0d7767d715e468f0f9667abeb6b0
+guid: fde95057abccb6d4a88d84da27081d71
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7253196047797065401
-    second: oneWalkGunless_0
+      213: -7832790441002893944
+    second: shotgunDash_0
   - first:
-      213: -3470429996198949605
-    second: oneWalkGunless_1
+      213: -2385769557259966054
+    second: shotgunDash_1
   - first:
-      213: 4142186287631286353
-    second: oneWalkGunless_2
+      213: 1060489605807412926
+    second: shotgunDash_2
   - first:
-      213: -5795389296206748222
-    second: oneWalkGunless_3
+      213: -8579889692750278384
+    second: shotgunDash_3
+  - first:
+      213: 2104062735707965032
+    second: shotgunDash_4
+  - first:
+      213: -3791712239344465800
+    second: shotgunDash_5
+  - first:
+      213: 839052146078186410
+    second: shotgunDash_6
+  - first:
+      213: -6630132809245782184
+    second: shotgunDash_7
+  - first:
+      213: 920959077288661411
+    second: shotgunDash_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,7 +142,91 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: oneWalkGunless_0
+      name: shotgunDash_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88d72f308965c4390800000000000000
+      internalID: -7832790441002893944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shotgunDash_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a99249f5a3b04eed0800000000000000
+      internalID: -2385769557259966054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shotgunDash_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb615228dad97be00800000000000000
+      internalID: 1060489605807412926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shotgunDash_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 011959b58cb1ee880800000000000000
+      internalID: -8579889692750278384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shotgunDash_4
       rect:
         serializedVersion: 2
         x: 0
@@ -141,14 +240,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 749e9c4af98775b90800000000000000
-      internalID: -7253196047797065401
+      spriteID: 866820b09e1233d10800000000000000
+      internalID: 2104062735707965032
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oneWalkGunless_1
+      name: shotgunDash_5
       rect:
         serializedVersion: 2
         x: 32
@@ -162,35 +261,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1d83ba3e4e86dfc0800000000000000
-      internalID: -3470429996198949605
+      spriteID: 8784f53cec1216bc0800000000000000
+      internalID: -3791712239344465800
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oneWalkGunless_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 150c1cb7b700c7930800000000000000
-      internalID: 4142186287631286353
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: oneWalkGunless_3
+      name: shotgunDash_6
       rect:
         serializedVersion: 2
         x: 32
@@ -204,8 +282,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c5ee70f324a29fa0800000000000000
-      internalID: -5795389296206748222
+      spriteID: aabf40b3b79e4ab00800000000000000
+      internalID: 839052146078186410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shotgunDash_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85f0e3386590df3a0800000000000000
+      internalID: -6630132809245782184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shotgunDash_8
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a1567eb667e7cc00800000000000000
+      internalID: 920959077288661411
       vertices: []
       indices: 
       edges: []

@@ -4,7 +4,8 @@ using UnityEngine;
 
 
 [System.Serializable]
-public class Weapon
+[CreateAssetMenu(fileName = "new Weapon")]
+public class Weapon : ScriptableObject
 {
     public GameObject projectile;
     public WeaponType weaponType;

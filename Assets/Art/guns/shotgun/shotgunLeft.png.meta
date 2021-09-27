@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: afbfc611d8ffd61449d947626b6e5a6a
+guid: 6a25dee12024eb1429ca8a2315ea3ed6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7933960972670911814
-    second: oneLeft_0
+      213: 95532499011049114
+    second: shotgunLeft_0
   - first:
-      213: -4963705022926844400
-    second: oneLeft_1
+      213: -3516362738151426381
+    second: shotgunLeft_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,7 +121,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: oneLeft_0
+      name: shotgunLeft_0
       rect:
         serializedVersion: 2
         x: 0
@@ -135,14 +135,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aba33220888e4e190800000000000000
-      internalID: -7933960972670911814
+      spriteID: a961f0c3d46635100800000000000000
+      internalID: 95532499011049114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oneLeft_1
+      name: shotgunLeft_1
       rect:
         serializedVersion: 2
         x: 32
@@ -156,8 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01e8f9a94906d1bb0800000000000000
-      internalID: -4963705022926844400
+      spriteID: 3b6701b58be533fc0800000000000000
+      internalID: -3516362738151426381
       vertices: []
       indices: 
       edges: []

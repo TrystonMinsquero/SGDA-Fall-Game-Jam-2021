@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: afbfc611d8ffd61449d947626b6e5a6a
+guid: 456a324bf1174444ca0782169546edc5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7933960972670911814
-    second: oneLeft_0
+      213: -7828087891083961389
+    second: rifleLeft_0
   - first:
-      213: -4963705022926844400
-    second: oneLeft_1
+      213: -856972467048007758
+    second: rifleLeft_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,7 +121,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: oneLeft_0
+      name: rifleLeft_0
       rect:
         serializedVersion: 2
         x: 0
@@ -135,14 +135,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aba33220888e4e190800000000000000
-      internalID: -7933960972670911814
+      spriteID: 3db576db98b0d5390800000000000000
+      internalID: -7828087891083961389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oneLeft_1
+      name: rifleLeft_1
       rect:
         serializedVersion: 2
         x: 32
@@ -156,8 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01e8f9a94906d1bb0800000000000000
-      internalID: -4963705022926844400
+      spriteID: 2b73057e41c6b14f0800000000000000
+      internalID: -856972467048007758
       vertices: []
       indices: 
       edges: []

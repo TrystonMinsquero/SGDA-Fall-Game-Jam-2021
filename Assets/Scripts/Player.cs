@@ -75,12 +75,12 @@ public class Player : MonoBehaviour
             //Look
             if (input.sqrMagnitude > .1f)
             {
-                transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(input.y, input.x));
+                transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(input.y, input.x) + 90);
                 lookDirection = input;
             }
             else if (movementDirection.sqrMagnitude > 0 && !charging && !charged)
             {
-                transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(movementDirection.y, movementDirection.x));
+                transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(movementDirection.y, movementDirection.x) + 90);
                 lookDirection = movementDirection;
             }
 
@@ -138,7 +138,7 @@ public class Player : MonoBehaviour
         Debug.Log("Take Over " + npc.name);
         sr.sprite = npc.image;
         anim = npc.anim;
-        weapon = npc.weapon;
+        weapon = npc_c.weapon;
         if(weapon != null)
             weapon.Reset();
         deathTime = Time.time + deathTime_MAX;

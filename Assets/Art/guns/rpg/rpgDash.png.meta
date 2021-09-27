@@ -1,19 +1,34 @@
 fileFormatVersion: 2
-guid: d5df0d7767d715e468f0f9667abeb6b0
+guid: 80f1b209f39e45b44a9f8144ecb01f07
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7253196047797065401
-    second: oneWalkGunless_0
+      213: -2409635205955854813
+    second: rpgDash_0
   - first:
-      213: -3470429996198949605
-    second: oneWalkGunless_1
+      213: -8173890451230031882
+    second: rpgDash_1
   - first:
-      213: 4142186287631286353
-    second: oneWalkGunless_2
+      213: 5344590903121201300
+    second: rpgDash_2
   - first:
-      213: -5795389296206748222
-    second: oneWalkGunless_3
+      213: -3430208647303538088
+    second: rpgDash_3
+  - first:
+      213: -3599825476874735438
+    second: rpgDash_4
+  - first:
+      213: 8699397456508041319
+    second: rpgDash_5
+  - first:
+      213: -994550376724083648
+    second: rpgDash_6
+  - first:
+      213: 5747458379727657667
+    second: rpgDash_7
+  - first:
+      213: 2426700227990267353
+    second: rpgDash_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,7 +142,91 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: oneWalkGunless_0
+      name: rpgDash_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32ed9b60c814f8ed0800000000000000
+      internalID: -2409635205955854813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rpgDash_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fff97511f1809e80800000000000000
+      internalID: -8173890451230031882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rpgDash_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 498c25a0c1dcb2a40800000000000000
+      internalID: 5344590903121201300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rpgDash_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85adff7c8637560d0800000000000000
+      internalID: -3430208647303538088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rpgDash_4
       rect:
         serializedVersion: 2
         x: 0
@@ -141,14 +240,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 749e9c4af98775b90800000000000000
-      internalID: -7253196047797065401
+      spriteID: 2b0fa7d2dc9da0ec0800000000000000
+      internalID: -3599825476874735438
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oneWalkGunless_1
+      name: rpgDash_5
       rect:
         serializedVersion: 2
         x: 32
@@ -162,35 +261,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1d83ba3e4e86dfc0800000000000000
-      internalID: -3470429996198949605
+      spriteID: 768391335e77ab870800000000000000
+      internalID: 8699397456508041319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oneWalkGunless_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 150c1cb7b700c7930800000000000000
-      internalID: 4142186287631286353
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: oneWalkGunless_3
+      name: rpgDash_6
       rect:
         serializedVersion: 2
         x: 32
@@ -204,8 +282,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c5ee70f324a29fa0800000000000000
-      internalID: -5795389296206748222
+      spriteID: 04c4124a3b5a232f0800000000000000
+      internalID: -994550376724083648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rpgDash_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ca520de1f213cf40800000000000000
+      internalID: 5747458379727657667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rpgDash_8
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d528b9000f5da120800000000000000
+      internalID: 2426700227990267353
       vertices: []
       indices: 
       edges: []

@@ -106,10 +106,6 @@ public class BotController : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(player.lookDirection.y, player.lookDirection.x));
         }
-        else if (rb.velocity.sqrMagnitude > 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(rb.velocity.y, rb.velocity.x));
-        }
 
         if(stateMachine.GetState().GetType() == typeof(FindTag))
             currentState = CurrentState.FIND_TARGET;

@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: afbfc611d8ffd61449d947626b6e5a6a
+guid: 4cadf34ba9bbb124a96fa94b3b9e9c6b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7933960972670911814
-    second: oneLeft_0
+      213: -5984574243778785714
+    second: rifleWalk_0
   - first:
-      213: -4963705022926844400
-    second: oneLeft_1
+      213: 6328299014595348012
+    second: rifleWalk_1
+  - first:
+      213: 2990032978475510705
+    second: rifleWalk_2
+  - first:
+      213: -7415542110908781737
+    second: rifleWalk_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,7 +127,49 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: oneLeft_0
+      name: rifleWalk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4e0d93de6582fca0800000000000000
+      internalID: -5984574243778785714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rifleWalk_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c26096dcc62a2d750800000000000000
+      internalID: 6328299014595348012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rifleWalk_2
       rect:
         serializedVersion: 2
         x: 0
@@ -135,14 +183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aba33220888e4e190800000000000000
-      internalID: -7933960972670911814
+      spriteID: 1bb6cbce62bbe7920800000000000000
+      internalID: 2990032978475510705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oneLeft_1
+      name: rifleWalk_3
       rect:
         serializedVersion: 2
         x: 32
@@ -156,8 +204,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01e8f9a94906d1bb0800000000000000
-      internalID: -4963705022926844400
+      spriteID: 75be4564db3b61990800000000000000
+      internalID: -7415542110908781737
       vertices: []
       indices: 
       edges: []

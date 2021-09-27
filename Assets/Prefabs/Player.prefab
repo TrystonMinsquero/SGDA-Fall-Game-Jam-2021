@@ -53,21 +53,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathTime_MAX: 20
   dashDamage: 8
-  movementSpeed: 8
-  dashDelay: 3
-  dashForce: 2
+  movementSpeedInit: 8
+  dashDistance: 3
+  dashChargeTime: 1
+  dashSpeed: 30
   healthBar: {fileID: 4175796600016887350}
   weapon:
     projectile: {fileID: 0}
     weaponType: 0
-    fireRate: 0
+    fireDelay: 0
     projectileSpeed: 0
     range: 0
     damage: 0
     projectiles: []
   lookDirection: {x: 0, y: 0}
   timeRemaing: 0
-  nextDashTime: 0
+  movementSpeed: 8
 --- !u!114 &2377044252534902309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,7 +81,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be7c9a7a66e80745bff1c32a57dfa6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &2377044252534902308
 MonoBehaviour:

@@ -53,14 +53,14 @@ public class BotController : MonoBehaviour
         stateMachine.AddAnyTransition(findPlayerClose, playerInDashRange());
         stateMachine.AddTransition(findPlayerClose, dashAttackPlayer, playerFound());
 
-        Func<bool> timeLowOrNoWeapAndNoNPC() => () => (TimeLow() || !HasWeapon()) && !HaveNPCTarget() && !playerInRange(player.dashForce);
+        Func<bool> timeLowOrNoWeapAndNoNPC() => () => (TimeLow() || !HasWeapon()) && !HaveNPCTarget() && !playerInRange(player.dashDistance);
         Func<bool> timeNotLowOrHasWeapon() => () => !TimeLow() || HasWeapon();
         Func<bool> NPCFound() => () => HaveNPCTarget();
-        Func<bool> targetInDashRange() => () => TargetInRange(player.dashForce);
-        Func<bool> targetNotInDashRange() => () => !TargetInRange(player.dashForce);
+        Func<bool> targetInDashRange() => () => TargetInRange(player.dashDistance);
+        Func<bool> targetNotInDashRange() => () => !TargetInRange(player.dashDistance);
         Func<bool> playerFound() => () => HavePlayerTarget();
         Func<bool> targetInWeaponRange() => () => HasWeapon() && TargetInRange(player.weapon.range);
-        Func<bool> playerInDashRange() => () => playerInRange(player.dashForce);
+        Func<bool> playerInDashRange() => () => playerInRange(player.dashDistance);
 
         stateMachine.SetState(findNPC);
        

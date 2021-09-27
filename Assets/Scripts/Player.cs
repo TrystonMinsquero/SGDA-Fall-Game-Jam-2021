@@ -1,15 +1,16 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using UnityEditor;
 
 public class Player : MonoBehaviour
 {
     public float deathTime_MAX;
     public float dashDamage;
     public float movementSpeedInit;
-    public float dashDelay;
-    public float dashForce;
+    public float dashDistance;
     public float dashChargeTime;
+    public float dashSpeed;
     public HealthBar healthBar;
 
     private SpriteRenderer sr;
@@ -26,8 +27,9 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public float movementSpeed;
     private float deathTime;
-    [HideInInspector]
-    public float nextDashTime;
+    private bool charging;
+    private bool charged;
+    private bool dashing;
 
     private void Start()
     {
@@ -35,28 +37,54 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         deathTime = Time.time + deathTime_MAX;
-        nextDashTime = 0;
         healthBarPos = healthBar.transform.position - transform.position;
         movementSpeed = movementSpeedInit;
     }
 
     private void Update()
     {
-        if(Time.time > deathTime)
+        if(Time.time > deathTime) 
             Die();
         timeRemaing = deathTime - Time.time;
 
         healthBar.SetHealth(timeRemaing / deathTime_MAX);
         healthBar.transform.position = transform.position + healthBarPos;
 
+        if (charged)
+        {
+            StartCoroutine(Dash());
+        }
+
         rb.angularVelocity = 0;
     }
 
     public void Move(Vector2 input)
     {
-        Debug.Log(new Vector2(input.x, input.y) * movementSpeed);
-        rb.velocity = new Vector2(input.x, input.y) * movementSpeed;
-        rb.drag = input.sqrMagnitude > 0 ? 0 : 1;
+        if (!dashing && !charging )
+        {
+            rb.velocity = new Vector2(input.x, input.y) * movementSpeed;
+            rb.drag = input.sqrMagnitude > 0 ? 0 : 1;
+        }
+    }
+
+    public void Look(Vector2 input)
+    {
+        if (!dashing)
+        {
+            Vector2 movementDirection = rb.velocity.normalized;
+            //Look
+            if (input.sqrMagnitude > .1f)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(input.y, input.x));
+                lookDirection = input;
+            }
+            else if (movementDirection.sqrMagnitude > 0 && !charging && !charged)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(movementDirection.y, movementDirection.x));
+                lookDirection = movementDirection;
+            }
+
+        }
     }
 
     public void Shoot()
@@ -67,39 +95,42 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Dash()
+    public void StartDash()
     {
-        if (Time.time < nextDashTime)
+        if (dashing || charging && !charged)
             return;
         Debug.Log("Dash");
-        nextDashTime = Time.time + dashDelay;
-        movementSpeed = 0;
-        int steps = 20;
-        Collider2D[] collidersHit = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x / 2);
-        foreach (Collider2D collider in collidersHit)
-        {
-            if (collider.CompareTag("Player"))
-            {
-                TakeOver(collider.GetComponent<Player>());
-                break;
-            }
-            else if (collider.CompareTag("NPC"))
-            {
-                TakeOver(collider.GetComponent<NPC_Controller>());
-                break;
-            }
-        }
-        //rb.AddForce(lookDirection * dashForce);
+        StartCoroutine(ChargeDash(dashChargeTime));
 
     }
 
-    private IEnumerator Dash(float chargeTime)
+    private IEnumerator ChargeDash(float chargeTime)
     {
-        for (float time = chargeTime; time > 0; time -= Time.deltaTime)
-            yield return null;
-        rb.AddForce(lookDirection * dashForce);
+        charging = true;
+        rb.velocity = Vector2.zero;
+        yield return new WaitForSeconds(chargeTime);
+        charged = true;
+        charging = false;
+    }
+    private IEnumerator Dash()
+    {
+        rb.drag = 0;
+        charged = false;
+        dashing = true;
 
-    }   
+        Vector3 startPos = transform.position;
+        Debug.Log(lookDirection);
+        rb.velocity = lookDirection * dashSpeed; //initial velocity added
+        float maxDashTime = (dashDistance / rb.velocity.magnitude) + .3f; //Estimated
+        float timeStarted = Time.time;
+        while((transform.position - startPos).magnitude < dashDistance && Time.time - timeStarted < maxDashTime)
+            yield return null;
+        Debug.Log("Actual Time: " + (Time.time - timeStarted));
+        Debug.Log("Estimated Time: " + maxDashTime);
+        rb.velocity = Vector2.zero;
+        dashing = false;
+        movementSpeed = movementSpeedInit;
+    }
 
     public void TakeOver(NPC_Controller npc_c)
     {
@@ -154,6 +185,17 @@ public class Player : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        if (dashing)
+        {
+            if (collision.gameObject.CompareTag("Player") && collision.gameObject != this.gameObject)
+            {
+                TakeOver(collision.gameObject.GetComponent<Player>());
+            }
+            else if (collision.gameObject.CompareTag("NPC"))
+            {
+                TakeOver(collision.gameObject.GetComponent<NPC_Controller>());
+            }
+        }
             
     }
 }

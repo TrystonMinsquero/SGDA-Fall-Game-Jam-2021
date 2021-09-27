@@ -140,13 +140,7 @@ public class Player : MonoBehaviour
         NPC npc = npc_c.npc;
         Debug.Log("Take Over " + npc.name);
         sr.sprite = npc.image;
-        npc.SwitchAnimations(anim);/*
-        aoc["Idle"] = npc.idle;
-        aoc["Walk"] = npc.walk;
-        aoc["Dash"] = npc.dash;
-        aoc["Charge"] = npc.charge;
-        aoc["Left"] = npc.left;
-        aoc["Right"] = npc.right;*/
+        npc.SwitchAnimations(anim);
         weapon.SwitchWeapons(npc_c.weaponHandler);
         deathTime = Time.time + deathTime_MAX;
         Destroy(npc_c.gameObject);
@@ -162,6 +156,7 @@ public class Player : MonoBehaviour
             return;
         }
         weapon.SwitchWeapons(player.weapon);
+        NPC.SwitchAnimations(anim, player.anim);
         sr.sprite = player.sr.sprite;
         anim = player.anim;
         deathTime = Time.time + deathTime_MAX;

@@ -18,11 +18,7 @@ public class Weapon : ScriptableObject
 
     [Header("Muzzle Flash")]
     public Sprite flashSprite;
-    public AnimationClip idleFlash;
-    public AnimationClip dashFlash;
-    public AnimationClip walkFlash;
-    public AnimationClip leftFlash;
-    public AnimationClip rightFlash;
+    public AnimationClip flash;
 
     [Header("Projectile Details")]
     public GameObject projectilePrefab;
@@ -110,11 +106,7 @@ public class Weapon : ScriptableObject
         gunAoc["Right"] = right;
 
         AnimatorOverrideController flashAoc = new AnimatorOverrideController(flashAnim.runtimeAnimatorController);
-        flashAoc["Idle"] = idleFlash;
-        flashAoc["Walk"] = walkFlash;
-        flashAoc["Dash"] = dashFlash;
-        flashAoc["Left"] = leftFlash;
-        flashAoc["Right"] = rightFlash;
+        flashAoc["Shoot"] = flash;
     }
 
 }

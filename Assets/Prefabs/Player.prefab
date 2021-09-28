@@ -51,7 +51,7 @@ Transform:
   m_GameObject: {fileID: 2377044252534902310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6055638216936398465}
   - {fileID: 436078817500928585}
@@ -297,7 +297,7 @@ Animator:
   m_GameObject: {fileID: 2377044252534902310}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8432f694b88fcbc4aafd04bfbf68d1c0, type: 2}
+  m_Controller: {fileID: 9100000, guid: c6b21e607e66c7147bb4801e5fc00686, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -561,21 +561,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2377044252534902314}
     m_Modifications:
-    - target: {fileID: 3287312897267293100, guid: fad224aa9035a4945a33fc0257af0e4b, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 554403eed84c4d348a1170e718b7daf2, type: 2}
     - target: {fileID: 3847817287288802858, guid: fad224aa9035a4945a33fc0257af0e4b, type: 3}
       propertyPath: m_Name
       value: Weapon
-      objectReference: {fileID: 0}
-    - target: {fileID: 5514447345603597792, guid: fad224aa9035a4945a33fc0257af0e4b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.007
-      objectReference: {fileID: 0}
-    - target: {fileID: 5514447345603597792, guid: fad224aa9035a4945a33fc0257af0e4b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.007
       objectReference: {fileID: 0}
     - target: {fileID: 7620657564804111571, guid: fad224aa9035a4945a33fc0257af0e4b, type: 3}
       propertyPath: m_RootOrder

@@ -156,7 +156,7 @@ public class Player : MonoBehaviour
             return;
         }
         weapon.SwitchWeapons(player.weapon);
-        SwitchAnimations(anim, player.anim);
+        NPC.SwitchAnimations(anim, player.anim);
         sr.sprite = player.sr.sprite;
         anim = player.anim;
         deathTime = Time.time + deathTime_MAX;
@@ -176,7 +176,11 @@ public class Player : MonoBehaviour
                 anim.Play("Walk");
             }
         }
-        else if (charging || dashing)
+        else if (charging)
+        {
+            anim.Play("Charge");
+        }
+        else if (dashing)
         {
             anim.Play("Dash");
         }
@@ -211,17 +215,6 @@ public class Player : MonoBehaviour
                 TakeOver(collision.gameObject.GetComponent<NPC_Controller>());
             }
         }
-
-    }
-
-    public static void SwitchAnimations(Animator newAnim, Animator oldAnim)
-    {
-        AnimatorOverrideController newAoc = new AnimatorOverrideController(newAnim.runtimeAnimatorController);
-        AnimatorOverrideController oldAoc = new AnimatorOverrideController(oldAnim.runtimeAnimatorController);
-        newAoc["Idle"] = oldAoc["Idle"];
-        newAoc["Walk"] = oldAoc["Walk"];
-        newAoc["Dash"] = oldAoc["Dash"];
-        newAoc["Left"] = oldAoc["Left"];
-        newAoc["Right"] = oldAoc["Right"];
+            
     }
 }

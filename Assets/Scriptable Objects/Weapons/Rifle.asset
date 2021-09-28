@@ -18,9 +18,9 @@ MonoBehaviour:
   flashSprite: {fileID: 0}
   flashAnim: {fileID: 0}
   projectilePrefab: {fileID: 0}
-  weaponType: 0
+  weaponType: 4
   fireDelay: 1.1
   projectileSpeed: 20
-  range: 15
+  range: 20
   damage: 4
   projectiles: []

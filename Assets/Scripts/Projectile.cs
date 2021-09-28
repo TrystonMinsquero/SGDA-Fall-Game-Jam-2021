@@ -28,6 +28,9 @@ public class Projectile : MonoBehaviour
 
         rb.velocity = direction * speed;
         rb.velocity += player.GetVelocity();
+
+        //if (player.weapon.weapon.weaponType == WeaponType.GRENADE)
+        //    GetComponent<Collider2D>().isTrigger = false;
     }
 
     private void Update()
@@ -40,8 +43,14 @@ public class Projectile : MonoBehaviour
 
 
         rb.velocity = direction * speed;
-
     }
+
+    //public void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    direction *= -1;
+    //}
+
+
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -98,43 +107,13 @@ public class Projectile : MonoBehaviour
                 else if (collision.gameObject.CompareTag("NPC"))
                 {
                     Destroy(collision.gameObject);
-                    Delete();
                 }
                 else
                     this.damage /= 2;
                 break;
 
-
-
-            // RPG
             case WeaponType.RPG:
-                //Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, 3f);
-
-                //for (int i = 0; i < collisions.Length; i++)
-                //{
-                //    if (collisions[i].gameObject.CompareTag("Projectile"))
-                //        return;
-                //    if (collision.gameObject.CompareTag("Player"))
-                //    {
-                //        if (collisions[i].GetComponent<Player>() != player)
-                //            collisions[i].GetComponent<Player>().TakeDamage(damage);
-                //        Delete();
-                //    }
-                //    else if (collisions[i].gameObject.CompareTag("NPC"))
-                //    {
-                //        Destroy(collisions[i].gameObject);
-                //        GameObject expl = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
-                //        Destroy(expl, 3f);
-                //        Delete();
-                //    }
-                //    else
-                //    {
-                //        GameObject expl = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
-                //        Destroy(expl, 3f);
-                //        Delete();
-                //    }
-                //}
-                //break;
+                AreaDamageEnemies(transform.position, 1.5f, damage);
                 if (collision.gameObject.CompareTag("Projectile"))
                     return;
                 if (collision.gameObject.CompareTag("Player"))
@@ -148,20 +127,85 @@ public class Projectile : MonoBehaviour
                     Delete();
                 }
                 else
+                {
                     Delete();
+                }
+                    
+                break;
+
+            // RPG
+            //case WeaponType.RPG:
+            //    if (collision.gameObject.CompareTag("Projectile"))
+            //        return;
+            //    if (collision.gameObject.CompareTag("Player"))
+            //    {
+            //        if (collision.GetComponent<Player>() != player)
+            //            collision.GetComponent<Player>().TakeDamage(damage);
+
+            //        AreaDamageEnemies(transform.position, 1.5f, damage);
+            //    }
+            //    else if (collision.gameObject.CompareTag("NPC"))
+            //    {
+            //        AreaDamageEnemies(transform.position, 1.5f, damage);
+
+            //        Destroy(collision.gameObject);
+            //        Delete();
+
+            //        GameObject expl = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
+            //        Destroy(expl, 3f);
+
+            //    }
+            //    else
+            //    {
+            //        AreaDamageEnemies(transform.position, 1.5f, damage);
+            //        GameObject expl = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
+            //        Destroy(expl, 3f);
+            //        Delete();         
+            //    }
+
+            //    break;
+
+            case WeaponType.GRENADE:
+                direction *= -1;
+                break;
+
+            default:
                 break;
 
 
+
         }
-
-
-
     }
 
     public void Delete()
     {
         player.weapon.GetProjectiles().Remove(this);
         Destroy(this.gameObject);
+    }
+
+    public void AreaDamageEnemies(Vector3 location, float radius, float damage)
+    {
+        Collider2D[] objectsInRange = Physics2D.OverlapCircleAll(location, radius);
+
+        foreach (Collider2D collision in objectsInRange)
+        {
+
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                if (collision.GetComponent<Player>() != player)
+                    collision.GetComponent<Player>().TakeDamage(damage);
+            }
+            else if (collision.gameObject.CompareTag("NPC"))
+            {
+                Destroy(collision.gameObject);
+                Delete();
+            }
+
+            else
+            {
+                Delete();
+            }
+        }
     }
 
 }

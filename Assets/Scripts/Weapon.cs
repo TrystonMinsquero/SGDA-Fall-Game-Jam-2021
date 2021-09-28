@@ -81,17 +81,18 @@ public class Weapon : ScriptableObject
             case WeaponType.RPG:
                 pro.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
                 projectiles.Add(pro);
+                break;
 
+            case WeaponType.LONG:
+                pro.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
+                projectiles.Add(pro);
                 break;
 
             case WeaponType.GRENADE:
-
+                pro.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
+                projectiles.Add(pro);
                 break;
         }
-
-
-        
-        
     }
 
     public void Reset()

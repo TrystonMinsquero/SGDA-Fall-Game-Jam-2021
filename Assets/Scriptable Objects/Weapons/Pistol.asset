@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7fc54f6dcc49dc45b71ffffb1971cdc, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  color: {r: 1, g: 1, b: 1, a: 1}
+  color: {r: 0, g: 0, b: 0, a: 1}
   sprite: {fileID: 2946340817102188806, guid: d3eb5de1ab451f048b29e38923c095c2, type: 3}
   idle: {fileID: 7400000, guid: 3e2346b023543644fb5ffaf9bb0e4c2b, type: 2}
   dash: {fileID: 7400000, guid: d30db86b24dcdba468138be9e871a8ec, type: 2}

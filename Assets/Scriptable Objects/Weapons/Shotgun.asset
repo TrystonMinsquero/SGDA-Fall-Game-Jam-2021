@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7fc54f6dcc49dc45b71ffffb1971cdc, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  color: {r: 1, g: 1, b: 1, a: 1}
+  color: {r: 1, g: 0, b: 0.81475544, a: 1}
   sprite: {fileID: 7353473222028545783, guid: 84918a09844a92e4a93584c695e0e1d9, type: 3}
   idle: {fileID: 7400000, guid: 165c8f6047a4d4e49982cc6d0ce91a13, type: 2}
   dash: {fileID: 7400000, guid: da876d09e58d069429622e705f67d3c6, type: 2}

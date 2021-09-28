@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7fc54f6dcc49dc45b71ffffb1971cdc, type: 3}
-  m_Name: RPG
+  m_Name: Grenade
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0.4056604, b: 0.006028756, a: 1}
+  color: {r: 1, g: 0.5160626, b: 0, a: 1}
   sprite: {fileID: 2976352693066412358, guid: a252d89b1192e6c469298d7f5b48d2db, type: 3}
   idle: {fileID: 7400000, guid: 7608fac020e064d44bc25cfce295d249, type: 2}
   dash: {fileID: 7400000, guid: ad5ececa7f06ac249b37440dc1b9eedc, type: 2}
@@ -22,9 +22,9 @@ MonoBehaviour:
   flashSprite: {fileID: -91509202413294493, guid: 795ec4ba2fcc1fe44b8bea974f6a40cf, type: 3}
   flash: {fileID: 7400000, guid: 4ee5227eb7d17c84bb93cc8745ec821c, type: 2}
   projectilePrefab: {fileID: 9037812320112203550, guid: f2a0cfe4b842bf84f80aafb6470cca96, type: 3}
-  weaponType: 2
-  fireDelay: 3.5
-  projectileSpeed: 10
-  range: 10
+  weaponType: 3
+  fireDelay: 1
+  projectileSpeed: 6
+  range: 8
   damage: 8
   projectiles: []

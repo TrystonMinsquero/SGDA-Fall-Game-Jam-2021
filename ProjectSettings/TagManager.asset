@@ -9,6 +9,7 @@ TagManager:
   - Patrol Path
   - Patrol Point
   - Spawn Point
+  - Wall
   layers:
   - Default
   - TransparentFX

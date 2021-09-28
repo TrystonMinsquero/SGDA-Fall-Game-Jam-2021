@@ -64,17 +64,14 @@ public class Weapon : ScriptableObject
                 // vectors for direction of each shotgun bullet/projectile
 
                 Projectile pro2 = GameObject.Instantiate(projectilePrefab).GetComponent<Projectile>();
-                // second bullet created
-
-                Projectile pro3 = GameObject.Instantiate(projectilePrefab).GetComponent<Projectile>();
+                    // second bullet created
 
                 pro.Set(player, player.transform.position, projectileSpeed, range, shotgun, damage);
                 pro2.Set(player, player.transform.position, projectileSpeed, range, shotgun2, damage);
-                pro3.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
+                
 
                 projectiles.Add(pro);
                 projectiles.Add(pro2);
-                projectiles.Add(pro3);
 
                 break;
 
@@ -119,6 +116,5 @@ public enum WeaponType
     STRAIGHT,
     DUAL,
     RPG,
-    GRENADE,
-    LONG
+    GRENADE
 }

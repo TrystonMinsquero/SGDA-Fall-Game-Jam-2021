@@ -43,8 +43,7 @@ public class WeaponHandler : MonoBehaviour
             weaponSR.color = weapon.color;
             weaponSR.sprite = weapon.sprite;
             flashSR.sprite = weapon.flashSprite;
-            weaponAnim = weapon.anim;
-            flashAnim = weapon.flashAnim;
+            weapon.SwitchAnimations(weaponAnim, flashAnim);
             weapon.Reset();
         }
     }

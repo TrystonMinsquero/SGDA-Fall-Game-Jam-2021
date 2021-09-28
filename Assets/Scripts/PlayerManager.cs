@@ -22,6 +22,7 @@ public class PlayerManager : MonoBehaviour
         else
             instance = this;
         playerCount = 0;
+        DontDestroyOnLoad(this);
     }
 
     // Start is called before the first frame update

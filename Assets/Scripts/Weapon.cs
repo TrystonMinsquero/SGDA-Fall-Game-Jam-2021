@@ -10,12 +10,20 @@ public class Weapon : ScriptableObject
     [Header("Visual")]
     public Color color = Color.white;
     public Sprite sprite;
-    public Animator anim;
+    public AnimationClip idle;
+    public AnimationClip dash;
+    public AnimationClip walk;
+    public AnimationClip left;
+    public AnimationClip right;
 
     [Header("Muzzle Flash")]
     public Sprite flashSprite;
-    public Animator flashAnim;
-    
+    public AnimationClip idleFlash;
+    public AnimationClip dashFlash;
+    public AnimationClip walkFlash;
+    public AnimationClip leftFlash;
+    public AnimationClip rightFlash;
+
     [Header("Projectile Details")]
     public GameObject projectilePrefab;
     public WeaponType weaponType;
@@ -90,6 +98,23 @@ public class Weapon : ScriptableObject
     public void Reset()
     {
         nextFireTime = 0;
+    }
+
+    public void SwitchAnimations(Animator gunAnim, Animator flashAnim)
+    {
+        AnimatorOverrideController gunAoc = new AnimatorOverrideController(gunAnim.runtimeAnimatorController);
+        gunAoc["Idle"] = idle;
+        gunAoc["Walk"] = walk;
+        gunAoc["Dash"] = dash;
+        gunAoc["Left"] = left;
+        gunAoc["Right"] = right;
+
+        AnimatorOverrideController flashAoc = new AnimatorOverrideController(flashAnim.runtimeAnimatorController);
+        flashAoc["Idle"] = idleFlash;
+        flashAoc["Walk"] = walkFlash;
+        flashAoc["Dash"] = dashFlash;
+        flashAoc["Left"] = leftFlash;
+        flashAoc["Right"] = rightFlash;
     }
 
 }

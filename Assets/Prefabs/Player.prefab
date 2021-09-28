@@ -75,7 +75,7 @@ MonoBehaviour:
   dashDamage: 8
   movementSpeedInit: 8
   dashDistance: 3
-  dashChargeTime: 0.27
+  dashChargeTime: 0.73
   dashSpeed: 30
   healthBar: {fileID: 4175796600016887350}
   weapon: {fileID: 0}

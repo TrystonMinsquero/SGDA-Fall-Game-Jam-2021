@@ -57,5 +57,21 @@ public class NPC_Controller : MonoBehaviour
 
     private void Update()
     {
+        SetAnimations();
+    }
+
+    public void SetAnimations()
+    {
+        if (pathfinder.velocity.sqrMagnitude > .1f)
+        {
+            anim.Play("Walk");
+            weaponHandler.SetAnimations("Walk");
+        }
+
+        else
+        {
+            anim.Play("Idle");
+            weaponHandler.SetAnimations("Idle");
+        }
     }
 }

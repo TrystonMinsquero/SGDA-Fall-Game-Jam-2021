@@ -164,11 +164,31 @@ public class Player : MonoBehaviour
         if(!dashing && !charging)
         {
             Vector2 movementDirection = rb.velocity.normalized;
+            Vector2 relativeDirection = lookDirection + movementDirection;
             if (rb.velocity.magnitude < .2f)
                 stateName = "Idle";
-            else if ((lookDirection - movementDirection).sqrMagnitude < .3f)
+            else if ((lookDirection - movementDirection).sqrMagnitude < .45f || (lookDirection + movementDirection).sqrMagnitude < .45f)
             {
                 stateName = "Walk";
+            }
+            else
+            {
+                if(Mathf.Abs(movementDirection.x) > .1f)
+                {
+
+                    if (relativeDirection.x < 0 && relativeDirection.y > 0 || relativeDirection.x > 0 && relativeDirection.y < 0)
+                        stateName = "Right";
+                    else if (relativeDirection.x > 0 && relativeDirection.y > 0 || relativeDirection.x < 0 && relativeDirection.y < 0)
+                        stateName = "Left";
+                }
+                else if(Mathf.Abs(movementDirection.y) > .1f)
+                {
+
+                    if (relativeDirection.x < 0 && relativeDirection.y > 0 || relativeDirection.x > 0 && relativeDirection.y < 0)
+                        stateName = "Left";
+                    else if (relativeDirection.x > 0 && relativeDirection.y > 0 || relativeDirection.x < 0 && relativeDirection.y < 0)
+                        stateName = "Right";
+                }
             }
         }
         else if (charging || dashing)

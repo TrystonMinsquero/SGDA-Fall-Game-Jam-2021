@@ -1,3 +1,4 @@
+using Pathfinding;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +21,8 @@ public class LevelManager : MonoBehaviour
             patrolPaths[i] = PatrolPath.GeneratePatrolPath(patrolPathsObj[i]);
         }
 
-        NPCManager.GenerateNPC(patrolPaths[0]);
+        foreach (PatrolPath patrolPath in patrolPaths)
+            NPCManager.GenerateNPC(patrolPath);
     }
 
 

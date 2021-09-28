@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 1, g: 1, b: 1, a: 1}
   sprite: {fileID: 2946340817102188806, guid: d3eb5de1ab451f048b29e38923c095c2, type: 3}
-  anim: {fileID: 0}
+  idle: {fileID: 7400000, guid: 3e2346b023543644fb5ffaf9bb0e4c2b, type: 2}
+  dash: {fileID: 7400000, guid: d30db86b24dcdba468138be9e871a8ec, type: 2}
+  walk: {fileID: 7400000, guid: fd79e188dae6aff4b8eec76b9179555c, type: 2}
+  left: {fileID: 7400000, guid: 619c6cf96c1b6b441bdc3ac79efca81c, type: 2}
+  right: {fileID: 7400000, guid: 643f436f5f630d44a8fc66a6ac80a350, type: 2}
   flashSprite: {fileID: -4965089504158060973, guid: 3f08427f9600f06429a7afa897f26b09, type: 3}
-  flashAnim: {fileID: 0}
+  flash: {fileID: 7400000, guid: ab67a9221e490a241b3f534c63894e82, type: 2}
   projectilePrefab: {fileID: 9037812320112203550, guid: f2a0cfe4b842bf84f80aafb6470cca96, type: 3}
   weaponType: 0
   fireDelay: 0.3

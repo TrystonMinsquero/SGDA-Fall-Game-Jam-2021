@@ -218,7 +218,7 @@ MonoBehaviour:
       m_SingletonActionBindings:
       - m_Name: 
         m_Id: 39baeec3-d3e6-4acc-a0b0-eb50d140c213
-        m_Path: <Gamepad>/buttonSouth
+        m_Path: <Gamepad>/buttonWest
         m_Interactions: 
         m_Processors: 
         m_Groups: 
@@ -232,7 +232,7 @@ MonoBehaviour:
         m_Groups: 
         m_Action: Join
         m_Flags: 0
-    m_Reference: {fileID: -1494976608916665030, guid: ac299e9eebb7ddd4faf900131c169968, type: 3}
+    m_Reference: {fileID: 253175328548599739, guid: ac299e9eebb7ddd4faf900131c169968, type: 3}
   m_PlayerPrefab: {fileID: 5388172423174061314, guid: df340d72538103b47aef2bb0583dfde5, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0

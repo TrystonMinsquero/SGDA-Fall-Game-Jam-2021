@@ -142,6 +142,17 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""47d0a434-ccc9-4ac6-a3c8-5a515f0ddc1a"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""cc84ddca-c7fa-4480-8d84-2360c0507e41"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
@@ -238,6 +249,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c28e805-7b7d-4c45-9252-3ac7b079a517"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -246,7 +268,7 @@ public class @Controls : IInputActionCollection, IDisposable
             ""id"": ""4272bd26-1fc0-44cb-9f57-f3f10abb74e0"",
             ""actions"": [
                 {
-                    ""name"": ""Join/Select"",
+                    ""name"": ""Submit"",
                     ""type"": ""Button"",
                     ""id"": ""7b5a219c-82ba-448f-9f45-55b6cb0816c1"",
                     ""expectedControlType"": ""Button"",
@@ -268,6 +290,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Join"",
+                    ""type"": ""Button"",
+                    ""id"": ""ce558493-2054-4dd0-a623-8e80f5a36094"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -278,18 +308,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Join/Select"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8057bbbc-1f27-4a6c-a243-f0a141ca7cd8"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Join/Select"",
+                    ""action"": ""Submit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -300,7 +319,18 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Join/Select"",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""19016069-f594-4412-a886-8617954916a0"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Submit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -578,6 +608,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Leave"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""684cba7c-f844-46a8-ade0-0ba2b6d90176"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Join"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""56dcc855-d936-437c-bc30-7ba753bb7f47"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Join"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -592,9 +644,10 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_JoinSelect = m_UI.FindAction("Join/Select", throwIfNotFound: true);
+        m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
         m_UI_Leave = m_UI.FindAction("Leave", throwIfNotFound: true);
+        m_UI_Join = m_UI.FindAction("Join", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -701,16 +754,18 @@ public class @Controls : IInputActionCollection, IDisposable
     // UI
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
-    private readonly InputAction m_UI_JoinSelect;
+    private readonly InputAction m_UI_Submit;
     private readonly InputAction m_UI_Navigate;
     private readonly InputAction m_UI_Leave;
+    private readonly InputAction m_UI_Join;
     public struct UIActions
     {
         private @Controls m_Wrapper;
         public UIActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @JoinSelect => m_Wrapper.m_UI_JoinSelect;
+        public InputAction @Submit => m_Wrapper.m_UI_Submit;
         public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
         public InputAction @Leave => m_Wrapper.m_UI_Leave;
+        public InputAction @Join => m_Wrapper.m_UI_Join;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -720,28 +775,34 @@ public class @Controls : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_UIActionsCallbackInterface != null)
             {
-                @JoinSelect.started -= m_Wrapper.m_UIActionsCallbackInterface.OnJoinSelect;
-                @JoinSelect.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnJoinSelect;
-                @JoinSelect.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnJoinSelect;
+                @Submit.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSubmit;
+                @Submit.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSubmit;
+                @Submit.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSubmit;
                 @Navigate.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
                 @Navigate.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
                 @Navigate.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
                 @Leave.started -= m_Wrapper.m_UIActionsCallbackInterface.OnLeave;
                 @Leave.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnLeave;
                 @Leave.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnLeave;
+                @Join.started -= m_Wrapper.m_UIActionsCallbackInterface.OnJoin;
+                @Join.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnJoin;
+                @Join.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnJoin;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @JoinSelect.started += instance.OnJoinSelect;
-                @JoinSelect.performed += instance.OnJoinSelect;
-                @JoinSelect.canceled += instance.OnJoinSelect;
+                @Submit.started += instance.OnSubmit;
+                @Submit.performed += instance.OnSubmit;
+                @Submit.canceled += instance.OnSubmit;
                 @Navigate.started += instance.OnNavigate;
                 @Navigate.performed += instance.OnNavigate;
                 @Navigate.canceled += instance.OnNavigate;
                 @Leave.started += instance.OnLeave;
                 @Leave.performed += instance.OnLeave;
                 @Leave.canceled += instance.OnLeave;
+                @Join.started += instance.OnJoin;
+                @Join.performed += instance.OnJoin;
+                @Join.canceled += instance.OnJoin;
             }
         }
     }
@@ -755,8 +816,9 @@ public class @Controls : IInputActionCollection, IDisposable
     }
     public interface IUIActions
     {
-        void OnJoinSelect(InputAction.CallbackContext context);
+        void OnSubmit(InputAction.CallbackContext context);
         void OnNavigate(InputAction.CallbackContext context);
         void OnLeave(InputAction.CallbackContext context);
+        void OnJoin(InputAction.CallbackContext context);
     }
 }

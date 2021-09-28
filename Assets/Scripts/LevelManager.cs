@@ -1,6 +1,7 @@
 using Pathfinding;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class LevelManager : MonoBehaviour
 {
@@ -23,6 +24,16 @@ public class LevelManager : MonoBehaviour
 
         foreach (PatrolPath patrolPath in patrolPaths)
             NPCManager.GenerateNPC(patrolPath);
+        PlayerManager.OnSceneChange(false);
+
+        foreach (PlayerInput playerInput in PlayerManager.players)
+        {
+            if (playerInput)
+            {
+                Debug.Log("Spawning Player: " + playerInput);
+                NPCManager.SpawnPlayerOverNPC(playerInput.GetComponent<PlayerUI>(), NPCManager.GetRandomNPC());
+            }
+        }
     }
 
 

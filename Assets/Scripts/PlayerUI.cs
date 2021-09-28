@@ -1,32 +1,66 @@
 using System.Linq;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerUI : MonoBehaviour
 {
     Controls controls;
-    PlayerInput playerInput;
+    [HideInInspector]
+    public PlayerInput playerInput;
+    public Behaviour[] behaviours;
+    
 
     private void Awake()
     {
         controls = new Controls();
         playerInput = GetComponent<PlayerInput>();
+        DontDestroyOnLoad(this);
+
     }
 
+
+    public void Enable()
+    {
+        foreach (Behaviour component in behaviours)
+            component.enabled = true;
+
+        Player player = GetComponent<Player>();
+        player.AssignComponents();
+        player.sr.enabled = true;
+        player.weapon.weaponSR.enabled = true;
+        player.weapon.flashSR.enabled = true;
+        GetComponent<PlayerController>().EnableControls(true);
+        this.enabled = false;
+    }
+    public void Disable()
+    {
+        GetComponent<PlayerController>().EnableControls(false);
+        foreach (Behaviour component in behaviours)
+            component.enabled = false;
+        GetComponent<Player>().sr.enabled = false;
+        GetComponent<Player>().weapon.weaponSR.enabled = false;
+        GetComponent<Player>().weapon.flashSR.enabled = false;
+
+        this.enabled = true;
+    }
+
+    //UI Actions
     public void Join()
     {
-         PlayerManager.instance.OnPlayerJoined(playerInput);
+        if (PlayerManager.inLobby)
+            PlayerManager.instance.OnPlayerJoined(playerInput);
 
     }
 
     public void Leave()
     {
-        PlayerManager.instance.OnPlayerLeft(playerInput);
+        if (PlayerManager.inLobby)
+            PlayerManager.instance.OnPlayerLeft(playerInput);
     }
 
     public void OnJoin(InputAction.CallbackContext ctx) => Join();
     public void OnLeave(InputAction.CallbackContext ctx) => Leave();
-
 
     private void OnEnable()
     {

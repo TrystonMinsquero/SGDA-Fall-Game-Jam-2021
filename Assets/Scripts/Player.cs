@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public float dashSpeed;
     public HealthBar healthBar;
 
-    private SpriteRenderer sr;
+    public SpriteRenderer sr;
     private Animator anim;
     private Rigidbody2D rb;
     public WeaponHandler weapon;
@@ -32,14 +32,20 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();
-        weapon = GetComponentInChildren<WeaponHandler>();
-        anim = GetComponent<Animator>();
+        AssignComponents();
         deathTime = Time.time + deathTime_MAX;
         healthBarPos = healthBar.transform.position - transform.position;
         movementSpeed = movementSpeedInit;
         weapon.Set();
+    }
+
+    public void AssignComponents()
+    {
+
+        sr = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        weapon = GetComponentInChildren<WeaponHandler>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -140,7 +146,7 @@ public class Player : MonoBehaviour
         Debug.Log("Take Over " + npc.name);
         SwitchVisuals(npcc);
         deathTime = Time.time + deathTime_MAX;
-        Destroy(npcc.gameObject);
+        npcc.Die();
 
     }
 
@@ -237,6 +243,7 @@ public class Player : MonoBehaviour
         sr.sprite = npcc.npc.image;
         anim.runtimeAnimatorController = npcc.npc.aoc;
         weapon.SwitchWeapons(npcc.weaponHandler);
+
     }
 
     public void SwitchVisuals(Player player)

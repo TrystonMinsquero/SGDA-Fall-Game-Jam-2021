@@ -1,24 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!95 &3743533215796808273
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748243931201400273}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2377044252534902310
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,6 +16,7 @@ GameObject:
   - component: {fileID: -8557708996381632062}
   - component: {fileID: 8173721574186039874}
   - component: {fileID: 8050585009680375924}
+  - component: {fileID: 983866352550524076}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -78,7 +60,8 @@ MonoBehaviour:
   dashChargeTime: 0.73
   dashSpeed: 30
   healthBar: {fileID: 4175796600016887350}
-  weapon: {fileID: 0}
+  sr: {fileID: 2377044252534902315}
+  weapon: {fileID: 6204781513941874212}
   lookDirection: {x: 0, y: 0}
   timeRemaing: 0
   movementSpeed: 8
@@ -112,10 +95,34 @@ MonoBehaviour:
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 983866352550524076}
+        m_TargetAssemblyTypeName: PlayerUI, Assembly-CSharp
+        m_MethodName: Leave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_DeviceRegainedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 983866352550524076}
+        m_TargetAssemblyTypeName: PlayerUI, Assembly-CSharp
+        m_MethodName: Join
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -193,16 +200,56 @@ MonoBehaviour:
     m_ActionId: 061dbbc3-510f-4663-8930-778177c11b99
     m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right,/XInputControllerWindows/dpad/right,/XInputControllerWindows/dpad/right,/XInputControllerWindows/dpad/right,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 983866352550524076}
+        m_TargetAssemblyTypeName: PlayerUI, Assembly-CSharp
+        m_MethodName: Leave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 036fc472-39ca-4615-bf4f-147629e72779
     m_ActionName: UI/Leave[/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonEast,/Keyboard/escape,/Keyboard/backspace,/XInputControllerWindows/select,/XInputControllerWindows/select,/XInputControllerWindows/select,/XInputControllerWindows/select,/XInputControllerWindows/leftTrigger,/XInputControllerWindows/leftTrigger,/XInputControllerWindows/leftTrigger,/XInputControllerWindows/leftTrigger]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 983866352550524076}
+        m_TargetAssemblyTypeName: PlayerUI, Assembly-CSharp
+        m_MethodName: Join
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: ce558493-2054-4dd0-a623-8e80f5a36094
     m_ActionName: UI/Join[/Keyboard/space,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2377044252534902309}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnJoin
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6f1725f0-3593-4bd3-9bb4-60119d69820b
+    m_ActionName: Gameplay/Spawn[/Keyboard/space,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonWest]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Gameplay
+  m_DefaultActionMap: 4272bd26-1fc0-44cb-9f57-f3f10abb74e0
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 7009851991797492387}
 --- !u!212 &2377044252534902315
@@ -322,6 +369,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &983866352550524076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2377044252534902310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c51de427f20f8408ba1972e6c38df7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
+  behaviours:
+  - {fileID: 5524191428747996573}
+  - {fileID: 2377044252534902309}
+  - {fileID: 8173721574186039874}
+  - {fileID: 7009851991797492387}
+  - {fileID: 6204781513941874212}
+  - {fileID: 1278946888192587950}
 --- !u!1 &8226775207976798983
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +481,10 @@ PrefabInstance:
     - target: {fileID: 1946764282985509904, guid: 8ad0dad2ba7b7954fb82659d865e1d2e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587904928606010832, guid: 8ad0dad2ba7b7954fb82659d865e1d2e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3032800716150909103, guid: 8ad0dad2ba7b7954fb82659d865e1d2e, type: 3}
       propertyPath: m_Name
@@ -549,14 +620,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ad0dad2ba7b7954fb82659d865e1d2e, type: 3}
---- !u!1 &1748243931201400273 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3032800716150909103, guid: 8ad0dad2ba7b7954fb82659d865e1d2e, type: 3}
-  m_PrefabInstance: {fileID: 3626997184832226686}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4830636251457973470 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8168527702744279456, guid: 8ad0dad2ba7b7954fb82659d865e1d2e, type: 3}
+  m_PrefabInstance: {fileID: 3626997184832226686}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &1278946888192587950 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 2587904928606010832, guid: 8ad0dad2ba7b7954fb82659d865e1d2e, type: 3}
   m_PrefabInstance: {fileID: 3626997184832226686}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &4175796600016887350 stripped
@@ -581,6 +652,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 554403eed84c4d348a1170e718b7daf2, type: 2}
+    - target: {fileID: 3366835068286118808, guid: fad224aa9035a4945a33fc0257af0e4b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3847817287288802858, guid: fad224aa9035a4945a33fc0257af0e4b, type: 3}
       propertyPath: m_Name
       value: Weapon
@@ -637,10 +712,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8974796515646427003, guid: fad224aa9035a4945a33fc0257af0e4b, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 498338e7cece7a742b53a4ee10799f78, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fad224aa9035a4945a33fc0257af0e4b, type: 3}
 --- !u!4 &436078817500928585 stripped
@@ -648,3 +719,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7620657564804111571, guid: fad224aa9035a4945a33fc0257af0e4b, type: 3}
   m_PrefabInstance: {fileID: 8056729667089843866}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6204781513941874212 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4167112904528081086, guid: fad224aa9035a4945a33fc0257af0e4b, type: 3}
+  m_PrefabInstance: {fileID: 8056729667089843866}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532813c927e873b40b720e05207c93c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

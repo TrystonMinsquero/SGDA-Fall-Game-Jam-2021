@@ -60,6 +60,11 @@ public class NPC_Controller : MonoBehaviour
         SetAnimations();
     }
 
+    public void Die()
+    {
+        NPCManager.KillNPC(this);
+    }
+
     public void SetAnimations()
     {
         if (pathfinder.velocity.sqrMagnitude > .1f)

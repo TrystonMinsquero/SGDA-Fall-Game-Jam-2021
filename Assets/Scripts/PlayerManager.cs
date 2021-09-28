@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 public class PlayerManager : MonoBehaviour
-{
+{ 
     public static PlayerManager instance;
+    public static PlayerInputManager playerInputManager;
+    public static bool inLobby;
 
     public static PlayerInput[] players = new PlayerInput[4];
     public static int playerCount;
 
     public PlayerInput[] _players = new PlayerInput[4];
-    public int _playerCount;
+
+
 
     private void Awake()
     {
@@ -21,35 +25,68 @@ public class PlayerManager : MonoBehaviour
         }
         else
             instance = this;
-        playerCount = 0;
+
+
         DontDestroyOnLoad(this);
     }
 
-    // Start is called before the first frame update
-    void Update()
+    private void Start()
+    {
+        playerInputManager = GetComponent<PlayerInputManager>();
+        inLobby = LobbyManager.instance != null;
+        //Debug.Log("inLobby = " + inLobby);
+        OnSceneChange(true);
+    }
+
+    private void Update()
     {
         _players = players;
-        _playerCount = playerCount;
     }
 
     public static bool Contains(PlayerInput _player)
     {
+        if (playerCount <= 0)
+            return false;
         foreach (PlayerInput player in players)
             if (player == _player)
                 return true;
         return false;
     }
 
+    public static void OnSceneChange(bool _inLobby)
+    {
+        inLobby = _inLobby;
+        if (_inLobby)
+        {
+            Debug.Log("Setting up for Lobby");
+            PlayerInputManager.instance.joinBehavior = PlayerJoinBehavior.JoinPlayersWhenJoinActionIsTriggered;
+            PlayerInputManager.instance.EnableJoining();
+            PlayerInputManager.instance.splitScreen = false;
+            foreach (PlayerInput player in players)
+                if(player)
+                    player.GetComponent<PlayerUI>().Disable();
+        }
+        else
+        {
+            Debug.Log("Setting up for Game");
+            PlayerInputManager.instance.joinBehavior = PlayerJoinBehavior.JoinPlayersManually;
+            PlayerInputManager.instance.DisableJoining();
+            PlayerInputManager.instance.splitScreen = true;
+            foreach (PlayerInput player in players)
+                if(player)
+                    player.GetComponent<PlayerUI>().Enable();
+        }
+    }
+
     public void OnPlayerJoined(PlayerInput playerInput)
     {
+        Debug.Log("Trying to Join Player: " + playerInput);
         AddPlayer(playerInput);
-        LobbyManager.instance.UpdateJoinBoxes();
     }
 
     public void OnPlayerLeft(PlayerInput playerInput)
     {
         Remove(playerInput);
-        LobbyManager.instance.UpdateJoinBoxes();
     }
 
     public static int NextPlayerSlot()
@@ -60,35 +97,50 @@ public class PlayerManager : MonoBehaviour
         return -1;
     }
 
+    public static void Join(GameObject newPlayer)
+    {
+        instance.OnPlayerJoined(newPlayer.GetComponent<PlayerInput>());
+    }
+
     public static void AddPlayer(PlayerInput playerInput)
     {
+        
         if (Contains(playerInput))
             return;
-        if (playerCount < 0 || playerCount >= players.Length)
+        if (inLobby)
         {
-            Destroy(playerInput.gameObject);
-            return;
+            if (playerCount < 0 || playerCount >= players.Length || !LobbyManager.canJoin)
+            {
+                Destroy(playerInput.gameObject);
+                return;
+            }
+            playerInput.GetComponent<PlayerUI>().Disable();
+            Debug.Log("Player Joined: " + playerInput.user.id);
+            playerInput.name = "Player " + playerInput.user.id;
+            players[NextPlayerSlot()] = playerInput;
+            playerCount++;
         }
-        Debug.Log("Player Joined: " + playerInput.name);
-        players[NextPlayerSlot()] = playerInput;
-        
-        playerCount++;
     }
 
 
 
     public static void Remove(PlayerInput playerInput)
     {
-        for(int i = 0; i < playerCount; i++)
+            
+        if (inLobby && LobbyManager.canJoin)
         {
-            if (players[i] == playerInput)
+            for (int i = 0; i < playerCount; i++)
             {
-                players[i] = null;
-                Debug.Log("Player Left: " + playerInput.name);
-                Destroy(playerInput.gameObject);
-                playerCount--;
+                if (players[i] != null && players[i] == playerInput)
+                {
+                    players[i] = null;
+                    Debug.Log("Player Left: " + playerInput.user.index);
+                    Destroy(playerInput.gameObject);
+                    playerCount--;
+                    return;
+                }
+
             }
-                
         }
     }
 }

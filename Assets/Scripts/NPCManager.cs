@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class NPCManager : MonoBehaviour
 {
@@ -31,6 +32,29 @@ public class NPCManager : MonoBehaviour
         }
     }
 
+    public static void SpawnPlayerOverNPC(PlayerUI playerUI, NPC_Controller npc)
+    {
+        Debug.Log("Creating new player");
+        playerUI.Enable();
+        playerUI.transform.position = npc.transform.position;
+        playerUI.transform.rotation = npc.transform.rotation;
+        playerUI.GetComponent<Player>().TakeOver(npc);
+    }
+
+    public static void KillNPC(NPC_Controller npc)
+    {
+        NPC_List.Remove(npc);
+        Destroy(npc.gameObject);
+    }
+
+    public static NPC_Controller GetRandomNPC()
+    {
+        if (NPC_List.Count <= 0)
+            return null;
+        else
+            return NPC_List[Random.Range(0, NPC_List.Count)];
+    }
+
     public static NPC_Controller GenerateNPC(PatrolPath patrolPath, NPC npc = null, Weapon weapon = null)
     {
         NPC_Controller newNPC = Instantiate(instance.NPCPrefab, patrolPath.spawnPoint.position, Quaternion.identity).GetComponent<NPC_Controller>();
@@ -54,6 +78,7 @@ public class NPCManager : MonoBehaviour
 
         newNPC.AssignComponents();
 
+        NPC_List.Add(newNPC);
         return newNPC;
     }
 }

@@ -10,12 +10,16 @@ public class Weapon : ScriptableObject
     [Header("Visual")]
     public Color color = Color.white;
     public Sprite sprite;
-    public Animator anim;
+    public AnimationClip idle;
+    public AnimationClip dash;
+    public AnimationClip walk;
+    public AnimationClip left;
+    public AnimationClip right;
 
     [Header("Muzzle Flash")]
     public Sprite flashSprite;
-    public Animator flashAnim;
-    
+    public AnimationClip flash;
+
     [Header("Projectile Details")]
     public GameObject projectilePrefab;
     public WeaponType weaponType;
@@ -51,45 +55,62 @@ public class Weapon : ScriptableObject
             case WeaponType.DUAL:
 
                 float angle = Mathf.Atan2(player.lookDirection.y, player.lookDirection.x);
-                    // angle from player to x-axis
+                // angle from player to x-axis
 
-                Vector2 shotgun = new Vector2(player.lookDirection.x - (0.05f) * Mathf.Sin(angle), 
+                Vector2 shotgun = new Vector2(player.lookDirection.x - (0.05f) * Mathf.Sin(angle),
                     player.lookDirection.y + (0.05f) * Mathf.Cos(angle));
-                Vector2 shotgun2 = new Vector2(player.lookDirection.x + (0.05f) * Mathf.Sin(angle), 
+                Vector2 shotgun2 = new Vector2(player.lookDirection.x + (0.05f) * Mathf.Sin(angle),
                     player.lookDirection.y - (0.05f) * Mathf.Cos(angle));
                 // vectors for direction of each shotgun bullet/projectile
 
                 Projectile pro2 = GameObject.Instantiate(projectilePrefab).GetComponent<Projectile>();
-                    // second bullet created
+                // second bullet created
+
+                Projectile pro3 = GameObject.Instantiate(projectilePrefab).GetComponent<Projectile>();
 
                 pro.Set(player, player.transform.position, projectileSpeed, range, shotgun, damage);
                 pro2.Set(player, player.transform.position, projectileSpeed, range, shotgun2, damage);
-                
+                pro3.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
 
                 projectiles.Add(pro);
                 projectiles.Add(pro2);
+                projectiles.Add(pro3);
 
                 break;
 
             case WeaponType.RPG:
                 pro.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
                 projectiles.Add(pro);
+                break;
 
+            case WeaponType.LONG:
+                pro.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
+                projectiles.Add(pro);
                 break;
 
             case WeaponType.GRENADE:
-
+                pro.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
+                projectiles.Add(pro);
                 break;
         }
-
-
-        
-        
     }
 
     public void Reset()
     {
         nextFireTime = 0;
+    }
+
+    public void SwitchAnimations(Animator gunAnim, Animator flashAnim)
+    {
+        AnimatorOverrideController gunAoc = new AnimatorOverrideController(gunAnim.runtimeAnimatorController);
+        gunAoc["Idle"] = idle;
+        gunAoc["Walk"] = walk;
+        gunAoc["Dash"] = dash;
+        gunAoc["Left"] = left;
+        gunAoc["Right"] = right;
+
+        AnimatorOverrideController flashAoc = new AnimatorOverrideController(flashAnim.runtimeAnimatorController);
+        flashAoc["Shoot"] = flash;
     }
 
 }
@@ -99,5 +120,6 @@ public enum WeaponType
     STRAIGHT,
     DUAL,
     RPG,
-    GRENADE
+    GRENADE,
+    LONG
 }

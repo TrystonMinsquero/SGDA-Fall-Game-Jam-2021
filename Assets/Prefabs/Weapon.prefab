@@ -47,8 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
-  weaponObject: {fileID: 0}
-  muzzleFlashObject: {fileID: 4951829959792249584}
 --- !u!212 &3366835068286118808
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -110,7 +108,7 @@ Animator:
   m_GameObject: {fileID: 3847817287288802858}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 498338e7cece7a742b53a4ee10799f78, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -212,7 +210,7 @@ Animator:
   m_GameObject: {fileID: 4951829959792249584}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 554403eed84c4d348a1170e718b7daf2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

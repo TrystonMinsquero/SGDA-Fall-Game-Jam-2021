@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     private SpriteRenderer sr;
     private Animator anim;
     private Rigidbody2D rb;
-    [HideInInspector]
     public WeaponHandler weapon;
 
     [HideInInspector]
@@ -33,7 +32,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        weapon = null;
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         weapon = GetComponentInChildren<WeaponHandler>();
@@ -41,6 +39,7 @@ public class Player : MonoBehaviour
         deathTime = Time.time + deathTime_MAX;
         healthBarPos = healthBar.transform.position - transform.position;
         movementSpeed = movementSpeedInit;
+        weapon.Set();
     }
 
     private void Update()
@@ -92,7 +91,7 @@ public class Player : MonoBehaviour
 
     public void Shoot()
     {
-        if(weapon != null && !charging && !dashing)
+        if(!charging && !dashing)
         {
             weapon.Shoot(this);
         }
@@ -135,15 +134,13 @@ public class Player : MonoBehaviour
         movementSpeed = movementSpeedInit;
     }
 
-    public void TakeOver(NPC_Controller npc_c)
+    public void TakeOver(NPC_Controller npcc)
     {
-        NPC npc = npc_c.npc;
+        NPC npc = npcc.npc;
         Debug.Log("Take Over " + npc.name);
-        sr.sprite = npc.image;
-        npc.SwitchAnimations(anim);
-        weapon.SwitchWeapons(npc_c.weaponHandler);
+        SwitchVisuals(npcc);
         deathTime = Time.time + deathTime_MAX;
-        Destroy(npc_c.gameObject);
+        Destroy(npcc.gameObject);
 
     }
 
@@ -155,10 +152,7 @@ public class Player : MonoBehaviour
             player.TakeDamage(dashDamage);
             return;
         }
-        weapon.SwitchWeapons(player.weapon);
-        SwitchAnimations(anim, player.anim);
-        sr.sprite = player.sr.sprite;
-        anim = player.anim;
+        SwitchVisuals(player);
         deathTime = Time.time + deathTime_MAX;
         player.Die();
 
@@ -166,20 +160,24 @@ public class Player : MonoBehaviour
 
     public void SetAnimation()
     {
+        string stateName = "";
         if(!dashing && !charging)
         {
             Vector2 movementDirection = rb.velocity.normalized;
             if (rb.velocity.magnitude < .2f)
-                anim.Play("Idle");
+                stateName = "Idle";
             else if ((lookDirection - movementDirection).sqrMagnitude < .3f)
             {
-                anim.Play("Walk");
+                stateName = "Walk";
             }
         }
         else if (charging || dashing)
         {
-            anim.Play("Dash");
+            stateName = "Dash";
         }
+
+        anim.Play(stateName);
+        weapon.SetAnimations(stateName);
     }
 
     public Vector2 GetVelocity() { return rb.velocity; }
@@ -214,14 +212,17 @@ public class Player : MonoBehaviour
 
     }
 
-    public static void SwitchAnimations(Animator newAnim, Animator oldAnim)
+    public void SwitchVisuals(NPC_Controller npcc)
     {
-        AnimatorOverrideController newAoc = new AnimatorOverrideController(newAnim.runtimeAnimatorController);
-        AnimatorOverrideController oldAoc = new AnimatorOverrideController(oldAnim.runtimeAnimatorController);
-        newAoc["Idle"] = oldAoc["Idle"];
-        newAoc["Walk"] = oldAoc["Walk"];
-        newAoc["Dash"] = oldAoc["Dash"];
-        newAoc["Left"] = oldAoc["Left"];
-        newAoc["Right"] = oldAoc["Right"];
+        sr.sprite = npcc.npc.image;
+        anim.runtimeAnimatorController = npcc.npc.aoc;
+        weapon.SwitchWeapons(npcc.weaponHandler);
+    }
+
+    public void SwitchVisuals(Player player)
+    {
+        sr.sprite = player.sr.sprite;
+        anim.runtimeAnimatorController = new AnimatorOverrideController(player.anim.runtimeAnimatorController);
+        weapon.SwitchWeapons(player.weapon);
     }
 }

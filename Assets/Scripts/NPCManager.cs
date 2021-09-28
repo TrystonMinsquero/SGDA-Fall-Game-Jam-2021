@@ -52,6 +52,8 @@ public class NPCManager : MonoBehaviour
         else
             newNPC.weaponHandler.weapon = null;
 
+        newNPC.AssignComponents();
+
         return newNPC;
     }
 }

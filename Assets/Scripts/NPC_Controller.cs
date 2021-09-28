@@ -7,13 +7,14 @@ public class NPC_Controller : MonoBehaviour
     public NPC npc;
     public WeaponHandler weaponHandler;
     public float movementSpeed;
-    AIPath pathfinder;
     public GameObject patrolPathObj;
+    
     [HideInInspector]
     public PatrolPath patrolPath;
-    [HideInInspector]
-    Patrol patrol;
-
+    
+    private Patrol patrol;
+    private AIPath pathfinder;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,20 @@ public class NPC_Controller : MonoBehaviour
         patrol = GetComponent<Patrol>();
         pathfinder = GetComponent<AIPath>();
         weaponHandler = GetComponentInChildren<WeaponHandler>();
+        anim = GetComponent<Animator>();
         pathfinder.maxSpeed = movementSpeed;
+        weaponHandler.Set();
+        SwitchVisuals();
+    }
+    public void SwitchVisuals()
+    {
+        anim.runtimeAnimatorController = npc.aoc;
+        weaponHandler.SwitchVisuals();
+    }
+    public void SwitchVisuals(NPC newNPC)
+    {
+        anim.runtimeAnimatorController = newNPC.aoc;
+        weaponHandler.SwitchVisuals(weaponHandler.weapon);
     }
 
     public void AssignPatrolPath(PatrolPath patrolPath)

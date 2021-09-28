@@ -47,6 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
+  weaponSR: {fileID: 3366835068286118808}
+  flashSR: {fileID: 6380195060116523569}
+  weaponAnim: {fileID: 8974796515646427003}
+  flashAnim: {fileID: 3287312897267293100}
 --- !u!212 &3366835068286118808
 SpriteRenderer:
   m_ObjectHideFlags: 0

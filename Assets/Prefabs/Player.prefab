@@ -75,7 +75,7 @@ MonoBehaviour:
   dashDamage: 8
   movementSpeedInit: 8
   dashDistance: 3
-  dashChargeTime: 1
+  dashChargeTime: 0.27
   dashSpeed: 30
   healthBar: {fileID: 4175796600016887350}
   weapon: {fileID: 0}
@@ -184,6 +184,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 89473b4d-defc-477a-8b91-7373217e882c
     m_ActionName: Gameplay/Shoot[/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7b5a219c-82ba-448f-9f45-55b6cb0816c1
+    m_ActionName: UI/Submit[/XInputControllerWindows/buttonSouth,/XInputControllerWindows/buttonSouth,/XInputControllerWindows/buttonSouth,/XInputControllerWindows/buttonSouth,/XInputControllerWindows/rightTrigger,/XInputControllerWindows/rightTrigger,/XInputControllerWindows/rightTrigger,/XInputControllerWindows/rightTrigger,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 061dbbc3-510f-4663-8930-778177c11b99
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right,/XInputControllerWindows/dpad/right,/XInputControllerWindows/dpad/right,/XInputControllerWindows/dpad/right,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 036fc472-39ca-4615-bf4f-147629e72779
+    m_ActionName: UI/Leave[/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonEast,/Keyboard/escape,/Keyboard/backspace,/XInputControllerWindows/select,/XInputControllerWindows/select,/XInputControllerWindows/select,/XInputControllerWindows/select,/XInputControllerWindows/leftTrigger,/XInputControllerWindows/leftTrigger,/XInputControllerWindows/leftTrigger,/XInputControllerWindows/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ce558493-2054-4dd0-a623-8e80f5a36094
+    m_ActionName: UI/Join[/Keyboard/space,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonWest]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -297,7 +313,7 @@ Animator:
   m_GameObject: {fileID: 2377044252534902310}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8432f694b88fcbc4aafd04bfbf68d1c0, type: 2}
+  m_Controller: {fileID: 9100000, guid: c6b21e607e66c7147bb4801e5fc00686, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -624,7 +640,7 @@ PrefabInstance:
     - target: {fileID: 8974796515646427003, guid: fad224aa9035a4945a33fc0257af0e4b, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: e9964350ff48e2b44a2d413cd9e6c3d3, type: 2}
+      objectReference: {fileID: 9100000, guid: 498338e7cece7a742b53a4ee10799f78, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fad224aa9035a4945a33fc0257af0e4b, type: 3}
 --- !u!4 &436078817500928585 stripped

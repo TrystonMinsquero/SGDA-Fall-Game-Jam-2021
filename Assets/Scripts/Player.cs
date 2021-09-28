@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     [HideInInspector]
-    public Weapon weapon;
+    public WeaponHandler weapon;
 
     [HideInInspector]
     public Vector2 lookDirection;
@@ -36,6 +36,8 @@ public class Player : MonoBehaviour
         weapon = null;
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        weapon = GetComponentInChildren<WeaponHandler>();
+        anim = GetComponent<Animator>();
         deathTime = Time.time + deathTime_MAX;
         healthBarPos = healthBar.transform.position - transform.position;
         movementSpeed = movementSpeedInit;
@@ -56,6 +58,7 @@ public class Player : MonoBehaviour
         }
 
         rb.angularVelocity = 0;
+        SetAnimation();
     }
 
     public void Move(Vector2 input)
@@ -75,12 +78,12 @@ public class Player : MonoBehaviour
             //Look
             if (input.sqrMagnitude > .1f)
             {
-                transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(input.y, input.x));
+                transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(input.y, input.x) + 90);
                 lookDirection = input;
             }
             else if (movementDirection.sqrMagnitude > 0 && !charging && !charged)
             {
-                transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(movementDirection.y, movementDirection.x));
+                transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(movementDirection.y, movementDirection.x) + 90);
                 lookDirection = movementDirection;
             }
 
@@ -89,7 +92,7 @@ public class Player : MonoBehaviour
 
     public void Shoot()
     {
-        if(weapon != null)
+        if(weapon != null && !charging && !dashing)
         {
             weapon.Shoot(this);
         }
@@ -137,10 +140,8 @@ public class Player : MonoBehaviour
         NPC npc = npc_c.npc;
         Debug.Log("Take Over " + npc.name);
         sr.sprite = npc.image;
-        anim = npc.anim;
-        weapon = npc.weapon;
-        if(weapon != null)
-            weapon.Reset();
+        npc.SwitchAnimations(anim);
+        weapon.SwitchWeapons(npc_c.weaponHandler);
         deathTime = Time.time + deathTime_MAX;
         Destroy(npc_c.gameObject);
 
@@ -154,15 +155,38 @@ public class Player : MonoBehaviour
             player.TakeDamage(dashDamage);
             return;
         }
-        weapon = player.weapon;
-        if (weapon != null)
-            weapon.Reset();
+        weapon.SwitchWeapons(player.weapon);
+        NPC.SwitchAnimations(anim, player.anim);
         sr.sprite = player.sr.sprite;
         anim = player.anim;
         deathTime = Time.time + deathTime_MAX;
         player.Die();
 
     }
+
+    public void SetAnimation()
+    {
+        if(!dashing && !charging)
+        {
+            Vector2 movementDirection = rb.velocity.normalized;
+            if (rb.velocity.magnitude < .2f)
+                anim.Play("Idle");
+            else if ((lookDirection - movementDirection).sqrMagnitude < .3f)
+            {
+                anim.Play("Walk");
+            }
+        }
+        else if (charging)
+        {
+            anim.Play("Charge");
+        }
+        else if (dashing)
+        {
+            anim.Play("Dash");
+        }
+    }
+
+    public Vector2 GetVelocity() { return rb.velocity; }
 
     public void TakeDamage(float damage)
     {
@@ -176,11 +200,6 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Die");
         Destroy(this.gameObject);
-    }
-
-    public List<Projectile> GetProjectiles()
-    {
-        return weapon.projectiles;
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

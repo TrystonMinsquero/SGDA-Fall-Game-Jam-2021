@@ -287,21 +287,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathTime_MAX: 20
   dashDamage: 8
-  movementSpeed: 8
-  dashDelay: 3
-  dashForce: 2
+  movementSpeedInit: 0
+  dashDistance: 0
+  dashChargeTime: 0
+  dashSpeed: 0
   healthBar: {fileID: 4496261379114509637}
-  weapon:
-    projectile: {fileID: 0}
-    weaponType: 0
-    fireRate: 0
-    projectileSpeed: 0
-    range: 0
-    damage: 0
-    projectiles: []
+  weapon: {fileID: 0}
   lookDirection: {x: 0, y: 0}
   timeRemaing: 0
-  nextDashTime: 0
+  movementSpeed: 8
 --- !u!114 &1438509145861533569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8905fcae3c54843906ce2e50b00b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
   target: {fileID: 0}
   rb: {fileID: 0}
 --- !u!58 &8791558619426128642
@@ -410,7 +405,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 3625043607559282579, guid: 045b15ec09bba42448d89db77fa6f20a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
@@ -451,7 +446,7 @@ MonoBehaviour:
   pickNextWaypointDist: 2
   endReachedDistance: 0.2
   alwaysDrawGizmos: 1
-  slowWhenNotFacingTarget: 1
+  slowWhenNotFacingTarget: 0
   whenCloseToDestination: 0
   constrainInsideGraph: 0
 --- !u!114 &8260133387788991091

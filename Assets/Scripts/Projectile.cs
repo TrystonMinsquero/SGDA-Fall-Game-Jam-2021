@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -11,6 +8,7 @@ public class Projectile : MonoBehaviour
     float range;
     Vector2 direction;
     int damage;
+    float timeFromShot;
 
     Rigidbody2D rb;
 
@@ -27,19 +25,7 @@ public class Projectile : MonoBehaviour
         transform.position = startPos;
 
         rb.velocity = direction * speed;
-
-        //switch (weaponType)
-        //{
-        //    case WeaponType.STRAIGHT:
-                
-        //        break;
-
-        //    case WeaponType.DUAL:
-        //        rb.velocity = direction * speed;
-        //        break;
-
-
-        //}
+        rb.velocity += player.GetVelocity();
     }
 
     private void Update()
@@ -49,6 +35,23 @@ public class Projectile : MonoBehaviour
         if (distance.magnitude >= range)
             Delete();
 
+        switch (player.weapon.weapon.weaponType)
+        {
+            case WeaponType.RPG:
+                if (Time.time / timeFromShot % 0.1 == 0)
+                {
+                    float angle = Mathf.Atan2(direction.y, direction.x);
+                    Vector2 dirNew = new Vector2(direction.x - (0.05f) * Mathf.Sin(angle),
+                        player.lookDirection.y + (0.05f) * Mathf.Cos(angle));
+                    direction = dirNew;
+                }
+                break;
+
+            default:
+                break;
+        }
+        
+        
         rb.velocity = direction * speed;
     }
 
@@ -72,7 +75,7 @@ public class Projectile : MonoBehaviour
 
     public void Delete()
     {
-        player.GetProjectiles().Remove(this);
+        player.weapon.GetProjectiles().Remove(this);
         Destroy(this.gameObject);
     }
 

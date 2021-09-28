@@ -6,6 +6,9 @@ TagManager:
   tags:
   - NPC
   - Projectile
+  - Patrol Path
+  - Patrol Point
+  - Spawn Point
   layers:
   - Default
   - TransparentFX

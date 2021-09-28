@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740039446}
     m_Modifications:
+    - target: {fileID: 4862974284002695760, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
+      propertyPath: patrolPathObj
+      value: 
+      objectReference: {fileID: 752052202}
     - target: {fileID: 4862974284002695762, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -174,86 +178,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695765, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: maxSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: delay
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[0]
-      value: 
-      objectReference: {fileID: 1264206769}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[1]
-      value: 
-      objectReference: {fileID: 572267903}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[2]
-      value: 
-      objectReference: {fileID: 487173321}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[3]
-      value: 
-      objectReference: {fileID: 892937237}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[4]
-      value: 
-      objectReference: {fileID: 885914547}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[5]
-      value: 
-      objectReference: {fileID: 935380238}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[6]
-      value: 
-      objectReference: {fileID: 1079325829}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[7]
-      value: 
-      objectReference: {fileID: 1002950893}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[8]
-      value: 
-      objectReference: {fileID: 1285376998}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[9]
-      value: 
-      objectReference: {fileID: 1725843672}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[10]
-      value: 
-      objectReference: {fileID: 528714732}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[11]
-      value: 
-      objectReference: {fileID: 202670318}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[12]
-      value: 
-      objectReference: {fileID: 701922128}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[13]
-      value: 
-      objectReference: {fileID: 1232935669}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[14]
-      value: 
-      objectReference: {fileID: 1992941741}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[15]
-      value: 
-      objectReference: {fileID: 1886912858}
     - target: {fileID: 4862974284002695767, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
       propertyPath: m_Name
       value: NPC (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8124694599088189364, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 417a6d3d60beca74bbe3e46c8aaa13ed, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
 --- !u!4 &751927 stripped
@@ -349,7 +281,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &18798622
 GameObject:
@@ -857,7 +789,7 @@ GameObject:
   - component: {fileID: 152012102}
   m_Layer: 0
   m_Name: Patrol Point (2)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -892,7 +824,7 @@ GameObject:
   - component: {fileID: 180531829}
   m_Layer: 0
   m_Name: Patrol Point (2)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1031,7 +963,7 @@ GameObject:
   - component: {fileID: 202670318}
   m_Layer: 0
   m_Name: Patrol Point (11)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1061,7 +993,7 @@ GameObject:
   - component: {fileID: 226145016}
   m_Layer: 0
   m_Name: Patrol Point (12)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1091,7 +1023,7 @@ GameObject:
   - component: {fileID: 243168619}
   m_Layer: 0
   m_Name: Spawn Point
-  m_TagString: Untagged
+  m_TagString: Spawn Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1230,7 +1162,7 @@ GameObject:
   - component: {fileID: 271727040}
   m_Layer: 0
   m_Name: Patrol Point (3)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1260,7 +1192,7 @@ GameObject:
   - component: {fileID: 298223506}
   m_Layer: 0
   m_Name: Patrol Point (3)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1389,7 +1321,7 @@ GameObject:
   - component: {fileID: 348910537}
   m_Layer: 0
   m_Name: Patrol Point (1)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1419,7 +1351,7 @@ GameObject:
   - component: {fileID: 355186732}
   m_Layer: 0
   m_Name: Patrol Path 2
-  m_TagString: Untagged
+  m_TagString: Patrol Path
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1454,7 +1386,7 @@ GameObject:
   - component: {fileID: 367807255}
   m_Layer: 0
   m_Name: Spawn Point
-  m_TagString: Untagged
+  m_TagString: Spawn Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1707,7 +1639,7 @@ GameObject:
   - component: {fileID: 436298947}
   m_Layer: 0
   m_Name: Patrol Point (2)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1846,7 +1778,7 @@ GameObject:
   - component: {fileID: 467527768}
   m_Layer: 0
   m_Name: Patrol Path 5
-  m_TagString: Untagged
+  m_TagString: Patrol Path
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1880,7 +1812,7 @@ GameObject:
   - component: {fileID: 487173321}
   m_Layer: 0
   m_Name: Patrol Point (2)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1910,7 +1842,7 @@ GameObject:
   - component: {fileID: 490914837}
   m_Layer: 0
   m_Name: Patrol Point (5)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1940,7 +1872,7 @@ GameObject:
   - component: {fileID: 504535881}
   m_Layer: 0
   m_Name: Patrol Point (3)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1970,7 +1902,7 @@ GameObject:
   - component: {fileID: 522611111}
   m_Layer: 0
   m_Name: Patrol Path 1
-  m_TagString: Untagged
+  m_TagString: Patrol Path
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2075,7 +2007,7 @@ GameObject:
   - component: {fileID: 528714732}
   m_Layer: 0
   m_Name: Patrol Point (10)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2128,7 +2060,7 @@ Transform:
   - {fileID: 467527768}
   - {fileID: 752052203}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &544675333
 GameObject:
@@ -2250,7 +2182,7 @@ GameObject:
   - component: {fileID: 570347965}
   m_Layer: 0
   m_Name: Patrol Point (4)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2280,7 +2212,7 @@ GameObject:
   - component: {fileID: 572267903}
   m_Layer: 0
   m_Name: Patrol Point (1)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2310,7 +2242,7 @@ GameObject:
   - component: {fileID: 591609073}
   m_Layer: 0
   m_Name: Patrol Point (9)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2625,7 +2557,7 @@ GameObject:
   - component: {fileID: 683027298}
   m_Layer: 0
   m_Name: Patrol Point (3)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2655,7 +2587,7 @@ GameObject:
   - component: {fileID: 701922128}
   m_Layer: 0
   m_Name: Patrol Point (12)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2683,8 +2615,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 740039446}
+  - component: {fileID: 740039447}
   m_Layer: 0
-  m_Name: NPCs
+  m_Name: NPC Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2708,8 +2641,26 @@ Transform:
   - {fileID: 853771947}
   - {fileID: 751927}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &740039447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740039445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c59f7b930f89349a88ad6f50dfe674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NPCPrefab: {fileID: 4862974284002695767, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
+  NPCTemplates:
+  - {fileID: 11400000, guid: 3d2e6b21850e57a408b227148e583e4d, type: 2}
+  - {fileID: 11400000, guid: ba03cb6b3828afe4dae43a614412a7ca, type: 2}
+  WeaponTemplates:
+  - {fileID: 11400000, guid: b6a795736c847ff448c231b5b4d6518f, type: 2}
 --- !u!1 &752052202
 GameObject:
   m_ObjectHideFlags: 0
@@ -2721,7 +2672,7 @@ GameObject:
   - component: {fileID: 752052203}
   m_Layer: 0
   m_Name: Patrol Path 6
-  m_TagString: Untagged
+  m_TagString: Patrol Path
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2760,7 +2711,7 @@ GameObject:
   - component: {fileID: 810898030}
   m_Layer: 0
   m_Name: Patrol Point (2)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2821,7 +2772,7 @@ Transform:
   m_Children:
   - {fileID: 1743622032}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &853771946
 PrefabInstance:
@@ -2830,6 +2781,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740039446}
     m_Modifications:
+    - target: {fileID: 4862974284002695760, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
+      propertyPath: patrolPathObj
+      value: 
+      objectReference: {fileID: 467527767}
     - target: {fileID: 4862974284002695762, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -2874,86 +2829,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695765, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: maxSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: delay
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[0]
-      value: 
-      objectReference: {fileID: 683027298}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[1]
-      value: 
-      objectReference: {fileID: 1188613036}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[2]
-      value: 
-      objectReference: {fileID: 1432902085}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[3]
-      value: 
-      objectReference: {fileID: 1054586503}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[4]
-      value: 
-      objectReference: {fileID: 885914547}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[5]
-      value: 
-      objectReference: {fileID: 935380238}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[6]
-      value: 
-      objectReference: {fileID: 1079325829}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[7]
-      value: 
-      objectReference: {fileID: 1002950893}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[8]
-      value: 
-      objectReference: {fileID: 1285376998}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[9]
-      value: 
-      objectReference: {fileID: 1725843672}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[10]
-      value: 
-      objectReference: {fileID: 528714732}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[11]
-      value: 
-      objectReference: {fileID: 202670318}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[12]
-      value: 
-      objectReference: {fileID: 701922128}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[13]
-      value: 
-      objectReference: {fileID: 1232935669}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[14]
-      value: 
-      objectReference: {fileID: 1992941741}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[15]
-      value: 
-      objectReference: {fileID: 1886912858}
     - target: {fileID: 4862974284002695767, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
       propertyPath: m_Name
       value: NPC (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8124694599088189364, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 648f41699c38537449d0133ed3f3fdab, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
 --- !u!4 &853771947 stripped
@@ -2972,7 +2855,7 @@ GameObject:
   - component: {fileID: 854895585}
   m_Layer: 0
   m_Name: Patrol Point (7)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3002,7 +2885,7 @@ GameObject:
   - component: {fileID: 885914547}
   m_Layer: 0
   m_Name: Patrol Point (4)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3032,7 +2915,7 @@ GameObject:
   - component: {fileID: 892937237}
   m_Layer: 0
   m_Name: Patrol Point (3)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3067,7 +2950,7 @@ GameObject:
   - component: {fileID: 935380238}
   m_Layer: 0
   m_Name: Patrol Point (5)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3097,7 +2980,7 @@ GameObject:
   - component: {fileID: 945977571}
   m_Layer: 0
   m_Name: Patrol Point (13)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3127,7 +3010,7 @@ GameObject:
   - component: {fileID: 996609413}
   m_Layer: 0
   m_Name: Patrol Point (6)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3157,7 +3040,7 @@ GameObject:
   - component: {fileID: 1002950893}
   m_Layer: 0
   m_Name: Patrol Point (7)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3286,7 +3169,7 @@ GameObject:
   - component: {fileID: 1054586503}
   m_Layer: 0
   m_Name: Spawn Point (1)
-  m_TagString: Untagged
+  m_TagString: Spawn Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3312,6 +3195,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740039446}
     m_Modifications:
+    - target: {fileID: 4862974284002695760, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
+      propertyPath: patrolPathObj
+      value: 
+      objectReference: {fileID: 2118867181}
     - target: {fileID: 4862974284002695762, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3356,74 +3243,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695765, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: maxSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[0]
-      value: 
-      objectReference: {fileID: 243168619}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[1]
-      value: 
-      objectReference: {fileID: 1237333630}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[2]
-      value: 
-      objectReference: {fileID: 180531829}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[3]
-      value: 
-      objectReference: {fileID: 271727040}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[4]
-      value: 
-      objectReference: {fileID: 1207200915}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[5]
-      value: 
-      objectReference: {fileID: 490914837}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[6]
-      value: 
-      objectReference: {fileID: 996609413}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[7]
-      value: 
-      objectReference: {fileID: 854895585}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[8]
-      value: 
-      objectReference: {fileID: 1410866579}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[9]
-      value: 
-      objectReference: {fileID: 591609073}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[10]
-      value: 
-      objectReference: {fileID: 2117038444}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[11]
-      value: 
-      objectReference: {fileID: 2020063952}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[12]
-      value: 
-      objectReference: {fileID: 226145016}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[13]
-      value: 
-      objectReference: {fileID: 945977571}
     - target: {fileID: 4862974284002695767, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
       propertyPath: m_Name
       value: NPC (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8124694599088189364, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 417a6d3d60beca74bbe3e46c8aaa13ed, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
 --- !u!4 &1074136430 stripped
@@ -3442,7 +3269,7 @@ GameObject:
   - component: {fileID: 1079325829}
   m_Layer: 0
   m_Name: Patrol Point (6)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3634,7 +3461,7 @@ GameObject:
   - component: {fileID: 1188613036}
   m_Layer: 0
   m_Name: Patrol Point (2)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3664,7 +3491,7 @@ GameObject:
   - component: {fileID: 1207200915}
   m_Layer: 0
   m_Name: Patrol Point (4)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3694,7 +3521,7 @@ GameObject:
   - component: {fileID: 1208070503}
   m_Layer: 0
   m_Name: Patrol Point (3)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3724,7 +3551,7 @@ GameObject:
   - component: {fileID: 1232935669}
   m_Layer: 0
   m_Name: Patrol Point (13)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3754,7 +3581,7 @@ GameObject:
   - component: {fileID: 1237333630}
   m_Layer: 0
   m_Name: Patrol Point (1)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3773,89 +3600,6 @@ Transform:
   m_Father: {fileID: 2118867182}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1250571653
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1250571656}
-  - component: {fileID: 1250571655}
-  - component: {fileID: 1250571654}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &1250571654
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1250571653}
-  m_Enabled: 1
---- !u!20 &1250571655
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1250571653}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &1250571656
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1250571653}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1259062344
 GameObject:
   m_ObjectHideFlags: 0
@@ -3867,7 +3611,7 @@ GameObject:
   - component: {fileID: 1259062345}
   m_Layer: 0
   m_Name: Spawn Point
-  m_TagString: Untagged
+  m_TagString: Spawn Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3897,7 +3641,7 @@ GameObject:
   - component: {fileID: 1264206769}
   m_Layer: 0
   m_Name: Spawn Point (1)
-  m_TagString: Untagged
+  m_TagString: Spawn Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3927,7 +3671,7 @@ GameObject:
   - component: {fileID: 1274384257}
   m_Layer: 0
   m_Name: Patrol Point (1)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3957,7 +3701,7 @@ GameObject:
   - component: {fileID: 1285376998}
   m_Layer: 0
   m_Name: Patrol Point (8)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3987,7 +3731,7 @@ GameObject:
   - component: {fileID: 1287158641}
   m_Layer: 0
   m_Name: Spawn Point
-  m_TagString: Untagged
+  m_TagString: Spawn Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4164,7 +3908,7 @@ GameObject:
   - component: {fileID: 1359902692}
   m_Layer: 0
   m_Name: Patrol Path 4
-  m_TagString: Untagged
+  m_TagString: Patrol Path
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4210,7 +3954,7 @@ GameObject:
   - component: {fileID: 1410866579}
   m_Layer: 0
   m_Name: Patrol Point (8)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4240,7 +3984,7 @@ GameObject:
   - component: {fileID: 1432902085}
   m_Layer: 0
   m_Name: Patrol Point (1)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4306,6 +4050,57 @@ Transform:
   - {fileID: 1867828567}
   m_Father: {fileID: 1737579066}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1450646538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1450646540}
+  - component: {fileID: 1450646539}
+  m_Layer: 0
+  m_Name: Level Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1450646539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450646538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04567c7e82f4351439f159b8d89af909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolPathsObj:
+  - {fileID: 522611110}
+  - {fileID: 355186731}
+  - {fileID: 2118867181}
+  - {fileID: 1359902691}
+  - {fileID: 467527767}
+  - {fileID: 752052202}
+  npcManager: {fileID: 740039447}
+--- !u!4 &1450646540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450646538}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.388615, y: 0.118287474, z: -2.9483736}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1491506832
 PrefabInstance:
@@ -4375,6 +4170,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740039446}
     m_Modifications:
+    - target: {fileID: 4862974284002695760, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
+      propertyPath: patrolPathObj
+      value: 
+      objectReference: {fileID: 355186731}
     - target: {fileID: 4862974284002695762, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4419,74 +4218,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695765, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: maxSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[0]
-      value: 
-      objectReference: {fileID: 367807255}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[1]
-      value: 
-      objectReference: {fileID: 1621314199}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[2]
-      value: 
-      objectReference: {fileID: 436298947}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[3]
-      value: 
-      objectReference: {fileID: 1208070503}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[4]
-      value: 
-      objectReference: {fileID: 570347965}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[5]
-      value: 
-      objectReference: {fileID: 1912161249}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[6]
-      value: 
-      objectReference: {fileID: 996609413}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[7]
-      value: 
-      objectReference: {fileID: 854895585}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[8]
-      value: 
-      objectReference: {fileID: 1410866579}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[9]
-      value: 
-      objectReference: {fileID: 591609073}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[10]
-      value: 
-      objectReference: {fileID: 2117038444}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[11]
-      value: 
-      objectReference: {fileID: 2020063952}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[12]
-      value: 
-      objectReference: {fileID: 226145016}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[13]
-      value: 
-      objectReference: {fileID: 945977571}
     - target: {fileID: 4862974284002695767, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
       propertyPath: m_Name
       value: NPC (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8124694599088189364, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 417a6d3d60beca74bbe3e46c8aaa13ed, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
 --- !u!4 &1512398119 stripped
@@ -4810,7 +4549,7 @@ GameObject:
   - component: {fileID: 1621314199}
   m_Layer: 0
   m_Name: Patrol Point (1)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4901,7 +4640,7 @@ GameObject:
   - component: {fileID: 1725843672}
   m_Layer: 0
   m_Name: Patrol Point (9)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4931,7 +4670,7 @@ GameObject:
   - component: {fileID: 1726562953}
   m_Layer: 0
   m_Name: Patrol Point (4)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5090,7 +4829,7 @@ Transform:
   - {fileID: 93653348}
   - {fileID: 1436080913}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1743622031
 GameObject:
@@ -17212,6 +16951,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740039446}
     m_Modifications:
+    - target: {fileID: 4862974284002695760, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
+      propertyPath: patrolPathObj
+      value: 
+      objectReference: {fileID: 1359902691}
     - target: {fileID: 4862974284002695762, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -17256,86 +16999,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695765, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: maxSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: delay
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.size
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[0]
-      value: 
-      objectReference: {fileID: 1259062345}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[1]
-      value: 
-      objectReference: {fileID: 1274384257}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[2]
-      value: 
-      objectReference: {fileID: 810898030}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[3]
-      value: 
-      objectReference: {fileID: 504535881}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[4]
-      value: 
-      objectReference: {fileID: 885914547}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[5]
-      value: 
-      objectReference: {fileID: 935380238}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[6]
-      value: 
-      objectReference: {fileID: 1079325829}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[7]
-      value: 
-      objectReference: {fileID: 1002950893}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[8]
-      value: 
-      objectReference: {fileID: 1285376998}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[9]
-      value: 
-      objectReference: {fileID: 1725843672}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[10]
-      value: 
-      objectReference: {fileID: 528714732}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[11]
-      value: 
-      objectReference: {fileID: 202670318}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[12]
-      value: 
-      objectReference: {fileID: 701922128}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[13]
-      value: 
-      objectReference: {fileID: 1232935669}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[14]
-      value: 
-      objectReference: {fileID: 1992941741}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[15]
-      value: 
-      objectReference: {fileID: 1886912858}
     - target: {fileID: 4862974284002695767, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
       propertyPath: m_Name
       value: NPC (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8124694599088189364, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 648f41699c38537449d0133ed3f3fdab, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
 --- !u!4 &1873005059 stripped
@@ -17354,7 +17025,7 @@ GameObject:
   - component: {fileID: 1886912858}
   m_Layer: 0
   m_Name: Patrol Point (15)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17384,7 +17055,7 @@ GameObject:
   - component: {fileID: 1912161249}
   m_Layer: 0
   m_Name: Patrol Point (5)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17471,6 +17142,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 740039446}
     m_Modifications:
+    - target: {fileID: 4862974284002695760, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
+      propertyPath: patrolPathObj
+      value: 
+      objectReference: {fileID: 522611110}
     - target: {fileID: 4862974284002695762, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -17515,74 +17190,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695765, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: maxSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.size
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[0]
-      value: 
-      objectReference: {fileID: 1287158641}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[1]
-      value: 
-      objectReference: {fileID: 348910537}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[2]
-      value: 
-      objectReference: {fileID: 152012102}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[3]
-      value: 
-      objectReference: {fileID: 298223506}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[4]
-      value: 
-      objectReference: {fileID: 1726562953}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[5]
-      value: 
-      objectReference: {fileID: 1912161249}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[6]
-      value: 
-      objectReference: {fileID: 996609413}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[7]
-      value: 
-      objectReference: {fileID: 854895585}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[8]
-      value: 
-      objectReference: {fileID: 1410866579}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[9]
-      value: 
-      objectReference: {fileID: 591609073}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[10]
-      value: 
-      objectReference: {fileID: 2117038444}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[11]
-      value: 
-      objectReference: {fileID: 2020063952}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[12]
-      value: 
-      objectReference: {fileID: 226145016}
-    - target: {fileID: 4862974284002695766, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
-      propertyPath: targets.Array.data[13]
-      value: 
-      objectReference: {fileID: 945977571}
     - target: {fileID: 4862974284002695767, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 8124694599088189364, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 417a6d3d60beca74bbe3e46c8aaa13ed, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
 --- !u!4 &1984080680 stripped
@@ -17601,7 +17216,7 @@ GameObject:
   - component: {fileID: 1992941741}
   m_Layer: 0
   m_Name: Patrol Point (14)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17631,7 +17246,7 @@ GameObject:
   - component: {fileID: 2020063952}
   m_Layer: 0
   m_Name: Patrol Point (11)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17994,7 +17609,7 @@ GameObject:
   - component: {fileID: 2117038444}
   m_Layer: 0
   m_Name: Patrol Point (10)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18024,7 +17639,7 @@ GameObject:
   - component: {fileID: 2118867182}
   m_Layer: 0
   m_Name: Patrol Path 3
-  m_TagString: Untagged
+  m_TagString: Patrol Path
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

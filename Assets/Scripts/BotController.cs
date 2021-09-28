@@ -59,7 +59,7 @@ public class BotController : MonoBehaviour
         Func<bool> targetInDashRange() => () => TargetInRange(player.dashDistance);
         Func<bool> targetNotInDashRange() => () => !TargetInRange(player.dashDistance);
         Func<bool> playerFound() => () => HavePlayerTarget();
-        Func<bool> targetInWeaponRange() => () => HasWeapon() && TargetInRange(player.weapon.range);
+        Func<bool> targetInWeaponRange() => () => HasWeapon() && TargetInRange(player.weapon.weapon.range);
         Func<bool> playerInDashRange() => () => playerInRange(player.dashDistance);
 
         stateMachine.SetState(findNPC);
@@ -105,10 +105,6 @@ public class BotController : MonoBehaviour
         if (player.lookDirection.sqrMagnitude > .1f)
         {
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(player.lookDirection.y, player.lookDirection.x));
-        }
-        else if (rb.velocity.sqrMagnitude > 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(rb.velocity.y, rb.velocity.x));
         }
 
         if(stateMachine.GetState().GetType() == typeof(FindTag))

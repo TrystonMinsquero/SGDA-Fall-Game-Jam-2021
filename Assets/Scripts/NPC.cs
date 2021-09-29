@@ -5,7 +5,7 @@ public class NPC : ScriptableObject
 {
     //public Sprite image;
     public AnimatorOverrideController aoc;
-    public bool hasWeapon;
+    public bool hasWeapon = true;
 
 
 

@@ -71,12 +71,14 @@ public class Projectile : MonoBehaviour
                     {
                         collision.GetComponent<Player>().TakeDamage(damage);
                         Delete();
+                        SFXManager.Play("Hit");
                     }
                 }
                 else if (collision.gameObject.CompareTag("NPC"))
                 {
                     collision.GetComponent<NPC_Controller>().Die();
                     Delete();
+                    SFXManager.Play("Hit");
                 }
                 else
                     Delete();
@@ -95,11 +97,13 @@ public class Projectile : MonoBehaviour
                         collision.GetComponent<Player>().TakeDamage(damage);
                         PassThroughWall(); //WallBang
                     }
+                    SFXManager.Play("Hit");
                 }
                 else if (collision.gameObject.CompareTag("NPC"))
                 {
                     collision.GetComponent<NPC_Controller>().Die();
                     Delete();
+                    SFXManager.Play("Hit");
                 }
                 else if (collision.gameObject.CompareTag("Wall"))
                 {
@@ -121,10 +125,12 @@ public class Projectile : MonoBehaviour
                 {
                     if (collision.GetComponent<Player>() != player)
                         collision.GetComponent<Player>().TakeDamage(damage);
+                    SFXManager.Play("Hit");
                 }
                 else if (collision.gameObject.CompareTag("NPC"))
                 {
                     collision.GetComponent<NPC_Controller>().Die();
+                    SFXManager.Play("Hit");
                 }
                 else if (collision.gameObject.CompareTag("Wall"))
                 {
@@ -143,6 +149,7 @@ public class Projectile : MonoBehaviour
                 {
                     if (collision.GetComponent<Player>() != player)
                         Explode(explosionRadius);
+                    SFXManager.Play("Hit");
                 }
                 else
                     Explode(explosionRadius);
@@ -222,6 +229,7 @@ public class Projectile : MonoBehaviour
             else if (collision.gameObject.CompareTag("NPC"))
             {
                 collision.GetComponent<NPC_Controller>().Die();
+                SFXManager.Play("Hit");
             }
         }
         Delete();

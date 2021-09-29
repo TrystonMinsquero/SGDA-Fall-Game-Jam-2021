@@ -9,11 +9,9 @@ public class Weapon : ScriptableObject
 {
     [Header("Visual")]
     public Color color = Color.white;
-    public Sprite sprite;
     public AnimatorOverrideController weaponAoc;
 
     [Header("Muzzle Flash")]
-    public Sprite flashSprite;
     public AnimatorOverrideController flashAoc;
 
     [Header("Projectile Details")]
@@ -51,7 +49,7 @@ public class Weapon : ScriptableObject
                 break;
 
 
-            case WeaponType.DUAL:
+            case WeaponType.SHOTGUN:
 
                 float angle = Mathf.Atan2(player.lookDirection.y, player.lookDirection.x);
                 // angle from player to x-axis
@@ -115,7 +113,7 @@ public class Weapon : ScriptableObject
 public enum WeaponType
 {
     STRAIGHT,
-    DUAL,
+    SHOTGUN,
     RPG,
     GRENADE,
     LONG

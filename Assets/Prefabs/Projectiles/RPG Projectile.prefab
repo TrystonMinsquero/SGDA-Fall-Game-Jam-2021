@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 3745782830819629166, guid: 8859e96613fe7a245885e68bd46886a4, type: 3}
+  explosionRadius: 1.5
 --- !u!50 &8164361169411024012
 Rigidbody2D:
   serializedVersion: 4

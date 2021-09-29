@@ -87,7 +87,7 @@ public class Projectile : MonoBehaviour
 
 
 
-            case WeaponType.DUAL:
+            case WeaponType.SHOTGUN:
                 if (collision.gameObject.CompareTag("Projectile"))
                     return;
                 if (collision.gameObject.CompareTag("Player"))

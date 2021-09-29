@@ -42,8 +42,6 @@ public class WeaponHandler : MonoBehaviour
             return;
         }
         weaponSR.color = weapon.color;
-        flashSR.sprite = weapon.sprite;
-        weaponSR.sprite = weapon.flashSprite;
         weaponAnim.runtimeAnimatorController = weapon.weaponAoc;
         flashAnim.runtimeAnimatorController = weapon.flashAoc;
     }
@@ -57,8 +55,6 @@ public class WeaponHandler : MonoBehaviour
             return;
         }
         weaponSR.color = newWeapon.color;
-        flashSR.sprite = newWeapon.sprite;
-        weaponSR.sprite = newWeapon.flashSprite;
         weaponAnim.runtimeAnimatorController = newWeapon.weaponAoc;
         flashAnim.runtimeAnimatorController = newWeapon.flashAoc;
     }

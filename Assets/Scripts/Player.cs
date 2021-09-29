@@ -210,6 +210,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        SFXManager.Play("Hit");
         if (damage <= 0)
             Die();
         else

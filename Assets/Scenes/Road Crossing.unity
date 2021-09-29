@@ -354,6 +354,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab858b897b764f14d97932316301daa3, type: 3}
+--- !u!1 &91203590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 91203592}
+  - component: {fileID: 91203591}
+  m_Layer: 0
+  m_Name: SFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &91203591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91203590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 588febe324a07ca4094eb917374ee602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Gun
+    clip: {fileID: 8300000, guid: 20d791a357aaaec4aab7ac34d58824f7, type: 3}
+    volume: 0.17
+    pitch: 1
+    source: {fileID: 0}
+  - name: Shotgun
+    clip: {fileID: 8300000, guid: f98cd814eaf0d1c44881d1ba99793657, type: 3}
+    volume: 0.17
+    pitch: 1
+    source: {fileID: 0}
+  - name: Sniper
+    clip: {fileID: 8300000, guid: d3df2a98e0c741f40a4a84b9c0c22f58, type: 3}
+    volume: 0.17
+    pitch: 1
+    source: {fileID: 0}
+  - name: Hit
+    clip: {fileID: 8300000, guid: ba12745808b934144906c83460aca731, type: 3}
+    volume: 0.17
+    pitch: 1
+    source: {fileID: 0}
+  - name: Grenade
+    clip: {fileID: 8300000, guid: 31aa366ab345b7f43a69193df386db47, type: 3}
+    volume: 0.17
+    pitch: 1
+    source: {fileID: 0}
+--- !u!4 &91203592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91203590}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.195935, y: -0.13044776, z: -7.444413}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &93653347
 GameObject:
   m_ObjectHideFlags: 0
@@ -4794,55 +4863,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1345826991
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1345826993}
-  - component: {fileID: 1345826992}
-  m_Layer: 0
-  m_Name: SFX
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1345826992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345826991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 588febe324a07ca4094eb917374ee602, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: GunShot
-    clip: {fileID: 8300000, guid: 20d791a357aaaec4aab7ac34d58824f7, type: 3}
-    volume: 0.17
-    pitch: 1
-    source: {fileID: 0}
---- !u!4 &1345826993
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345826991}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.195935, y: -0.13044776, z: -7.444413}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1354193221
 PrefabInstance:

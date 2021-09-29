@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7fc54f6dcc49dc45b71ffffb1971cdc, type: 3}
-  m_Name: Handgun
+  m_Name: SMG
   m_EditorClassIdentifier: 
   color: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
-  weaponAoc: {fileID: 22100000, guid: 5f41d8d4973589644ab09d07dd70f0f5, type: 2}
-  flashAoc: {fileID: 22100000, guid: b6675b0671a95fd479d8a01bcae36ace, type: 2}
+  weaponAoc: {fileID: 22100000, guid: e244091cd16051a40986a35bcf7328d1, type: 2}
+  flashAoc: {fileID: 22100000, guid: e6c299dbff60a0c4ab36dba9d7c71a99, type: 2}
   projectilePrefab: {fileID: 9037812320112203550, guid: f2a0cfe4b842bf84f80aafb6470cca96, type: 3}
   weaponType: 0
-  fireDelay: 0.1
+  fireDelay: 0.2
   projectileSpeed: 15
-  range: 6
-  damage: 2
+  range: 4
+  damage: 1
   projectiles: []

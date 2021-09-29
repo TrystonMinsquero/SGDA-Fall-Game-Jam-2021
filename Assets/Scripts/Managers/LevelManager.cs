@@ -25,7 +25,7 @@ public class LevelManager : MonoBehaviour
     private static float canSpawnPlayerTime;
     private static Queue<Player> playersToSpawn;
     private static PatrolPath[] patrolPaths;
-    private static Dictionary<PatrolPath, int> patrolPathNPCCount;
+    public static Dictionary<PatrolPath, int> patrolPathNPCCount;
 
 
     private void Awake()
@@ -57,7 +57,10 @@ public class LevelManager : MonoBehaviour
         }
 
         foreach (PatrolPath patrolPath in patrolPaths)
-            NPCManager.GenerateNPC(patrolPath);
+            patrolPathNPCCount[patrolPath] = 0;
+
+        foreach (PatrolPath patrolPath in patrolPaths)
+            SpawnNPC(patrolPath);
         PlayerManager.OnSceneChange(false);
 
         foreach (PlayerInput playerInput in PlayerManager.players)
@@ -72,7 +75,6 @@ public class LevelManager : MonoBehaviour
     {
         PatrolPath[] patrolPathsSorted = new PatrolPath[patrolPathNPCCount.Keys.Count];
         List<KeyValuePair<PatrolPath, int>> myList = patrolPathNPCCount.ToList();
-
         myList.Sort(
             delegate (KeyValuePair<PatrolPath, int> pair1,
             KeyValuePair<PatrolPath, int> pair2)
@@ -80,12 +82,15 @@ public class LevelManager : MonoBehaviour
                 return pair1.Value.CompareTo(pair2.Value);
             }
         );
-            int i = 0;
+         
+        int i = 0;
         foreach(KeyValuePair<PatrolPath, int> pair in myList)
-            {
-                patrolPathsSorted[i] = pair.Key;
-            }
-
+        {
+            patrolPathsSorted[i] = pair.Key;
+            Debug.Log("patrolPathsSorted[" + i + "] = " + pair.Key);
+            i++;
+        }
+        
         return patrolPathsSorted;
     }
       
@@ -93,15 +98,29 @@ public class LevelManager : MonoBehaviour
     public static bool SpawnNPC()
     {
         foreach (PatrolPath patrolPath in smallestNPCCountPaths())
-            if (SafeToSpawn(patrolPath.spawnPoint.transform.position, 4))
+            if (SafeToSpawn(patrolPath.GetRandomPoint().transform.position, 4))//fix
             {
                 NPCManager.GenerateNPC(patrolPath);
+                Debug.Log("Spawned NPC");
                 canSpawnPlayerTime = Time.time + spawnDelay;
                 return true;
             }
         return false;
     }
-    
+
+
+    public static bool SpawnNPC(PatrolPath patrolPath)
+    {
+        if (SafeToSpawn(patrolPath.GetRandomPoint().transform.position, 4))//fix
+        {
+            NPCManager.GenerateNPC(patrolPath);
+            Debug.Log("Spawned NPC");
+            canSpawnPlayerTime = Time.time + spawnDelay;
+            return true;
+        }
+        return false;
+    }
+
     public static bool SpawnPlayer(Player player)
     {
         foreach (NPC_Controller npc in NPCManager.NPC_List)

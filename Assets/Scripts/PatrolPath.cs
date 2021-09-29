@@ -5,9 +5,12 @@ using System.Collections.Generic;
 public struct PatrolPath
 {
     [SerializeField]
-    public Transform spawnPoint;
-    [SerializeField]
     public Transform[] patrolpoints;
+    
+    public Transform GetRandomPoint()
+    {
+        return patrolpoints[Random.Range(0, patrolpoints.Length)];
+    }
 
     public static PatrolPath GeneratePatrolPath(GameObject obj)
     {
@@ -19,9 +22,7 @@ public struct PatrolPath
         int i = 0;
         foreach (Transform child in children)
         {
-            if (child.CompareTag("Spawn Point"))
-                patrolPath.spawnPoint = child;
-            else if (child.CompareTag("Patrol Point"))
+            if (child.CompareTag("Patrol Point"))
             {
                 //Debug.Log(" patrolPath.patrolpoints[" + i + "] = " + child);
                 patrolPath.patrolpoints[i] = child;

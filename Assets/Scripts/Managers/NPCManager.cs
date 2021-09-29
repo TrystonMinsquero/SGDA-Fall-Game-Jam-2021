@@ -44,6 +44,7 @@ public class NPCManager : MonoBehaviour
     public static void KillNPC(NPC_Controller npc)
     {
         NPC_List.Remove(npc);
+        LevelManager.patrolPathNPCCount[npc.patrolPath]--;
         Destroy(npc.gameObject);
     }
 
@@ -55,9 +56,9 @@ public class NPCManager : MonoBehaviour
             return NPC_List[Random.Range(0, NPC_List.Count)];
     }
 
-    public static NPC_Controller GenerateNPC(PatrolPath patrolPath, NPC npc = null, Weapon weapon = null)
+    public static NPC_Controller GenerateNPC(PatrolPath patrolPath, int index, NPC npc = null, Weapon weapon = null)
     {
-        NPC_Controller newNPC = Instantiate(instance.NPCPrefab, patrolPath.spawnPoint.position, Quaternion.identity).GetComponent<NPC_Controller>();
+        NPC_Controller newNPC = Instantiate(instance.NPCPrefab, patrolPath.patrolpoints[index].position, Quaternion.identity).GetComponent<NPC_Controller>();
 
         newNPC.AssignComponents();
         newNPC.AssignPatrolPath(patrolPath);
@@ -79,6 +80,35 @@ public class NPCManager : MonoBehaviour
         newNPC.AssignComponents();
 
         NPC_List.Add(newNPC);
+        LevelManager.patrolPathNPCCount[patrolPath]++;
+        return newNPC;
+    }
+
+    public static NPC_Controller GenerateNPC(PatrolPath patrolPath, NPC npc = null, Weapon weapon = null)
+    {
+        NPC_Controller newNPC = Instantiate(instance.NPCPrefab, patrolPath.GetRandomPoint().position, Quaternion.identity).GetComponent<NPC_Controller>();
+
+        newNPC.AssignComponents();
+        newNPC.AssignPatrolPath(patrolPath);
+
+        //Assign NPC
+        if (npc != null)
+            newNPC.npc = npc;
+        else
+            newNPC.npc = instance.NPCTemplates[Random.Range(0, instance.NPCTemplates.Length)];
+
+        //Assign Weapon
+        if (weapon != null && npc.hasWeapon)
+            newNPC.weaponHandler.weapon = weapon;
+        else if (newNPC.npc.hasWeapon)
+            newNPC.weaponHandler.weapon = instance.WeaponTemplates[Random.Range(0, instance.WeaponTemplates.Length)];
+        else
+            newNPC.weaponHandler.weapon = null;
+
+        newNPC.AssignComponents();
+
+        NPC_List.Add(newNPC);
+        LevelManager.patrolPathNPCCount[patrolPath]++;
         return newNPC;
     }
 }

@@ -862,8 +862,8 @@ GameObject:
   m_Component:
   - component: {fileID: 243168619}
   m_Layer: 0
-  m_Name: Spawn Point
-  m_TagString: Spawn Point
+  m_Name: Patrol Point
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1225,8 +1225,8 @@ GameObject:
   m_Component:
   - component: {fileID: 367807255}
   m_Layer: 0
-  m_Name: Spawn Point
-  m_TagString: Spawn Point
+  m_Name: Patrol Point
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3017,8 +3017,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1054586503}
   m_Layer: 0
-  m_Name: Spawn Point (1)
-  m_TagString: Spawn Point
+  m_Name: Patrol Point
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3389,8 +3389,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1259062345}
   m_Layer: 0
-  m_Name: Spawn Point
-  m_TagString: Spawn Point
+  m_Name: Patrol Point
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3419,8 +3419,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1264206769}
   m_Layer: 0
-  m_Name: Spawn Point (1)
-  m_TagString: Spawn Point
+  m_Name: Patrol Point
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3509,8 +3509,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1287158641}
   m_Layer: 0
-  m_Name: Spawn Point
-  m_TagString: Spawn Point
+  m_Name: Patrol Point
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

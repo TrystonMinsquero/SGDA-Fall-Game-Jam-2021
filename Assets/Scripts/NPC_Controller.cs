@@ -34,7 +34,6 @@ public class NPC_Controller : MonoBehaviour
         anim = GetComponent<Animator>();
         pathfinder.maxSpeed = movementSpeed;
         weaponHandler.Set();
-        SwitchVisuals();
     }
     public void SwitchVisuals()
     {

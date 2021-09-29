@@ -87,7 +87,7 @@ public class LevelManager : MonoBehaviour
         foreach(KeyValuePair<PatrolPath, int> pair in myList)
         {
             patrolPathsSorted[i] = pair.Key;
-            Debug.Log("patrolPathsSorted[" + i + "] = " + pair.Key);
+            //Debug.Log("patrolPathsSorted[" + i + "] = " + pair.Key);
             i++;
         }
         

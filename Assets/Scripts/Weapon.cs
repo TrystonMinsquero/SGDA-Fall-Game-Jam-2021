@@ -46,7 +46,7 @@ public class Weapon : ScriptableObject
                 pro.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
                 projectiles.Add(pro);
 
-                SFXManager.Play("GunShot");
+                SFXManager.Play("Gun");
 
                 break;
 
@@ -75,21 +75,29 @@ public class Weapon : ScriptableObject
                 projectiles.Add(pro2);
                 projectiles.Add(pro3);
 
+                SFXManager.Play("Shotgun");
+
                 break;
 
             case WeaponType.RPG:
                 pro.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
                 projectiles.Add(pro);
+
+                SFXManager.Play("Gun");
                 break;
 
             case WeaponType.LONG:
                 pro.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
                 projectiles.Add(pro);
+
+                SFXManager.Play("Sniper");
                 break;
 
             case WeaponType.GRENADE:
                 pro.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
                 projectiles.Add(pro);
+
+                //SFXManager.Play("Gun");
                 break;
         }
 

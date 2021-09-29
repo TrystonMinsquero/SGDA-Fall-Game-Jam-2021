@@ -62,7 +62,6 @@ public class NPCManager : MonoBehaviour
 
         newNPC.AssignComponents();
         newNPC.AssignPatrolPath(patrolPath);
-
         //Assign NPC
         if (npc != null)
             newNPC.npc = npc;
@@ -78,7 +77,7 @@ public class NPCManager : MonoBehaviour
             newNPC.weaponHandler.weapon = null;
 
         newNPC.AssignComponents();
-
+        newNPC.SwitchVisuals();
         NPC_List.Add(newNPC);
         LevelManager.patrolPathNPCCount[patrolPath]++;
         return newNPC;
@@ -106,7 +105,7 @@ public class NPCManager : MonoBehaviour
             newNPC.weaponHandler.weapon = null;
 
         newNPC.AssignComponents();
-
+        newNPC.SwitchVisuals();
         NPC_List.Add(newNPC);
         LevelManager.patrolPathNPCCount[patrolPath]++;
         return newNPC;

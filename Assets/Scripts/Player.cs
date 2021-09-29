@@ -111,6 +111,7 @@ public class Player : MonoBehaviour
         if (dashing || charging && !charged)
             return;
         //Debug.Log("Dash");
+        SFXManager.Play("Dash");
         StartCoroutine(ChargeDash(dashChargeTime));
 
     }
@@ -128,7 +129,6 @@ public class Player : MonoBehaviour
         rb.drag = 0;
         charged = false;
         dashing = true;
-        SFXManager.Play("Dash");
         Vector3 startPos = transform.position;
         //Debug.Log(lookDirection);
         rb.velocity = lookDirection * dashSpeed; //initial velocity added

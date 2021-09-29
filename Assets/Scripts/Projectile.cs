@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -11,7 +12,8 @@ public class Projectile : MonoBehaviour
     int damage;
 
     Rigidbody2D rb;
-    Animation explodeAnim;
+    public GameObject explosionPrefab;
+    public float explosionRadius = 1.5f;
 
     public void Set(Player player, Vector3 startPos, float speed, float range, Vector2 direction, int damage = 0)
     {
@@ -24,7 +26,6 @@ public class Projectile : MonoBehaviour
 
 
         rb = GetComponent<Rigidbody2D>();
-        explodeAnim = GetComponent<Animation>();
 
         transform.position = startPos;
 
@@ -136,7 +137,6 @@ public class Projectile : MonoBehaviour
                 break;
 
             case WeaponType.RPG:
-                float explosionRadius = 1.5f;
                 if (collision.gameObject.CompareTag("Projectile"))
                     return;
                 if (collision.gameObject.CompareTag("Player"))
@@ -208,8 +208,10 @@ public class Projectile : MonoBehaviour
 
     public void Explode(float explosionRadius)
     {
-        if (explodeAnim != null)
-            explodeAnim.Play();
+        if (explosionPrefab != null)
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity).transform.localScale = Vector3.one * explosionRadius;
+        }
         Collider2D[] objectsInRange = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach (Collider2D collision in objectsInRange)
         {
@@ -225,7 +227,9 @@ public class Projectile : MonoBehaviour
         Delete();
     }
 
-        public void AreaDamageEnemies(Vector3 location, float radius, float damage)
+    
+
+    public void AreaDamageEnemies(Vector3 location, float radius, float damage)
     {
         Collider2D[] objectsInRange = Physics2D.OverlapCircleAll(location, radius);
 

@@ -60,7 +60,8 @@ public class LobbyManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Road Crossing");
+        if(PlayerManager.playerCount > 0)
+            SceneManager.LoadScene("Road Crossing");
     }
 
     public void Exit()

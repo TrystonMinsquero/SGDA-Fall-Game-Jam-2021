@@ -23,8 +23,12 @@ public class LobbyManager : MonoBehaviour
         else
             Destroy(this.gameObject);
         UpdateJoinBoxes();
+        PlayerManager.OnSceneChange(true);
+
         canJoin = true;
         howToPlayButton.Select();
+        MusicManager.StartMusic(true);
+        ScoreKeeper.OnSceneChange();
     }
 
     private void Update()

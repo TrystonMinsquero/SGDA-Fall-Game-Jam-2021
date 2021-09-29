@@ -25,7 +25,15 @@ public class ScoreKeeper : MonoBehaviour
         ResetScores();
     }
 
+    public static Score GetScore(int playerIndex)
+    {
+        foreach (Score score in scores)
+            if (playerIndex == score.playerIndex)
+                return score;
 
+        Debug.LogWarning("player index not in scores!");
+        return new Score();
+    }
 
     public static void ReigisterDeath(int killer, int victim)
     {
@@ -70,5 +78,6 @@ public struct Score
     public uint timesDied;
     public uint npcKills;
     public uint takeOvers;
+
 
 }

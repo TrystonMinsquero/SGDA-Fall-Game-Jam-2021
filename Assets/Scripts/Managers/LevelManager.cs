@@ -15,9 +15,10 @@ public class LevelManager : MonoBehaviour
     public int _minPopulation;
     public float _spawnDelay;
     public Text timeText;
+    public Leaderboard leaderboard;
 
 
-    public static float gameTime = 5 * 60;
+    public static float gameTime = 20;
     private static int maxPopulation;
     private static int minPopulation;
     private static float spawnDelay;
@@ -182,9 +183,13 @@ public class LevelManager : MonoBehaviour
         playersToSpawn.Enqueue(player);
     }
 
-    public static void EndGame()
+    public void EndGame()
     {
-        Debug.Log("End Game");
+        timeText.text = "It's Over!";
+        foreach (PlayerInput player in PlayerManager.players)
+            if(player != null)
+                player.GetComponent<PlayerUI>().Disable();
+        leaderboard.Display();
     }
 
     // Update is called once per frame

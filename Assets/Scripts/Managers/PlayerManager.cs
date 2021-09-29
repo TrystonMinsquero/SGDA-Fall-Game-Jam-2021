@@ -35,7 +35,6 @@ public class PlayerManager : MonoBehaviour
         playerInputManager = GetComponent<PlayerInputManager>();
         inLobby = LobbyManager.instance != null;
         //Debug.Log("inLobby = " + inLobby);
-        OnSceneChange(true);
     }
 
     public static int GetIndex(PlayerInput _player)

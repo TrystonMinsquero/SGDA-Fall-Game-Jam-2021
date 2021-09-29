@@ -191,12 +191,6 @@ public class Projectile : MonoBehaviour
 
             //    break;
 
-            case WeaponType.GRENADE:
-                direction *= -1;
-                break;
-
-            default:
-                break;
 
 
 

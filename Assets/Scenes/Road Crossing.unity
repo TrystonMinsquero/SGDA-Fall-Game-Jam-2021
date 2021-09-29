@@ -3908,6 +3908,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04567c7e82f4351439f159b8d89af909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxPopulation: 18
+  _minPopulation: 8
+  _spawnDelay: 4
   patrolPathsObj:
   - {fileID: 522611110}
   - {fileID: 355186731}
@@ -3915,7 +3918,6 @@ MonoBehaviour:
   - {fileID: 1359902691}
   - {fileID: 467527767}
   - {fileID: 752052202}
-  npcManager: {fileID: 740039447}
 --- !u!4 &1450646540
 Transform:
   m_ObjectHideFlags: 0

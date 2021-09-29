@@ -32,7 +32,7 @@ public class NPCManager : MonoBehaviour
         }
     }
 
-    public static void SpawnPlayerOverNPC(PlayerUI playerUI, NPC_Controller npc)
+    public static void SpawnPlayerFromNPC(PlayerUI playerUI, NPC_Controller npc)
     {
         Debug.Log("Creating new player");
         playerUI.Enable();

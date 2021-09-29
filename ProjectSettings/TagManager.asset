@@ -10,6 +10,7 @@ TagManager:
   - Patrol Point
   - Spawn Point
   - Wall
+  - Camera
   layers:
   - Default
   - TransparentFX

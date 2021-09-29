@@ -3661,8 +3661,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: GunShot
+  - name: Gun
     clip: {fileID: 8300000, guid: 20d791a357aaaec4aab7ac34d58824f7, type: 3}
+    volume: 0.17
+    pitch: 1
+    source: {fileID: 0}
+  - name: Shotgun
+    clip: {fileID: 8300000, guid: f98cd814eaf0d1c44881d1ba99793657, type: 3}
+    volume: 0.17
+    pitch: 1
+    source: {fileID: 0}
+  - name: Sniper
+    clip: {fileID: 8300000, guid: d3df2a98e0c741f40a4a84b9c0c22f58, type: 3}
+    volume: 0.17
+    pitch: 1
+    source: {fileID: 0}
+  - name: Hit
+    clip: {fileID: 8300000, guid: ba12745808b934144906c83460aca731, type: 3}
+    volume: 0.17
+    pitch: 1
+    source: {fileID: 0}
+  - name: Grenade
+    clip: {fileID: 8300000, guid: 31aa366ab345b7f43a69193df386db47, type: 3}
     volume: 0.17
     pitch: 1
     source: {fileID: 0}

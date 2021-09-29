@@ -61,7 +61,7 @@ MonoBehaviour:
   dashSpeed: 30
   healthBar: {fileID: 4175796600016887350}
   sr: {fileID: 2377044252534902315}
-  weapon: {fileID: 6204781513941874212}
+  weaponHandler: {fileID: 0}
   lookDirection: {x: 0, y: 0}
   timeRemaing: 0
   movementSpeed: 8
@@ -249,7 +249,7 @@ MonoBehaviour:
     m_ActionName: Gameplay/Spawn[/Keyboard/space,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonWest]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 4272bd26-1fc0-44cb-9f57-f3f10abb74e0
+  m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 7009851991797492387}
 --- !u!212 &2377044252534902315
@@ -360,7 +360,7 @@ Animator:
   m_GameObject: {fileID: 2377044252534902310}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c6b21e607e66c7147bb4801e5fc00686, type: 2}
+  m_Controller: {fileID: 9100000, guid: 855bdf081f74ece418486fabaf63830d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -399,6 +399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6055638216936398465}
   - component: {fileID: 7009851991797492387}
+  - component: {fileID: 6991044122153869958}
   m_Layer: 7
   m_Name: Camera
   m_TagString: Untagged
@@ -463,6 +464,25 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!95 &6991044122153869958
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8226775207976798983}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &3626997184832226686
 PrefabInstance:
   m_ObjectHideFlags: 0

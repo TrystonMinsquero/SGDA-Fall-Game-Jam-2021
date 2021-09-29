@@ -353,28 +353,6 @@
                 },
                 {
                     "name": "",
-                    "id": "27ca41a2-65bc-4cfe-ada7-f39cf78fe3d3",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Submit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "19016069-f594-4412-a886-8617954916a0",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Submit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "f04af6cb-523f-43e5-a1d1-7f624a6d2e92",
                     "path": "<Keyboard>/enter",
                     "interactions": "",

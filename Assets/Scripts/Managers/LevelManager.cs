@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
     public static Player[] players;
 
+    public float _gameTimeInSec = 5 * 60;
     public int _maxPopulation;
     public int _minPopulation;
     public float _spawnDelay;
@@ -18,7 +19,7 @@ public class LevelManager : MonoBehaviour
     public Leaderboard leaderboard;
 
 
-    public static float gameTime = 20;
+    public static float gameTime;
     private static int maxPopulation;
     private static int minPopulation;
     private static float spawnDelay;
@@ -43,6 +44,7 @@ public class LevelManager : MonoBehaviour
         else
             instance = this;
 
+        gameTime = _gameTimeInSec;
         maxPopulation = _maxPopulation;
         minPopulation = _minPopulation;
         spawnDelay = _spawnDelay;
@@ -72,6 +74,7 @@ public class LevelManager : MonoBehaviour
             SpawnNPC(patrolPath);
         PlayerManager.OnSceneChange(false);
         ScoreKeeper.OnSceneChange();
+        MusicManager.StartMusic(false);
 
         foreach (PlayerInput playerInput in PlayerManager.players)
             if(playerInput)

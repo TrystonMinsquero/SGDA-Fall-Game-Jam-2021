@@ -26,7 +26,6 @@ public class MusicManager : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
 
-        DontDestroyOnLoad(this.gameObject);
     }
 
     public static void StartMusic(bool inLobby)

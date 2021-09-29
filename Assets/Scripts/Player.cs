@@ -134,8 +134,13 @@ public class Player : MonoBehaviour
         float timeStarted = Time.time;
         while((transform.position - startPos).magnitude < dashDistance && Time.time - timeStarted < maxDashTime)
             yield return null;
+        EndDash();
         //Debug.Log("Actual Time: " + (Time.time - timeStarted));
         //Debug.Log("Estimated Time: " + maxDashTime);
+    }
+
+    private void EndDash()
+    {
         rb.velocity = Vector2.zero;
         dashing = false;
         movementSpeed = movementSpeedInit;
@@ -146,6 +151,7 @@ public class Player : MonoBehaviour
         NPC npc = npcc.npc;
         Debug.Log("Take Over " + npc.name);
         SwitchVisuals(npcc);
+        EndDash();
         deathTime = Time.time + deathTime_MAX;
         npcc.Die();
 
@@ -160,6 +166,7 @@ public class Player : MonoBehaviour
             return;
         }
         SwitchVisuals(player);
+        EndDash();
         deathTime = Time.time + deathTime_MAX;
         player.Die();
 
@@ -222,6 +229,8 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Die");
         GetComponent<PlayerUI>().Disable(true);
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0;
         Instantiate(deathEffect, transform.position, Quaternion.identity).transform.localScale = transform.localScale;
         StartCoroutine(WaitToRespawn(2.2f));
     }

@@ -128,7 +128,7 @@ public class Player : MonoBehaviour
         rb.drag = 0;
         charged = false;
         dashing = true;
-
+        SFXManager.Play("Dash");
         Vector3 startPos = transform.position;
         //Debug.Log(lookDirection);
         rb.velocity = lookDirection * dashSpeed; //initial velocity added

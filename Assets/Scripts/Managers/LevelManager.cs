@@ -242,7 +242,7 @@ public class LevelManager : MonoBehaviour
                 sec += "0";
             sec += (int)(time % 60);
 
-            min = "" + (int)(time) / 60;
+            min = "0" + (int)(time) / 60;
             return min + ":" + sec;
         }
 

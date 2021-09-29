@@ -45,6 +45,9 @@ public class Weapon : ScriptableObject
             case WeaponType.STRAIGHT:
                 pro.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
                 projectiles.Add(pro);
+
+                FindObjectOfType<SFXManager>().Play("Gun");
+
                 break;
 
 

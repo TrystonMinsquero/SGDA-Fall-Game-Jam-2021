@@ -1,9 +1,7 @@
-using Pathfinding;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
-using System.Collections;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour

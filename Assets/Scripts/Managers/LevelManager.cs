@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
+using System.Collections;
 
 public class LevelManager : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class LevelManager : MonoBehaviour
     public GameObject[] patrolPathsObj;
 
     private static bool needToSpawn;
-    private static bool canSpawnPlayer;
+    private static float canSpawnPlayerTime;
     private static Queue<Player> playersToSpawn;
     private static PatrolPath[] patrolPaths;
     private static Dictionary<PatrolPath, int> patrolPathNPCCount;
@@ -37,6 +38,8 @@ public class LevelManager : MonoBehaviour
         maxPopulation = _maxPopulation;
         minPopulation = _minPopulation;
         spawnDelay = _spawnDelay;
+        canSpawnPlayerTime = Time.time;
+        needToSpawn = true;
 
         playersToSpawn = new Queue<Player>();
         patrolPathNPCCount = new Dictionary<PatrolPath, int>();
@@ -63,42 +66,40 @@ public class LevelManager : MonoBehaviour
         
     }
 
-    /*
-//returns all paths in order of number of npc's on path
-private static PatrolPath[] smallestNPCCountPaths()
-{
-    PatrolPath[] patrolPathsSorted = new PatrolPath[patrolPathNPCCount.Keys.Count];
-    List<KeyValuePair<PatrolPath, int>> myList = patrolPathNPCCount.ToList();
-
-    myList.Sort(
-        delegate (KeyValuePair<PatrolPath, int> pair1,
-        KeyValuePair<PatrolPath, int> pair2)
-        {
-            return pair1.Value.CompareTo(pair2.Value);
-        }
-    );
-    foreach(KeyValuePair<PatrolPath, int> pair in myList)
-        patrolPathsSorted
-    foreach (PatrolPath patrolPath in patrolPathNPCCount.Keys)
+    
+    //returns all paths in order of number of npc's on path
+    private static PatrolPath[] smallestNPCCountPaths()
     {
-        for(int i = 0; i < patrolPathsSorted.Length; i++)
-            if(patrolPathsSorted[i] == new PatrolPath())
+        PatrolPath[] patrolPathsSorted = new PatrolPath[patrolPathNPCCount.Keys.Count];
+        List<KeyValuePair<PatrolPath, int>> myList = patrolPathNPCCount.ToList();
+
+        myList.Sort(
+            delegate (KeyValuePair<PatrolPath, int> pair1,
+            KeyValuePair<PatrolPath, int> pair2)
+            {
+                return pair1.Value.CompareTo(pair2.Value);
+            }
+        );
+            int i = 0;
+        foreach(KeyValuePair<PatrolPath, int> pair in myList)
+            {
+                patrolPathsSorted[i] = pair.Key;
+            }
+
+        return patrolPathsSorted;
     }
-        patrolPathsSorted.Add(patrolPathNPCCount[patrolPath], patro)
+      
 
-    return smallestPatrolPath;
-}
-      */
-
-    public static void SpawnNPC()
+    public static bool SpawnNPC()
     {
-        foreach (PatrolPath patrolPath in patrolPaths)
+        foreach (PatrolPath patrolPath in smallestNPCCountPaths())
             if (SafeToSpawn(patrolPath.spawnPoint.transform.position, 4))
             {
-                NPCManager.GenerateNPC(patrolPaths[Random.Range(0,patrolPaths.Length)]);
-                return;
+                NPCManager.GenerateNPC(patrolPath);
+                canSpawnPlayerTime = Time.time + spawnDelay;
+                return true;
             }
-        return;
+        return false;
     }
     
     public static bool SpawnPlayer(Player player)
@@ -135,6 +136,11 @@ private static PatrolPath[] smallestNPCCountPaths()
             if (SpawnPlayer(playersToSpawn.Peek()))
                 playersToSpawn.Dequeue();
         }
+
+        if (NPCManager.NPC_List.Count < minPopulation)
+            SpawnNPC();
+        else if (NPCManager.NPC_List.Count < maxPopulation && Time.time < canSpawnPlayerTime)
+            SpawnNPC();
 
     }
 }

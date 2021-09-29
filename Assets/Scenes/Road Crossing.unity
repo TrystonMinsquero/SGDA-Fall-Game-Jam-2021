@@ -3909,7 +3909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxPopulation: 18
-  _minPopulation: 8
+  _minPopulation: 6
   _spawnDelay: 4
   patrolPathsObj:
   - {fileID: 522611110}

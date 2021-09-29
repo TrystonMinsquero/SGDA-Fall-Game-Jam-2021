@@ -98,22 +98,44 @@ public class LevelManager : MonoBehaviour
     public static bool SpawnNPC()
     {
         foreach (PatrolPath patrolPath in smallestNPCCountPaths())
-            if (SafeToSpawn(patrolPath.GetRandomPoint().transform.position, 4))//fix
+        {
+            int i = 0;
+            foreach (Transform patrolPoint in patrolPath.patrolpoints)
             {
-                NPCManager.GenerateNPC(patrolPath);
-                Debug.Log("Spawned NPC");
-                canSpawnPlayerTime = Time.time + spawnDelay;
-                return true;
+                if (SafeToSpawn(patrolPoint.position, 4))
+                {
+                    NPCManager.GenerateNPC(patrolPath, i);
+                    Debug.Log("Spawned NPC");
+                    canSpawnPlayerTime = Time.time + spawnDelay;
+                    return true;
+                }
+                i++;
             }
+        }
         return false;
     }
 
 
-    public static bool SpawnNPC(PatrolPath patrolPath)
+    public static bool SpawnNPC(PatrolPath patrolPath, int index = -1)
     {
-        if (SafeToSpawn(patrolPath.GetRandomPoint().transform.position, 4))//fix
+        if(index < 0)
         {
-            NPCManager.GenerateNPC(patrolPath);
+            int i = 0;
+            foreach (Transform patrolPoint in patrolPath.patrolpoints)
+            {
+                if (SafeToSpawn(patrolPoint.position, 4))
+                {
+                    NPCManager.GenerateNPC(patrolPath, i);
+                    Debug.Log("Spawned NPC");
+                    canSpawnPlayerTime = Time.time + spawnDelay;
+                    return true;
+                }
+                i++;
+            }
+        }
+        else if (SafeToSpawn(patrolPath.patrolpoints[index].position, 4))
+        {
+            NPCManager.GenerateNPC(patrolPath, index);
             Debug.Log("Spawned NPC");
             canSpawnPlayerTime = Time.time + spawnDelay;
             return true;
@@ -158,7 +180,7 @@ public class LevelManager : MonoBehaviour
 
         if (NPCManager.NPC_List.Count < minPopulation)
             SpawnNPC();
-        else if (NPCManager.NPC_List.Count < maxPopulation && Time.time < canSpawnPlayerTime)
+        else if (NPCManager.NPC_List.Count < maxPopulation && Time.time > canSpawnPlayerTime)
             SpawnNPC();
 
     }

@@ -219,7 +219,15 @@ public class Player : MonoBehaviour
     private void Die()
     {
         Debug.Log("Die");
-        Destroy(this.gameObject);
+        GetComponent<PlayerUI>().Disable();
+        StartCoroutine(WaitToRespawn(3));
+    }
+
+    private IEnumerator WaitToRespawn(float time)
+    {
+        yield return new WaitForSeconds(time);
+        LevelManager.QueuePlayerToSpawn(this);
+
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

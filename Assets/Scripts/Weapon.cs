@@ -90,13 +90,6 @@ public class Weapon : ScriptableObject
 
                 SFXManager.Play("Sniper");
                 break;
-
-            case WeaponType.GRENADE:
-                pro.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
-                projectiles.Add(pro);
-
-                //SFXManager.Play("Gun");
-                break;
         }
 
         return true;
@@ -115,6 +108,5 @@ public enum WeaponType
     STRAIGHT,
     SHOTGUN,
     RPG,
-    GRENADE,
     LONG
 }

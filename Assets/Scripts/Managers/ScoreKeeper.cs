@@ -14,6 +14,9 @@ public class ScoreKeeper : MonoBehaviour
             Destroy(gameObject);
         else
             instance = this;
+
+        OnSceneChange();
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public static void OnSceneChange()

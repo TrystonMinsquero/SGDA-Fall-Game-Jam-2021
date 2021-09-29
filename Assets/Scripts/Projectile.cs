@@ -42,10 +42,12 @@ public class Projectile : MonoBehaviour
         //Destroy if too far
         Vector2 distance = startPos - transform.position;
         if (distance.magnitude >= range)
+        {
             if (player.weaponHandler.weapon.weaponType == WeaponType.RPG)
-                Explode(1.5f);
+                Explode(explosionRadius);
             else
                 Delete();
+        }
 
 
         rb.velocity = direction * speed;
@@ -87,7 +89,7 @@ public class Projectile : MonoBehaviour
 
 
 
-            case WeaponType.DUAL:
+            case WeaponType.SHOTGUN:
                 if (collision.gameObject.CompareTag("Projectile"))
                     return;
                 if (collision.gameObject.CompareTag("Player"))

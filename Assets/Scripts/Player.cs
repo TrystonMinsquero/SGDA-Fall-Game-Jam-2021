@@ -248,7 +248,7 @@ public class Player : MonoBehaviour
 
     public void SwitchVisuals(NPC_Controller npcc)
     {
-        sr.sprite = npcc.npc.image;
+        //sr.sprite = npcc.npc.image;
         anim.runtimeAnimatorController = npcc.npc.aoc;
         weaponHandler.SwitchWeapons(npcc.weaponHandler);
 

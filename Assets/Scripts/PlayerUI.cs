@@ -31,18 +31,17 @@ public class PlayerUI : MonoBehaviour
         player.weaponHandler.weaponSR.enabled = true;
         player.weaponHandler.flashSR.enabled = true;
         GetComponent<PlayerController>().EnableControls(true);
-        this.enabled = false;
     }
     public void Disable()
     {
+        Player player = GetComponent<Player>();
+        player.AssignComponents();
+        player.sr.enabled = false;
+        player.weaponHandler.weaponSR.enabled = false;
+        player.weaponHandler.flashSR.enabled = false;
         GetComponent<PlayerController>().EnableControls(false);
         foreach (Behaviour component in behaviours)
             component.enabled = false;
-        GetComponent<Player>().sr.enabled = false;
-        GetComponent<Player>().weaponHandler.weaponSR.enabled = false;
-        GetComponent<Player>().weaponHandler.flashSR.enabled = false;
-
-        this.enabled = true;
     }
 
     //UI Actions

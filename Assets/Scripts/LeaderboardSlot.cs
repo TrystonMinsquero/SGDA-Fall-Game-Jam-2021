@@ -13,7 +13,7 @@ public class LeaderboardSlot : MonoBehaviour
 
     public void Fill(Score score)
     {
-        playerNum.text = "" + score.playerIndex;
+        playerNum.text = "" + (score.playerIndex + 1);
         kills.text = "" + score.playerKills;
         deaths.text = "" + score.timesDied;
     }

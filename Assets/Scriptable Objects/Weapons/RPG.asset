@@ -17,7 +17,7 @@ MonoBehaviour:
   weaponAoc: {fileID: 22100000, guid: 420e9710fca9ead47931f42c91696663, type: 2}
   flashSprite: {fileID: -91509202413294493, guid: 795ec4ba2fcc1fe44b8bea974f6a40cf, type: 3}
   flashAoc: {fileID: 22100000, guid: dddfb075f4d1fcc4d8464127ae336903, type: 2}
-  projectilePrefab: {fileID: 9037812320112203550, guid: f2a0cfe4b842bf84f80aafb6470cca96, type: 3}
+  projectilePrefab: {fileID: 9037812320112203550, guid: d73cdcfd473b8b64d9feb1a21fe114cc, type: 3}
   weaponType: 2
   fireDelay: 3.5
   projectileSpeed: 10

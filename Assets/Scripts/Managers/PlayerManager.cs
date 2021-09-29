@@ -38,6 +38,16 @@ public class PlayerManager : MonoBehaviour
         OnSceneChange(true);
     }
 
+    public static int GetIndex(PlayerInput _player)
+    {
+        if (playerCount <= 0 || _player == null)
+            return -1;
+        for(int i = 0; i < players.Length; i++)
+            if (players[i] == _player)
+                return i;
+        return -1;
+    }
+
     private void Update()
     {
         _players = players;

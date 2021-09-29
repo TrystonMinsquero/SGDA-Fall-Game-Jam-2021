@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Projectile : MonoBehaviour
 {
@@ -71,7 +72,7 @@ public class Projectile : MonoBehaviour
                 {
                     if (collision.GetComponent<Player>() != player)
                     {
-                        collision.GetComponent<Player>().TakeDamage(damage);
+                        DamagePlayer(collision.GetComponent<Player>());
                         Delete();
                         
                     }
@@ -96,7 +97,7 @@ public class Projectile : MonoBehaviour
                 {
                     if (collision.GetComponent<Player>() != player)
                     {
-                        collision.GetComponent<Player>().TakeDamage(damage);
+                        DamagePlayer(collision.GetComponent<Player>());
                         PassThroughWall(); //WallBang
                     }
                     
@@ -126,7 +127,7 @@ public class Projectile : MonoBehaviour
                 if (collision.gameObject.CompareTag("Player"))
                 {
                     if (collision.GetComponent<Player>() != player)
-                        collision.GetComponent<Player>().TakeDamage(damage);
+                        DamagePlayer(collision.GetComponent<Player>());
                     
                 }
                 else if (collision.gameObject.CompareTag("NPC"))
@@ -202,6 +203,12 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    public void DamagePlayer(Player otherPlayer)
+    {
+        otherPlayer.MarkWhoHitLast(player.GetComponent<PlayerInput>());
+        otherPlayer.TakeDamage(damage);
+    }
+
     public void PassThroughWall()
     {
 
@@ -226,7 +233,7 @@ public class Projectile : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                collision.GetComponent<Player>().TakeDamage(damage);
+                DamagePlayer(collision.GetComponent<Player>());
             }
             else if (collision.gameObject.CompareTag("NPC"))
             {

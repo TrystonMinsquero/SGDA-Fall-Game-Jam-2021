@@ -62,6 +62,7 @@ public class LevelManager : MonoBehaviour
         foreach (PatrolPath patrolPath in patrolPaths)
             SpawnNPC(patrolPath);
         PlayerManager.OnSceneChange(false);
+        ScoreKeeper.OnSceneChange();
 
         foreach (PlayerInput playerInput in PlayerManager.players)
             if(playerInput)

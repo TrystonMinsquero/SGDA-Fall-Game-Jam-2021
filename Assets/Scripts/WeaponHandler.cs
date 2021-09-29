@@ -6,10 +6,10 @@ public class WeaponHandler : MonoBehaviour
 {
     public Weapon weapon;
 
-    private SpriteRenderer weaponSR;
-    private SpriteRenderer flashSR;
-    private Animator weaponAnim;
-    private Animator flashAnim;
+    public SpriteRenderer weaponSR;
+    public SpriteRenderer flashSR;
+    public Animator weaponAnim;
+    public Animator flashAnim;
 
     void Start()
     {
@@ -25,35 +25,60 @@ public class WeaponHandler : MonoBehaviour
         Set();
     }
 
+
     public void Set()
     {
-        weaponSR = GetComponent<SpriteRenderer>();
-        flashSR = GetComponentInChildren<SpriteRenderer>();
-        weaponAnim = GetComponent<Animator>();
-        flashAnim = GetComponentInChildren<Animator>();
+        SwitchVisuals();
+        if(weapon != null)
+            weapon.Reset();
+    }
+
+    public void SwitchVisuals()
+    {
         if (weapon == null)
         {
+            flashSR.sprite = null;
             weaponSR.sprite = null;
-            flashSR = null;
-            weaponAnim = null;
-            flashAnim = null;
+            return;
         }
-        else
-        {
-            weaponSR.color = weapon.color;
-            weaponSR.sprite = weapon.sprite;
-            flashSR.sprite = weapon.flashSprite;
-            weapon.SwitchAnimations(weaponAnim, flashAnim);
-            weapon.Reset();
-        }
+        weaponSR.color = weapon.color;
+        flashSR.sprite = weapon.sprite;
+        weaponSR.sprite = weapon.flashSprite;
+        weaponAnim.runtimeAnimatorController = weapon.weaponAoc;
+        flashAnim.runtimeAnimatorController = weapon.flashAoc;
     }
+
+    public void SwitchVisuals(Weapon newWeapon)
+    {
+        if (newWeapon == null)
+        {
+            flashSR.sprite = null;
+            weaponSR.sprite = null;
+            return;
+        }
+        weaponSR.color = newWeapon.color;
+        flashSR.sprite = newWeapon.sprite;
+        weaponSR.sprite = newWeapon.flashSprite;
+        weaponAnim.runtimeAnimatorController = newWeapon.weaponAoc;
+        flashAnim.runtimeAnimatorController = newWeapon.flashAoc;
+    }
+    
 
     public void Shoot(Player player)
     {
         if(weapon != null)
-            weapon.Shoot(player);
+        {
+            if(weapon.Shoot(player))
+                flashAnim.Play("Flash");
+        }
         //muzzle flash start
 
+    }
+
+    public void SetAnimations(string stateName)
+    {
+        if(weapon!=null)
+            weaponAnim.Play(stateName);
     }
 
     public List<Projectile> GetProjectiles()

@@ -10,15 +10,11 @@ public class Weapon : ScriptableObject
     [Header("Visual")]
     public Color color = Color.white;
     public Sprite sprite;
-    public AnimationClip idle;
-    public AnimationClip dash;
-    public AnimationClip walk;
-    public AnimationClip left;
-    public AnimationClip right;
+    public AnimatorOverrideController weaponAoc;
 
     [Header("Muzzle Flash")]
     public Sprite flashSprite;
-    public AnimationClip flash;
+    public AnimatorOverrideController flashAoc;
 
     [Header("Projectile Details")]
     public GameObject projectilePrefab;
@@ -36,10 +32,10 @@ public class Weapon : ScriptableObject
     private float nextFireTime;
 
 
-    public void Shoot(Player player)
+    public bool Shoot(Player player)
     {
         if (Time.time < nextFireTime)
-            return;
+            return false;
         nextFireTime = Time.time + fireDelay;
         Projectile pro = GameObject.Instantiate(projectilePrefab).GetComponent<Projectile>();
 
@@ -93,6 +89,8 @@ public class Weapon : ScriptableObject
                 projectiles.Add(pro);
                 break;
         }
+
+        return true;
     }
 
     public void Reset()
@@ -100,18 +98,6 @@ public class Weapon : ScriptableObject
         nextFireTime = 0;
     }
 
-    public void SwitchAnimations(Animator gunAnim, Animator flashAnim)
-    {
-        AnimatorOverrideController gunAoc = new AnimatorOverrideController(gunAnim.runtimeAnimatorController);
-        gunAoc["Idle"] = idle;
-        gunAoc["Walk"] = walk;
-        gunAoc["Dash"] = dash;
-        gunAoc["Left"] = left;
-        gunAoc["Right"] = right;
-
-        AnimatorOverrideController flashAoc = new AnimatorOverrideController(flashAnim.runtimeAnimatorController);
-        flashAoc["Shoot"] = flash;
-    }
 
 }
 

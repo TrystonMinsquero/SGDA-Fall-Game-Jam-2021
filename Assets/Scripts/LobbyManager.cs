@@ -1,14 +1,19 @@
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviour
 {
     public static LobbyManager instance;
 
+    public static bool canJoin;
     public Canvas lobby;
     public Canvas howToPlay;
-    public PlayerManager playerManager;
+    public Button startButton;
+    public Button howToPlayButton;
+    public Button gotItButton;
     public JoinBox[] joinBoxes;
 
     private void Awake()
@@ -17,6 +22,13 @@ public class LobbyManager : MonoBehaviour
             instance = this;
         else
             Destroy(this.gameObject);
+        UpdateJoinBoxes();
+        canJoin = true;
+        howToPlayButton.Select();
+    }
+
+    private void Update()
+    {
         UpdateJoinBoxes();
     }
 
@@ -33,11 +45,15 @@ public class LobbyManager : MonoBehaviour
 
     public void SwitchToHTP()
     {
+        canJoin = false;
         howToPlay.enabled = true;
         lobby.enabled = false;
+        gotItButton.Select();
     }
     public void SwitchToLobby()
     {
+        startButton.Select();
+        canJoin = true;
         howToPlay.enabled = false;
         lobby.enabled = true;
     }

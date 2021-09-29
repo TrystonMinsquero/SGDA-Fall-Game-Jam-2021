@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+
     Player player;
     Vector3 startPos;
     float speed;
@@ -10,8 +11,7 @@ public class Projectile : MonoBehaviour
     int damage;
 
     Rigidbody2D rb;
-
-    public GameObject explosion;
+    Animation explodeAnim;
 
     public void Set(Player player, Vector3 startPos, float speed, float range, Vector2 direction, int damage = 0)
     {
@@ -24,6 +24,8 @@ public class Projectile : MonoBehaviour
 
 
         rb = GetComponent<Rigidbody2D>();
+        explodeAnim = GetComponent<Animation>();
+
         transform.position = startPos;
 
         rb.velocity = direction * speed;
@@ -39,7 +41,10 @@ public class Projectile : MonoBehaviour
         //Destroy if too far
         Vector2 distance = startPos - transform.position;
         if (distance.magnitude >= range)
-            Delete();
+            if (player.weaponHandler.weapon.weaponType == WeaponType.RPG)
+                Explode(1.5f);
+            else
+                Delete();
 
 
         rb.velocity = direction * speed;
@@ -54,7 +59,7 @@ public class Projectile : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        switch (player.weapon.weapon.weaponType)
+        switch (player.weaponHandler.weapon.weaponType)
         {
             case WeaponType.STRAIGHT:
                 if (collision.gameObject.CompareTag("Projectile"))
@@ -62,11 +67,14 @@ public class Projectile : MonoBehaviour
                 if (collision.gameObject.CompareTag("Player"))
                 {
                     if (collision.GetComponent<Player>() != player)
+                    {
                         collision.GetComponent<Player>().TakeDamage(damage);
+                        Delete();
+                    }
                 }
                 else if (collision.gameObject.CompareTag("NPC"))
                 {
-                    Destroy(collision.gameObject);
+                    collision.GetComponent<NPC_Controller>().Die();
                     Delete();
                 }
                 else
@@ -82,15 +90,24 @@ public class Projectile : MonoBehaviour
                 if (collision.gameObject.CompareTag("Player"))
                 {
                     if (collision.GetComponent<Player>() != player)
+                    {
                         collision.GetComponent<Player>().TakeDamage(damage);
+                        PassThroughWall(); //WallBang
+                    }
                 }
                 else if (collision.gameObject.CompareTag("NPC"))
                 {
-                    Destroy(collision.gameObject);
+                    collision.GetComponent<NPC_Controller>().Die();
                     Delete();
                 }
+                else if (collision.gameObject.CompareTag("Wall"))
+                {
+                    PassThroughWall(); //WallBang
+                }
                 else
-                    this.damage /= 2;   // wallbang -> damage only half
+                {
+                    Delete();
+                }
                 break;
 
 
@@ -106,30 +123,29 @@ public class Projectile : MonoBehaviour
                 }
                 else if (collision.gameObject.CompareTag("NPC"))
                 {
-                    Destroy(collision.gameObject);
+                    collision.GetComponent<NPC_Controller>().Die();
+                }
+                else if (collision.gameObject.CompareTag("Wall"))
+                {
+                    PassThroughWall(); //WallBang
                 }
                 else
-                    this.damage /= 2;
+                {
+                    Delete();
+                }
                 break;
 
             case WeaponType.RPG:
-                AreaDamageEnemies(transform.position, 1.5f, damage);
+                float explosionRadius = 1.5f;
                 if (collision.gameObject.CompareTag("Projectile"))
                     return;
                 if (collision.gameObject.CompareTag("Player"))
                 {
                     if (collision.GetComponent<Player>() != player)
-                        collision.GetComponent<Player>().TakeDamage(damage);
-                }
-                else if (collision.gameObject.CompareTag("NPC"))
-                {
-                    Destroy(collision.gameObject);
-                    Delete();
+                        Explode(explosionRadius);
                 }
                 else
-                {
-                    Delete();
-                }
+                    Explode(explosionRadius);
                     
                 break;
 
@@ -177,13 +193,39 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    public void PassThroughWall()
+    {
+
+        damage /= 2;   // wallbang -> damage only half
+        transform.localScale /= 2; //shrink by 2
+    }
+
     public void Delete()
     {
-        player.weapon.GetProjectiles().Remove(this);
+        player.weaponHandler.GetProjectiles().Remove(this);
         Destroy(this.gameObject);
     }
 
-    public void AreaDamageEnemies(Vector3 location, float radius, float damage)
+    public void Explode(float explosionRadius)
+    {
+        if (explodeAnim != null)
+            explodeAnim.Play();
+        Collider2D[] objectsInRange = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        foreach (Collider2D collision in objectsInRange)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                collision.GetComponent<Player>().TakeDamage(damage);
+            }
+            else if (collision.gameObject.CompareTag("NPC"))
+            {
+                collision.GetComponent<NPC_Controller>().Die();
+            }
+        }
+        Delete();
+    }
+
+        public void AreaDamageEnemies(Vector3 location, float radius, float damage)
     {
         Collider2D[] objectsInRange = Physics2D.OverlapCircleAll(location, radius);
 

@@ -97,6 +97,10 @@ public class LevelManager : MonoBehaviour
 
     public static bool SpawnNPC()
     {
+        /*
+        foreach (PatrolPath patrolPath in patrolPathNPCCount.Keys)
+            Debug.Log(patrolPath + " = " + patrolPathNPCCount[patrolPath]);
+        */
         foreach (PatrolPath patrolPath in smallestNPCCountPaths())
         {
             int i = 0;

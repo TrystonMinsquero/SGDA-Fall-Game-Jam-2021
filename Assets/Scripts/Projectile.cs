@@ -220,6 +220,7 @@ public class Projectile : MonoBehaviour
     {
         if (explosionPrefab != null)
         {
+            SFXManager.Play("Explosion");
             Instantiate(explosionPrefab, transform.position, Quaternion.identity).transform.localScale = Vector3.one * explosionRadius;
         }
         Collider2D[] objectsInRange = Physics2D.OverlapCircleAll(transform.position, explosionRadius);

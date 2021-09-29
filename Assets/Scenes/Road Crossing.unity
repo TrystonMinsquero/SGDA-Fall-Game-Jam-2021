@@ -420,8 +420,13 @@ MonoBehaviour:
     volume: 0.17
     pitch: 1
     source: {fileID: 0}
-  - name: Grenade
-    clip: {fileID: 8300000, guid: 31aa366ab345b7f43a69193df386db47, type: 3}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 02a4a65684068344da6dab41a1e93f8e, type: 3}
+    volume: 0.17
+    pitch: 1
+    source: {fileID: 0}
+  - name: Dash
+    clip: {fileID: 8300000, guid: 4ce77eaed5ad1e042b70c57959f7e5b7, type: 3}
     volume: 0.17
     pitch: 1
     source: {fileID: 0}

@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     public SpriteRenderer sr;
     private Animator anim;
     private Rigidbody2D rb;
-    public WeaponHandler weapon;
+    public WeaponHandler weaponHandler;
 
     [HideInInspector]
     public Vector2 lookDirection;
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
         deathTime = Time.time + deathTime_MAX;
         healthBarPos = healthBar.transform.position - transform.position;
         movementSpeed = movementSpeedInit;
-        weapon.Set();
+        weaponHandler.Set();
     }
 
     public void AssignComponents()
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
 
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        weapon = GetComponentInChildren<WeaponHandler>();
+        weaponHandler = GetComponentInChildren<WeaponHandler>();
         anim = GetComponent<Animator>();
     }
 
@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
     {
         if(!charging && !dashing)
         {
-            weapon.Shoot(this);
+            weaponHandler.Shoot(this);
         }
     }
 
@@ -203,7 +203,7 @@ public class Player : MonoBehaviour
         }
 
         anim.Play(stateName);
-        weapon.SetAnimations(stateName);
+        weaponHandler.SetAnimations(stateName);
     }
 
     public Vector2 GetVelocity() { return rb.velocity; }
@@ -242,7 +242,7 @@ public class Player : MonoBehaviour
     {
         sr.sprite = npcc.npc.image;
         anim.runtimeAnimatorController = npcc.npc.aoc;
-        weapon.SwitchWeapons(npcc.weaponHandler);
+        weaponHandler.SwitchWeapons(npcc.weaponHandler);
 
     }
 
@@ -250,6 +250,6 @@ public class Player : MonoBehaviour
     {
         sr.sprite = player.sr.sprite;
         anim.runtimeAnimatorController = new AnimatorOverrideController(player.anim.runtimeAnimatorController);
-        weapon.SwitchWeapons(player.weapon);
+        weaponHandler.SwitchWeapons(player.weaponHandler);
     }
 }

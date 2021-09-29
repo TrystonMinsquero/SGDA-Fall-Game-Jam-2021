@@ -28,8 +28,8 @@ public class PlayerUI : MonoBehaviour
         Player player = GetComponent<Player>();
         player.AssignComponents();
         player.sr.enabled = true;
-        player.weapon.weaponSR.enabled = true;
-        player.weapon.flashSR.enabled = true;
+        player.weaponHandler.weaponSR.enabled = true;
+        player.weaponHandler.flashSR.enabled = true;
         GetComponent<PlayerController>().EnableControls(true);
         this.enabled = false;
     }
@@ -39,8 +39,8 @@ public class PlayerUI : MonoBehaviour
         foreach (Behaviour component in behaviours)
             component.enabled = false;
         GetComponent<Player>().sr.enabled = false;
-        GetComponent<Player>().weapon.weaponSR.enabled = false;
-        GetComponent<Player>().weapon.flashSR.enabled = false;
+        GetComponent<Player>().weaponHandler.weaponSR.enabled = false;
+        GetComponent<Player>().weaponHandler.flashSR.enabled = false;
 
         this.enabled = true;
     }

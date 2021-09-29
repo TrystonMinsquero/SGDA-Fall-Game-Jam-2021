@@ -41,7 +41,10 @@ public class Projectile : MonoBehaviour
         //Destroy if too far
         Vector2 distance = startPos - transform.position;
         if (distance.magnitude >= range)
-            Delete();
+            if (player.weaponHandler.weapon.weaponType == WeaponType.RPG)
+                Explode(1.5f);
+            else
+                Delete();
 
 
         rb.velocity = direction * speed;
@@ -56,7 +59,7 @@ public class Projectile : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        switch (player.weapon.weapon.weaponType)
+        switch (player.weaponHandler.weapon.weaponType)
         {
             case WeaponType.STRAIGHT:
                 if (collision.gameObject.CompareTag("Projectile"))
@@ -199,7 +202,7 @@ public class Projectile : MonoBehaviour
 
     public void Delete()
     {
-        player.weapon.GetProjectiles().Remove(this);
+        player.weaponHandler.GetProjectiles().Remove(this);
         Destroy(this.gameObject);
     }
 

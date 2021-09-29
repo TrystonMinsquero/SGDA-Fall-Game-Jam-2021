@@ -59,7 +59,7 @@ public class BotController : MonoBehaviour
         Func<bool> targetInDashRange() => () => TargetInRange(player.dashDistance);
         Func<bool> targetNotInDashRange() => () => !TargetInRange(player.dashDistance);
         Func<bool> playerFound() => () => HavePlayerTarget();
-        Func<bool> targetInWeaponRange() => () => HasWeapon() && TargetInRange(player.weapon.weapon.range);
+        Func<bool> targetInWeaponRange() => () => HasWeapon() && TargetInRange(player.weaponHandler.weapon.range);
         Func<bool> playerInDashRange() => () => playerInRange(player.dashDistance);
 
         stateMachine.SetState(findNPC);
@@ -70,7 +70,7 @@ public class BotController : MonoBehaviour
     private bool HaveNPCTarget() { return target != null && target.tag == "NPC"; }
     private bool HavePlayerTarget() { return target != null && target.tag == "Player"; }
     private bool TargetInRange(float range) { return (target.position - transform.position).magnitude < range; }
-    private bool HasWeapon() { return player.weapon != null; }
+    private bool HasWeapon() { return player.weaponHandler != null; }
     private bool playerInRange(float range)
     {
         Collider2D[] collidersHit = Physics2D.OverlapCircleAll(transform.position, range);

@@ -79,7 +79,7 @@ public class NPCManager : MonoBehaviour
         newNPC.AssignComponents();
         newNPC.SwitchVisuals();
         NPC_List.Add(newNPC);
-        LevelManager.patrolPathNPCCount[patrolPath]++;
+        LevelManager.patrolPathNPCCount[patrolPath] += 1;
         return newNPC;
     }
 
@@ -107,7 +107,7 @@ public class NPCManager : MonoBehaviour
         newNPC.AssignComponents();
         newNPC.SwitchVisuals();
         NPC_List.Add(newNPC);
-        LevelManager.patrolPathNPCCount[patrolPath]++;
+        LevelManager.patrolPathNPCCount[patrolPath] += 1;
         return newNPC;
     }
 }

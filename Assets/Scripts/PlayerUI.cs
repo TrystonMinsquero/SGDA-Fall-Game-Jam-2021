@@ -19,7 +19,6 @@ public class PlayerUI : MonoBehaviour
 
     }
 
-
     public void Enable()
     {
         foreach (Behaviour component in behaviours)

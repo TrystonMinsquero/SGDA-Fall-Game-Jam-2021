@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7fc54f6dcc49dc45b71ffffb1971cdc, type: 3}
-  m_Name: Rifle
+  m_Name: Bazooka
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0.05650225, b: 0.6886792, a: 1}
-  weaponAoc: {fileID: 22100000, guid: e244091cd16051a40986a35bcf7328d1, type: 2}
-  flashAoc: {fileID: 22100000, guid: e6c299dbff60a0c4ab36dba9d7c71a99, type: 2}
-  projectilePrefab: {fileID: 9037812320112203550, guid: 7d54c4777085772429f5691c848e20fc, type: 3}
-  weaponType: 3
-  fireDelay: 1.1
+  color: {r: 0.37499213, g: 0, b: 0.3773585, a: 1}
+  weaponAoc: {fileID: 22100000, guid: 420e9710fca9ead47931f42c91696663, type: 2}
+  flashAoc: {fileID: 22100000, guid: dddfb075f4d1fcc4d8464127ae336903, type: 2}
+  projectilePrefab: {fileID: 9037812320112203550, guid: d73cdcfd473b8b64d9feb1a21fe114cc, type: 3}
+  weaponType: 2
+  fireDelay: 4
   projectileSpeed: 20
-  range: 15
-  damage: 4
+  range: 20
+  damage: 5
   projectiles: []

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
 using System.Collections;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -13,8 +14,10 @@ public class LevelManager : MonoBehaviour
     public int _maxPopulation;
     public int _minPopulation;
     public float _spawnDelay;
+    public Text timeText;
 
 
+    public static float gameTime = 5 * 60;
     private static int maxPopulation;
     private static int minPopulation;
     private static float spawnDelay;
@@ -23,6 +26,7 @@ public class LevelManager : MonoBehaviour
 
     private static bool needToSpawn;
     private static float canSpawnPlayerTime;
+    private static float gameTimeEnd;
     private static Queue<Player> playersToSpawn;
     private static PatrolPath[] patrolPaths;
     public static Dictionary<PatrolPath, int> patrolPathNPCCount;
@@ -31,7 +35,10 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         if (instance)
-            Destroy(this.gameObject);
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+        }
         else
             instance = this;
 
@@ -39,6 +46,7 @@ public class LevelManager : MonoBehaviour
         minPopulation = _minPopulation;
         spawnDelay = _spawnDelay;
         canSpawnPlayerTime = Time.time;
+        gameTimeEnd = Time.time + gameTime;
         needToSpawn = true;
 
         playersToSpawn = new Queue<Player>();
@@ -62,6 +70,7 @@ public class LevelManager : MonoBehaviour
         foreach (PatrolPath patrolPath in patrolPaths)
             SpawnNPC(patrolPath);
         PlayerManager.OnSceneChange(false);
+        ScoreKeeper.OnSceneChange();
 
         foreach (PlayerInput playerInput in PlayerManager.players)
             if(playerInput)
@@ -97,6 +106,10 @@ public class LevelManager : MonoBehaviour
 
     public static bool SpawnNPC()
     {
+        /*
+        foreach (PatrolPath patrolPath in patrolPathNPCCount.Keys)
+            Debug.Log(patrolPath + " = " + patrolPathNPCCount[patrolPath]);
+        */
         foreach (PatrolPath patrolPath in smallestNPCCountPaths())
         {
             int i = 0;
@@ -169,19 +182,70 @@ public class LevelManager : MonoBehaviour
         playersToSpawn.Enqueue(player);
     }
 
+    public static void EndGame()
+    {
+        Debug.Log("End Game");
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (playersToSpawn.Count > 0)
+        
+        if (Time.time < gameTimeEnd)
         {
-            if (SpawnPlayer(playersToSpawn.Peek()))
-                playersToSpawn.Dequeue();
+            timeText.text = "Time Left: " + formatTime(gameTimeEnd - Time.time);
+            if (playersToSpawn.Count > 0)
+            {
+                if (SpawnPlayer(playersToSpawn.Peek()))
+                    playersToSpawn.Dequeue();
+            }
+
+            if (NPCManager.NPC_List.Count < minPopulation)
+                SpawnNPC();
+            else if (NPCManager.NPC_List.Count < maxPopulation && Time.time > canSpawnPlayerTime)
+                SpawnNPC();
+        }
+        else
+        {
+            timeText.text = "Last Stand!";
+            timeText.color = Color.red;
+            if (playersToSpawn.Count + 1 >= PlayerManager.playerCount)
+            {
+                EndGame();
+            }
         }
 
-        if (NPCManager.NPC_List.Count < minPopulation)
-            SpawnNPC();
-        else if (NPCManager.NPC_List.Count < maxPopulation && Time.time > canSpawnPlayerTime)
-            SpawnNPC();
+
+
+    }
+
+    public string formatTime(float time)
+    {
+        string deci = ".";
+        string sec = "";
+        string min = "";
+        if ((int)((time - (int)time) * 100) < 10)
+            deci += "0";
+        deci += +(int)((time - (int)time) * 100);
+        if (time < 60)
+        {
+            if (time < 10)
+                sec += "0";
+            sec += (int)(time);
+            return "" + sec + deci;
+        }
+        else
+        {
+            if (time % 60 < 10)
+                sec += "0";
+            if ((int)(time % 60) == 0)
+                sec += "0";
+            sec += (int)(time % 60);
+
+            min = "0" + (int)(time) / 60;
+            return min + ":" + sec;
+        }
+
 
     }
 }

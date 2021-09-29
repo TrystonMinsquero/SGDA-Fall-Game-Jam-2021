@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Projectile : MonoBehaviour
 {
@@ -71,7 +72,7 @@ public class Projectile : MonoBehaviour
                 {
                     if (collision.GetComponent<Player>() != player)
                     {
-                        collision.GetComponent<Player>().TakeDamage(damage);
+                        DamagePlayer(collision.GetComponent<Player>());
                         Delete();
                         
                     }
@@ -96,7 +97,7 @@ public class Projectile : MonoBehaviour
                 {
                     if (collision.GetComponent<Player>() != player)
                     {
-                        collision.GetComponent<Player>().TakeDamage(damage);
+                        DamagePlayer(collision.GetComponent<Player>());
                         PassThroughWall(); //WallBang
                     }
                     
@@ -126,7 +127,7 @@ public class Projectile : MonoBehaviour
                 if (collision.gameObject.CompareTag("Player"))
                 {
                     if (collision.GetComponent<Player>() != player)
-                        collision.GetComponent<Player>().TakeDamage(damage);
+                        DamagePlayer(collision.GetComponent<Player>());
                     
                 }
                 else if (collision.gameObject.CompareTag("NPC"))
@@ -190,16 +191,16 @@ public class Projectile : MonoBehaviour
 
             //    break;
 
-            case WeaponType.GRENADE:
-                direction *= -1;
-                break;
-
-            default:
-                break;
 
 
 
         }
+    }
+
+    public void DamagePlayer(Player otherPlayer)
+    {
+        otherPlayer.MarkWhoHitLast(player.GetComponent<PlayerInput>());
+        otherPlayer.TakeDamage(damage);
     }
 
     public void PassThroughWall()
@@ -219,6 +220,7 @@ public class Projectile : MonoBehaviour
     {
         if (explosionPrefab != null)
         {
+            SFXManager.Play("Explosion");
             Instantiate(explosionPrefab, transform.position, Quaternion.identity).transform.localScale = Vector3.one * explosionRadius;
         }
         Collider2D[] objectsInRange = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
@@ -226,7 +228,7 @@ public class Projectile : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                collision.GetComponent<Player>().TakeDamage(damage);
+                DamagePlayer(collision.GetComponent<Player>());
             }
             else if (collision.gameObject.CompareTag("NPC"))
             {

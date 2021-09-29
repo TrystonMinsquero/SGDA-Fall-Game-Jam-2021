@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour
     private bool charging;
     private bool charged;
     private bool dashing;
+    private int playerWhoHitMeLastIndex = -1;
 
     private void Start()
     {
@@ -126,7 +128,7 @@ public class Player : MonoBehaviour
         rb.drag = 0;
         charged = false;
         dashing = true;
-
+        SFXManager.Play("Dash");
         Vector3 startPos = transform.position;
         //Debug.Log(lookDirection);
         rb.velocity = lookDirection * dashSpeed; //initial velocity added
@@ -137,6 +139,11 @@ public class Player : MonoBehaviour
         EndDash();
         //Debug.Log("Actual Time: " + (Time.time - timeStarted));
         //Debug.Log("Estimated Time: " + maxDashTime);
+    }
+
+    public void MarkWhoHitLast(PlayerInput otherPlayer)
+    {
+        playerWhoHitMeLastIndex = PlayerManager.GetIndex(otherPlayer);
     }
 
     private void EndDash()
@@ -162,6 +169,7 @@ public class Player : MonoBehaviour
         Debug.Log("Take Over " + player.name);
         if (Time.time < player.deathTime - dashDamage)
         {
+            MarkWhoHitLast(player.GetComponent<PlayerInput>());
             player.TakeDamage(dashDamage);
             return;
         }
@@ -228,6 +236,8 @@ public class Player : MonoBehaviour
     private void Die()
     {
         Debug.Log("Die");
+        ScoreKeeper.ReigisterDeath(playerWhoHitMeLastIndex, PlayerManager.GetIndex(GetComponent<PlayerInput>()));
+        playerWhoHitMeLastIndex = -1;
         GetComponent<PlayerUI>().Disable(true);
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0;

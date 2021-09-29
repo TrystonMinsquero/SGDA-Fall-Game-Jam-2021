@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class SFXManager : MonoBehaviour
 {
+    public static SFXManager instance;
 
     public Sound[] sounds;
 
     void Awake()
     {
-        foreach(Sound s in sounds)
+        if (instance != null)
+            Destroy(this.gameObject);
+        else
+            instance = this;
+
+
+        foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
@@ -19,9 +26,9 @@ public class SFXManager : MonoBehaviour
         }
     }
 
-    public void Play (string name)
+    public static void Play (string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(instance.sounds, sound => sound.name == name);
 
         s.source.Play();
     }

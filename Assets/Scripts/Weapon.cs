@@ -46,7 +46,7 @@ public class Weapon : ScriptableObject
                 pro.Set(player, player.transform.position, projectileSpeed, range, player.lookDirection.normalized, damage);
                 projectiles.Add(pro);
 
-                FindObjectOfType<SFXManager>().Play("Gun");
+                SFXManager.Play("GunShot");
 
                 break;
 

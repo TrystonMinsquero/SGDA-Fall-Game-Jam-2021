@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0c7428a3b94314f8ea8ee55da9cdd0, type: 3}
   m_Name: NPC 7
   m_EditorClassIdentifier: 
-  aoc: {fileID: 0}
+  aoc: {fileID: 22100000, guid: 1e2ac659a0ef42e48a9a581a24e0bd4e, type: 2}
   hasWeapon: 1

@@ -56,6 +56,7 @@ public class PlayerManager : MonoBehaviour
     public static void OnSceneChange(bool _inLobby)
     {
         inLobby = _inLobby;
+        MusicManager.StartMusic(inLobby);
         if (_inLobby)
         {
             Debug.Log("Setting up for Lobby");

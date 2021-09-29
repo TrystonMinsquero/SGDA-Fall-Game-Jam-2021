@@ -3485,7 +3485,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCPrefab: {fileID: 4862974284002695767, guid: 7049635e5dc50394a80b14445a04519b, type: 3}
   NPCTemplates:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 8a430033fb838b1479d8e4718f7d361d, type: 2}
+  - {fileID: 11400000, guid: 0c2a329c520aab245999e245727265d9, type: 2}
+  - {fileID: 11400000, guid: 3d16ae53f4217b347bf98de496e04013, type: 2}
+  - {fileID: 11400000, guid: af5c607d9ddae3b49abed4ec5c0f9911, type: 2}
+  - {fileID: 11400000, guid: 3cfdb3b0a649b0e4f9fbabf405ddcd3b, type: 2}
+  - {fileID: 11400000, guid: 2a4f022cba23fb044b81644e6bc3e4bb, type: 2}
+  - {fileID: 11400000, guid: efc9c9d3fb5dd7b4986c6360dbbfe470, type: 2}
+  - {fileID: 11400000, guid: 081c4442c947b004bbc5650366a2c4f6, type: 2}
+  - {fileID: 11400000, guid: be10e94a0959cf34094fb936f2245257, type: 2}
+  - {fileID: 11400000, guid: 30b3825a74083114bbfc762a8afff1ef, type: 2}
+  - {fileID: 11400000, guid: 25a00d30c7bf2b04d9f1b60b5f89cdeb, type: 2}
+  - {fileID: 11400000, guid: 3d78406458b686b448df87b7f1775788, type: 2}
+  - {fileID: 11400000, guid: 1790f12e7eaa39b4db5c1f652d77d72b, type: 2}
+  - {fileID: 11400000, guid: a946f6aee91d0c04ab290e406cc5617b, type: 2}
+  - {fileID: 11400000, guid: 7e88545ceac7b6441b20678680fb1423, type: 2}
+  - {fileID: 11400000, guid: c19e89800d9b2a34b90d4e60f7541304, type: 2}
   WeaponTemplates:
   - {fileID: 11400000, guid: b6a795736c847ff448c231b5b4d6518f, type: 2}
   - {fileID: 11400000, guid: d1d7ce85ba6e97b46bfe63863faa299e, type: 2}

@@ -32,7 +32,7 @@ public class PlayerUI : MonoBehaviour
         player.weaponHandler.flashSR.enabled = true;
         GetComponent<PlayerController>().EnableControls(true);
     }
-    public void Disable()
+    public void Disable(bool camEnabled = false)
     {
         Player player = GetComponent<Player>();
         player.AssignComponents();
@@ -41,7 +41,8 @@ public class PlayerUI : MonoBehaviour
         player.weaponHandler.flashSR.enabled = false;
         GetComponent<PlayerController>().EnableControls(false);
         foreach (Behaviour component in behaviours)
-            component.enabled = false;
+            if (!(camEnabled && component == GetComponent<PlayerInput>().camera))
+                component.enabled = false;
     }
 
     //UI Actions

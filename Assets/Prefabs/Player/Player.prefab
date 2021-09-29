@@ -60,6 +60,7 @@ MonoBehaviour:
   dashChargeTime: 0.73
   dashSpeed: 30
   healthBar: {fileID: 4175796600016887350}
+  deathEffect: {fileID: 3256664758702202174, guid: 58f840fe5c46a7c4883de45ee327f539, type: 3}
   sr: {fileID: 2377044252534902315}
   weaponHandler: {fileID: 0}
   lookDirection: {x: 0, y: 0}
@@ -399,10 +400,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6055638216936398465}
   - component: {fileID: 7009851991797492387}
-  - component: {fileID: 6991044122153869958}
   m_Layer: 7
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: Camera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -464,25 +464,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!95 &6991044122153869958
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8226775207976798983}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &3626997184832226686
 PrefabInstance:
   m_ObjectHideFlags: 0

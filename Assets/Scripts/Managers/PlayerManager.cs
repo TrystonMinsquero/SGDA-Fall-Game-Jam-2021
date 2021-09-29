@@ -10,10 +10,10 @@ public class PlayerManager : MonoBehaviour
     public static PlayerInputManager playerInputManager;
     public static bool inLobby;
 
-    public static PlayerInput[] players = new PlayerInput[4];
+    public static PlayerInput[] players = new PlayerInput[8];
     public static int playerCount;
 
-    public PlayerInput[] _players = new PlayerInput[4];
+    public PlayerInput[] _players = new PlayerInput[8];
 
 
 

@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public float dashSpeed;
     public HealthBar healthBar;
 
+    public GameObject deathEffect;
     public SpriteRenderer sr;
     private Animator anim;
     private Rigidbody2D rb;
@@ -173,7 +174,7 @@ public class Player : MonoBehaviour
             Vector2 relativeDirection = lookDirection + movementDirection;
             if (rb.velocity.magnitude < .2f)
                 stateName = "Idle";
-            else if ((lookDirection - movementDirection).sqrMagnitude < .45f || (lookDirection + movementDirection).sqrMagnitude < .45f)
+            else if ((lookDirection - movementDirection).sqrMagnitude < .6f || (lookDirection + movementDirection).sqrMagnitude < .6f)
             {
                 stateName = "Walk";
             }
@@ -220,8 +221,9 @@ public class Player : MonoBehaviour
     private void Die()
     {
         Debug.Log("Die");
-        GetComponent<PlayerUI>().Disable();
-        StartCoroutine(WaitToRespawn(3));
+        GetComponent<PlayerUI>().Disable(true);
+        Instantiate(deathEffect, transform.position, Quaternion.identity).transform.localScale = transform.localScale;
+        StartCoroutine(WaitToRespawn(2.2f));
     }
 
     private IEnumerator WaitToRespawn(float time)

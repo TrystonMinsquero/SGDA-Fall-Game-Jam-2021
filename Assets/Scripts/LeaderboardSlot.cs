@@ -12,8 +12,8 @@ public class LeaderboardSlot : MonoBehaviour
     public void Fill(Score score)
     {
         playerNum.text = "" + (score.playerIndex + 1);
-        kills.text = "" + score.playerKills;
-        deaths.text = "" + score.timesDied;
+        kills.text = "K: " + score.playerKills;
+        deaths.text = "D: " + score.timesDied;
     }
 
     public void Show()
